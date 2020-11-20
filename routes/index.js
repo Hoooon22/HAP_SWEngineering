@@ -3,7 +3,7 @@ var router = express.Router();
 const crypto = require('crypto');
 
 // model loading
-var models = require('../models');
+var models = require('../models'); // 수정
 
 // sign-up
 router.get('/signup', function(req, res, next) {
