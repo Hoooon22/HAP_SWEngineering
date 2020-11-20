@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>subject</title>
+    <link rel = "stylesheet" href="../public/stylesheets/subject.css"/>
+</head>
+
+<body bgcolor="E2F1F4">
+    <div id = "header">
+            <div class = "headerComponent" id = "logo">
+                <img src='../public/images/logo.png'/>
+            </div>
+            
+            <div class = "headerComponent" id = "pageTitle">
+                <div class = circle id = subjectColor></div>
+                <div id = subjectName>page name</div>
+            </div>
+        
+    </div>
+    
+    <div id = content>
+        <div id = top>
+            <a class = 'btn topContent' id = attendance href = #>출석 &#9661;</a>
+            <a class = 'btn topContent' id = material href="../material/material.html">기자재 &#8614;</a>
+            <a class = 'btn topContent' id = dataRoom href="../dataRoom/dataRoom.html">학습자료실 &#8614;</a>    
+            <a class = 'btn topContent' id = question href="../question/question.html">질문게시판 &#8614;</a>    
+        </div>
+        
+        <div id = 'attendanceToggle'>
+            <div class = 'date' id = prev>
+                <div>1주차 1강</div>
+                <div class = status>출석</div>
+            </div>
+        
+            <div class = 'date' id = now>
+                <div>1주차 2강</div>
+                <div class = status>결석</div>
+            </div>
+        
+            <div class = 'date' id = next>
+                <div>2주차 1강</div>
+                <div class = status>지각</div>
+            </div>
+        </div>
+
+        <div id = bottom>
+            <div id = botHeader> 
+                <a class =  btn id = homework>과제</a> </div>
+            <div id = botContent>
+                <div class=hwList>과제 1</div>
+                <div class=hwList>과제 2</div>
+                <div class=hwList>과제 3</div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../public/javascripts/subject.js"></script>
+    </body>
+
+</html>
