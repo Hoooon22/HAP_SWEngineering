@@ -16,7 +16,9 @@
     <script src="../public/javascripts/chat_index.js"></script>
   </head>
   <body>
-    <div id="main">
+    <p style="display: none;" id="user_id"><%=user_id%></p>
+    
+      <div id="main">
       <div id="chat">
         <!-- 채팅 메시지 영역 -->
       </div>
@@ -26,8 +28,6 @@
         <button onclick="send()" style="width:30px; height:30px">↑</button>
       </div>
     </div>
-
-  <input type="" id="user_id" value="<%=session.user_id%>" />
 
   </body>
 </html>
