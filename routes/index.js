@@ -213,5 +213,9 @@ router.get('/whoAmI', function(req, res, next) {
   })
 });
 
+//chat
+router.get('/chat', function(req, res, next) {
+  res.render("chat");
+})
 
 module.exports = router;

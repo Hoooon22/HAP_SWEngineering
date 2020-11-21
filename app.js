@@ -1,4 +1,6 @@
 var createError = require('http-errors');
+const socket = require('socket.io') //socket.io 모듈 
+const http = require('http') //node js 기본 내장 모듈 불러오기
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -12,6 +14,11 @@ const session = require('express-session');
 
 var app = express();
 sequelize.sync();
+const server = http.createServer(app) //express http 서버 생성
+const io = socket(server) //생성된 서버를 socket.io에 바인딩
+
+//socket
+app.io = require('socket.io')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -63,5 +70,34 @@ models.sequelize.sync().then( () => {
   console.log("연결 실패");
   console.log(err);
 });
+
+app.io.on('connection', function(socket) {
+
+  //새로운 유저가 접속했을 경우 다른 소켓에 알려줌
+  socket.on('newUser', function(name) {
+    console.log(name + ' 님이 접속하였습니다.')
+
+    socket.name = name//소켓에 이름 저장
+
+    //모든 소켓에 전송
+    io.sockets.emit('update', {type: 'connect', name: ' >> notice ', message: name + '님이 접속하였습니다.'})
+  })
+
+  //전송한 메세지 받기
+  socket.on('message', function(data) {
+    data.name = socket.name//받은 데이터에 누가 보냈는지 이름 추가
+    
+    console.log(data)
+    socket.broadcast.emit('update', data);//메세지를 보낸 유저를 제외하고 나머지 유저에게 메시지 전송
+  })
+
+  //접속 종료
+  socket.on('disconnect', function() {
+    console.log(socket.name + '님이 나가셨습니다.')
+
+    //접속을 종료한 사람을 제외하고 나머지 유저에게 메시지 전송
+    socket.broadcast.emit('update', {type: 'disconnect', name: ' >> notice ', message: socket.name + '님이 나가셨습니다.'});
+  })
+})
 
 module.exports = app;

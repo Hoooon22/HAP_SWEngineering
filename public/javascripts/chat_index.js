@@ -2,7 +2,6 @@ var socket = io()
 
 //connect 되었을 때 실행
 socket.on('connect', function() {
-  prompt('')
   var name = prompt('반갑습니다!', '')//이름 입력받음 <<<<<<<<<<<<<<<<<<<<<<<<<지훈아 이자리에 디비에서 prompt 지우고 name에 디비 값 저장하면 될거같아!
 
  // if(!name) {//이름을 입력하지 않을 경우
