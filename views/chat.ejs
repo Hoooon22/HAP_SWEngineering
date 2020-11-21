@@ -7,14 +7,9 @@
     <center>
       <h3 style="background-color:aliceblue;">
         <div id="chatname">
-        <script type="text/javascript">
-        var subjectname="데통"  ////////////////////////////db에서 과목 명 적어서 값 불러와조!
-        document.getElementById("chatname").innerHTML=subjectname;
-        </script>
-        채팅방</h3>
+        <%= posts.name %> 채팅방</h3>
         </div>
     </center>
-
 
     <link rel="stylesheet" href="../public/stylesheets/chat_index.css">
     <script src="/socket.io/socket.io.js"></script>
@@ -31,5 +26,8 @@
         <button onclick="send()" style="width:30px; height:30px">↑</button>
       </div>
     </div>
+
+  <input type="" id="user_id" value="<%=session.user_id%>" />
+
   </body>
 </html>
