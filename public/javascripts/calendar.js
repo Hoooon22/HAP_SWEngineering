@@ -1,4 +1,4 @@
-getMonthDays = (_date) => {
+getMonthDays = (_date) => { // modify
     return $.ajax({
         url: `/getMonthDays/${_date.year}/${_date.month}`,
         method: "GET"
