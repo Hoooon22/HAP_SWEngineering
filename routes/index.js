@@ -37,6 +37,18 @@ router.post("/signup", async function(req,res,next){
 // 메인 페이지
 router.get('/', function(req, res, next) {
   res.send('환영합니다~');
+
+  // models.todolist.create({
+  //   title: "222",
+  //   date_year: 2020,
+  //   date_month: 11,
+  //   date_day: 17,
+  //   category_id: 2,
+  //   category_name: "SW 공학",
+  //   category_color: "#27245c",
+  //   content: "과제2 소공",   
+  // })
+
 });
 
 // 로그인 GET
@@ -88,7 +100,13 @@ router.get('/subject', function(req, res, next) {
 
 // calendar
 router.get('/calendar', function(req, res, next){
-  res.render('calendar', { title: 'Calendar' })
+  let session = req.session
+  let user_id = req.session.user_id
+  
+  res.render("calendar", {
+    session: session,
+    user_id: user_id,
+  });
 })
 router.get('/getMonthDays/:year/:month', function(req, res, next) {
   let _year = Number(req.params.year);
@@ -99,118 +117,22 @@ router.get('/getMonthDays/:year/:month', function(req, res, next) {
 
   res.send(m);
 });
-router.post('/getTodoListFromDate', function (req, res, next) {
+router.post('/getTodoListFromDate', async function (req, res, next) {
   let date = req.body;
   let {year,month} = date;
 
+  let result = await models.todolist.findAll({});
+
+  var aJsonArray = new Array();
+  for (let i in result)
+  {
+    aJsonArray.push(result[i].dataValues)
+  }
+  console.log(aJsonArray)
+
   // TODO :: DB 에서 year, month 통해 TodoList 조회
-  res.json(
-    [
-      {
-        title: "11",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 1
-        },
-        category: {
-          id: 1,
-          name: "데이터통신입문",
-          color: "#a81d0d"
-        },
-        content: "과제1 데이터통신"
-      },
-      {
-        title: "222",
-        date: {
-          year: 2020,
-          month: 11,
-          day:17 
-        },
-        category: {
-          id: 2,
-          name: "SW 공학",
-          color: "#27245c"
-        },
-        content: "과제2 소공"
-      },
-      {
-        title: "44545",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 5
-        },
-        category: {
-          id: 3,
-          name: "객체지향언어",
-          color: "#ababab"
-        },
-        content: "과제3 객제지향언어입니다"
-      },
-      {
-        title: "4444",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 1
-        },
-        category: {
-          id: 1,
-          name: "암호학",
-          color: "#000000"
-        },
-        content: "암호학입니다"
-      },
-      {
-        title: "55555",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 8
-        },
-        category: {
-          id: 1,
-          name: "암호학",
-          color: "#9340c7"
-        },
-        content: "암호학입니다"
-      },
-      {
-        title: "6666666",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 10
-        },
-        category: {
-          id: 1,
-          name: "암호학",
-          color: "#9340c7"
-        },
-        content: "암호학입니다"
-      },
-      {
-        title: "과제1",
-        date: {
-          year: 2020,
-          month: 11,
-          day: 23
-        },
-        category: {
-          id: 1,
-          name: "암호학",
-          color: "#9340c7"
-        },
-        content: "암호학입니다"
-      },
-    ]
-  )
-});
-router.get('/whoAmI', function(req, res, next) {
-  res.json({
-    name : "hk"
-  })
+  res.json(aJsonArray)
+
 });
 
 //chat
