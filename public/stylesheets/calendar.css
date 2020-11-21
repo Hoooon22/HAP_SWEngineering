@@ -1,0 +1,130 @@
+.container {
+    display: flex;
+}
+
+/* calendar */
+.calendar {
+    padding: 20px;
+    flex : .7;
+}
+
+.calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar .header .btn{
+    width: 15px;
+}
+
+.calendar .header .ym{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.calendar .contents {
+    margin-top: 40px;
+}
+
+.calendar .contents .week {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.calendar .contents .week div{
+    padding: 20px 0;
+    flex:1;
+    text-align: center;
+}
+
+.week .sun{
+    color:#ff0000
+}
+
+.week .sat{
+    color:#0000ff
+}
+
+.calendar .contents .date-wrap{
+    margin-top: 30px;
+}
+
+.calendar .contents .date-wrap .box-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.calendar .contents .date-wrap .box-row .box{
+    padding : 10px;
+    flex:1;
+}
+
+.calendar .contents .date-wrap .box-row .box .date{
+    margin-bottom: 10px;
+}
+
+.calendar .contents .date-wrap .box-row .box .todo-list{
+    height: 125px;
+    overflow-y: scroll;
+}
+
+.calendar .contents .date-wrap .box-row .box .todo-list .todo{
+}
+
+
+.calendar .contents .date-wrap .box-row .box .todo-list .todo{
+    margin: 5px auto;
+    box-shadow: 0 0 5px 0 #dedede;
+    border-radius: 10px;
+}
+
+.calendar .contents .date-wrap .box-row .box .todo-list .todo .title{
+    padding: 5px 10px;
+}
+
+.calendar .contents .date-wrap .box-row .box:first-child{
+    color: #ff0000;
+}
+
+.calendar .contents .date-wrap .box-row .box:last-child{
+    color: #0000ff;
+}
+
+
+/* schedule */
+.schedule {
+    padding: 20px;
+    flex : .3;
+    box-shadow: 0 0 5px 0 #dedede;
+}
+
+.schedule .header {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.schedule .contents{
+    margin-top: 40px;
+}
+
+.todo{
+    display: flex;
+    margin: 15px auto;
+    box-shadow: 0 0 5px 0 #dedede;
+    border-radius: 10px;
+}
+
+.todo .label {
+    background-color: #ff0000;
+    border-radius: 10px 0 0 10px;
+    flex:.05;
+}
+
+.todo .title{
+    padding: 10px 20px;
+    flex:.95;
+    color: #000000;
+}

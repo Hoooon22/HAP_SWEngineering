@@ -1,0 +1,66 @@
+/* body */
+
+body{
+  padding : 20px;
+  background-color: #f5f9fd;
+}
+
+/* header */
+
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+header .logo{
+
+}
+
+header .welcome{
+
+}
+
+/* navigator */
+
+.nav-bar{
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar > .btn-wrap {
+  width: 200px;
+  position: relative;
+  margin-right: 10px;
+  padding : 5px 5px 0 5px;
+  top: 5px;
+  left: 60px;
+  background: #deebf7;
+  border-radius: 10px 10px  0 0;
+}
+
+.nav-bar > .btn-wrap > button {
+  width: 100%;
+  padding : 10px 45px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.nav-bar > .btn-wrap > button.enable{
+  background: #ffffff;
+  border-radius: 10px 10px  0 0;
+}
+
+/* container */
+
+.container-wrap{
+  padding : 5px;
+  background: #deebf7;
+  border-radius: 10px;
+}
+
+.container {
+  padding : 10px 25px;
+  background :#ffffff;
+  border-radius: 10px;
+}
