@@ -215,7 +215,16 @@ router.get('/whoAmI', function(req, res, next) {
 
 //chat
 router.get('/chat', function(req, res, next) {
-  res.render("chat");
+  let session = req.session;
+  models.subject.findOne({
+    where: {name : "소공"}
+  }).then( result => {
+    res.render("chat", {
+      posts: result,
+      session : session
+    });
+  });
 })
+
 
 module.exports = router;
