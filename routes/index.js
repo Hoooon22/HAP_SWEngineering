@@ -215,13 +215,16 @@ router.get('/whoAmI', function(req, res, next) {
 
 //chat
 router.get('/chat', function(req, res, next) {
-  let session = req.session;
+  let session = req.session
+  let user_id = req.session.user_id
+  
   models.subject.findOne({
     where: {name : "소공"}
   }).then( result => {
     res.render("chat", {
       posts: result,
-      session : session
+      session: session,
+      user_id: user_id,
     });
   });
 })

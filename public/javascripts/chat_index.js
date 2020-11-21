@@ -2,8 +2,8 @@ var socket = io()
 
 //connect 되었을 때 실행
 socket.on('connect', function() {
-  var name = document.getElementById('user_id')
-
+  var name = document.getElementById("user_id").innerText
+  
   socket.emit('newUser', name)//서버에 새로운 유저가 왔다고 알림
 })
 
