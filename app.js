@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 const { sequelize } = require('./models');
 const session = require('express-session');
 
-var app = express(); //강성희 주석
+var app = express(); //1121토
 sequelize.sync();
 
 // view engine setup
