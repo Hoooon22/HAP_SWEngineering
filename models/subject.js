@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     
   });
   return subject;
