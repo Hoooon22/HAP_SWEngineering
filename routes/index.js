@@ -93,9 +93,20 @@ router.get("/logout", function(req,res,next){
   res.redirect("login")
 })
 
-// Question
+// subject
 router.get('/subject', function(req, res, next) {
-  res.render('subject', { title: 'Subject' });
+  let session = req.session
+  let user_id = req.session.user_id
+  
+  models.subject.findOne({
+    where: {name : "소공"}
+  }).then( result => {
+    res.render("subject", {
+      posts: result,
+      session: session,
+      user_id: user_id,
+    });
+  });
 });
 
 // calendar

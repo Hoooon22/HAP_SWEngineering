@@ -15,8 +15,8 @@
             </div>
             
             <div class = "headerComponent" id = "pageTitle">
-                <div class = circle id = subjectColor></div>
-                <div id = subjectName>page name</div>
+                <div class = circle id = subjectColor style="background-color: blue;"></div>
+                <div id = subjectName><%=posts.name%></div>
             </div>
         
     </div>
@@ -56,6 +56,11 @@
             </div>
         </div>
         
+        <% var userStatus = 0 %> 
+        <% if (post.job == 'student') {%>
+            <% userStatus = 1 }%>  
+        <p style="display: none;" id="userStatus"><%=userStatus%></p>
+                
     </div>
     <script src="../public/javascripts/subject.js"></script>
     </body>

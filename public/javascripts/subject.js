@@ -1,22 +1,18 @@
 // # 출석 객체들 애니메이션 효과
 // # 모달창 생성
 
-var userStatus = 1; // 교수인지(0), 학생인지(1)
-
-var subjectName=document.getElementById("subjectName"); // 과목명
-subjectName.innerText = "과목명"; // 과목명 동적으로 넣어주기
-document.write(subjectName.innerText);
+var userStatus = document.getElementById("user_id").innerText; // 교수인지(0), 학생인지(1)
 
 var subjectColor=document.getElementById("subjectColor"); // 과목 색상
 subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
-var attendance = []; // string으로 출석 정보 전달
+var attendance = []; // string으로 출석 정보 전달 => ★string은 어떤 형태로?
 
 var prev = document.getElementById("prev");
 var now = document.getElementById("now");
 var next = document.getElementById("next");
 
-var homework = { // 과제 정보
+var homework = { // 과제 정보 => ★ 과제에 들어갈 건 이게 다인가??, 이거 준경누나랑 todolist맞추면 좋을거같음
     title : "Homework 1",
     deadline: "2020.12.2",
     detail : "Homework 1 제출하세요."
