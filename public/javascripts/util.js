@@ -6,3 +6,7 @@ function getFormatDate(date) {
     day = day >= 10 ? day : '0' + day;
     return year + '-' + month + '-' + day;
 }
+
+function convertDateObjectToFormatDate(_date){
+    return _date.year + "/" + _date.month + "/" + _date.day
+}

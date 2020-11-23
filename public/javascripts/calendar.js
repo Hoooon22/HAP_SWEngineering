@@ -111,47 +111,37 @@ addTodoList = (data)=>{
         data : data
     })
 }
-var today = {
-    year: new Date().getFullYear(),
-    month: new Date().getMonth()+1,
-}
 
-function prevCalendar(){
-    today = {
-        year: today.year,
-        month: today.month-1,
+var today = new Date();
+function prevCalendar(date){
+
+    
+    today = new Date(today.getFullYear(), today.getMonth() -1, today.getDate());
+    date = {
+        year: today.getFullYear(),
+        month: today.getMonth()+1
     }
-    if (today.month==0){
-        today = {
-            year: today.year-1,
-            month: today.month+12,
-        } 
-    }
-    setCalendarHeader(today);
-    getMonthDays(today).done((_monthDays) => {
+    setCalendarHeader(date);
+    getMonthDays(date).done((_monthDays) => {
         setCalendarDate(_monthDays);
     })
-    getTodoListFromDate(today).done((_todoList) => {
+    getTodoListFromDate(date).done((_todoList) => {
         setTodoListOnSchedule(_todoList);
         setTodoListOnCalendar(_todoList);
     })
 }
-function nextCalendar(){ 
-    today = {
-        year: today.year,
-        month: today.month+1,
+function nextCalendar(date){ 
+   
+    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    date = {
+        year: today.getFullYear(),
+        month: today.getMonth() +1
     }
-    if (today.month==13){
-        today = {
-            year: today.year+1,
-            month: today.month-12,
-        } 
-    }
-    setCalendarHeader(today);
-    getMonthDays(today).done((_monthDays) => {
+    setCalendarHeader(date);
+    getMonthDays(date).done((_monthDays) => {
         setCalendarDate(_monthDays);
     })
-    getTodoListFromDate(today).done((_todoList) => {
+    getTodoListFromDate(date).done((_todoList) => {
         setTodoListOnSchedule(_todoList);
         setTodoListOnCalendar(_todoList);
     })
