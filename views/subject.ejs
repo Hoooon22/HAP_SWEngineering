@@ -9,60 +9,94 @@
 </head>
 
 <body bgcolor="E2F1F4">
-    <div id = "header">
+    <div class="stack" id = modal>
+        <div class = modal_content>
+            <button id = close>&#x274C;</button>
+            <div class = "modal_component block" id = img>
+
+            </div>
+            
+            <div class = modal_component id = name>  
+
+            </div>
+
+            <div class = modal_component id="num">  
+
+            </div>
+
+            <button class = modal_component id = submit>submit</button>
+        </div>
+    </div>
+
+    <div class = stack id="mainPage" style = "overflow: scroll">
+        <div id = "header">
             <div class = "headerComponent" id = "logo">
                 <img src='../public/images/logo.png'/>
             </div>
             
             <div class = "headerComponent" id = "pageTitle">
-                <div class = circle id = subjectColor style="background-color: blue;"></div>
+                <div class = circle id = subjectColor></div>
                 <div id = subjectName><%=posts.name%></div>
-            </div>
-        
-    </div>
-    
-    <div id = content>
-        <div id = top>
-            <a class = 'btn topContent' id = attendance href = #>출석 &#9661;</a>
-            <a class = 'btn topContent' id = material href="../material/material.html">기자재 &#8614;</a>
-            <a class = 'btn topContent' id = dataRoom href="../dataRoom/dataRoom.html">학습자료실 &#8614;</a>    
-            <a class = 'btn topContent' id = question href="../question/question.html">질문게시판 &#8614;</a>    
-        </div>
-        
-        <div id = 'attendanceToggle'>
-            <div class = 'date' id = prev>
-                <div>1주차 1강</div>
-                <div class = status>출석</div>
-            </div>
-        
-            <div class = 'date' id = now>
-                <div>1주차 2강</div>
-                <div class = status>결석</div>
-            </div>
-        
-            <div class = 'date' id = next>
-                <div>2주차 1강</div>
-                <div class = status>지각</div>
-            </div>
+            </div>  
         </div>
 
-        <div id = bottom>
-            <div id = botHeader> 
-                <a class =  btn id = homework>과제</a> </div>
-            <div id = botContent>
-                <div class=hwList>과제 1</div>
-                <div class=hwList>과제 2</div>
-                <div class=hwList>과제 3</div>
+        <div id = content>
+            <div id = top>
+                <a class = 'btn topContent' id = attendance href = #>출석 &#9661;</a>
+                <a class = 'btn topContent' id = material href="../material/material.html">기자재 &#8614;</a>
+                <a class = 'btn topContent' id = dataRoom href="../dataRoom/dataRoom.html">학습자료실 &#8614;</a>    
+                <a class = 'btn topContent' id = question href="../question/question.html">질문게시판 &#8614;</a>    
             </div>
+            
+            <div id = 'attendanceToggle'>
+                <div class = 'date' id = prev>
+                    <div class = week>1주차 1강</div>
+                    <div  id = prevStatus>prev</div>
+                </div>
+            
+                <div class = 'date' id = now>
+                    <div class = week>1주차 2강</div>
+                    <div  id = nowStatus>now</div>
+                </div>
+            
+                <div class = 'date' id = next>
+                    <div class = week>2주차 1강</div>
+                    <div  id = nextStatus>next</div>
+                </div>
+            </div>
+
+            <div id = bottom>
+                <div id = botHeader> 
+                    <a class =  btn id = homework>과제</a> </div>
+                <div id = botContent>
+                    <div id="noHw">등록된 과제가 없습니다.</div>
+                <!--    <div class=hwList>
+                        <div class = top>
+                            &#x1F4CC; title<button class = submit>submit</button>
+                        </div>
+                        
+                        <div class="mid">
+                            &#x1F4C1; 첨부파일 &emsp; &#x1F4C6; deadline 
+                        </div>
+                        
+                        <div class="bot">
+                            detail
+                        </div>
+                    </div> -->
+                </>
+            </div>
+            
         </div>
-        
-        <% var userStatus = 0 %> 
-        <% if (post.job == 'student') {%>
+    </div>
+    <% var userStatus = 0 %> 
+        <% if (session.job == 'student') {%>
             <% userStatus = 1 }%>  
         <p style="display: none;" id="userStatus"><%=userStatus%></p>
-                
-    </div>
-    <script src="../public/javascripts/subject.js"></script>
-    </body>
+        <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
+        <p style="display: none;" id="subjectColor_value"><%=posts.color%></p>
+<script src="../public/javascripts/subject.js"></script>
+<script>
+</script>
+</body>
 
 </html>

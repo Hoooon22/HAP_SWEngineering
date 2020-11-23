@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='../public/stylesheets/questionBoard.css' />
+  </head>
+  <body>  
+    <div id = "header">
+      <div class = "headerComponent" id = "logo">
+          <img src='../public/images/logo.png'/>
+      </div>
+      
+      <div class = "headerComponent" id = "pageTitle">
+          <div id = circle></div>
+          <div id = pageName>page name</div>
+      </div>
+    </div>
+      <div id ="content">
+        <a href="http://localhost:8000">채팅방 입장</a><br/>
+        <a href="/questionBoard/write">글쓰기</a><br/>
+        
+        <div class="row">
+        <h1><%= title %></h1>
+        <a href="/questionBoard/write">쓰기</a>
+        <table width="600" class="table table-condensed">
+          <tr>
+                <!-- 번호, 제목, 작성자, 날짜-->
+            <th width="40">번호</th>
+            <th width="260">제목</th>
+            <th width="100">작성자</th>
+            <th width="160">날짜</th>
+          </tr>
+          <%
+            for(var i= 0, len = data.length; i < len, item = data[i]; i++){
+          %>
+          <tr>
+            <td><%=max-i%></td>
+            <td><a href="/questionBoard/read/<%=page%>/<%=item.num%>"><%=item.title%></a></td>
+            <td><%=item.id%></td>
+            <td><%=item.regdate%></td>
+          </tr>
+          <%
+            }
+          %>
+        </table>
+        <div style="width:46em;text-align:center;padding-top:2px">
+          <% if(page > pageSize) { %>
+            [ <a href="/questionBoard/list/1" style="text-decoration: none;">◀◀</a> ]
+            [ <a href="/questionBoard/list/<%=startPage-1%>" style="text-decoration: none;">◀</a> ]
+          <% } else {%>
+            [ <span style="color:gray">◀◀</span> ]
+            [ <span style="color:gray">◀</span> ]
+          <% } %>
+          &nbsp;&nbsp;
+          <% for (var i=startPage; i<=endPage; i++) { %>
+            <% if (i== page) {%>
+              [ <%=i%> ]
+            <% } else { %>
+              [ <a href="/questionBoard/list/<%=i%>" style="text-decoration: none;"><%=i%></a> ]
+            <% } %>
+          <% } %>
+          &nbsp;&nbsp;
+          <% if (endPage < totalPage) { %>
+            [ <a href="/questionBoard/list/<%=endPage+1%>" style="text-decoration: none;">▶</a> ]
+            [ <a href="/questionBoard/list/<%=totalPage%>" style="text-decoration: none;">▶▶</a> ]
+          <% } else {%>
+            [ <span style="color:gray">▶</span> ]
+            [ <span style="color:gray">▶▶</span> ]
+          <% } %>
+        </div>
+        </div>
+      </div>
+      
+
+  </body>
+</html>

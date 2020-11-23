@@ -1,0 +1,70 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: skyblue;
+    text-decoration: none;
+  }
+  
+  
+  .headerComponent {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  #header {
+    position: relative;
+    margin: auto;
+    width: 95%;
+    height: 10vh;
+  }
+  
+  #logo {
+    left: 0;
+    width: 20%;
+    margin: 0px;
+    height: 10vh;
+  }
+  
+  #pageTitle {
+    background-color: #fff;
+    right: 0;
+    width: 80%;
+    margin: 0px;
+    height: 10vh;
+    text-align: center;
+    border-style: solid;
+    border-width: 5px;
+    border-color: skyblue;
+  }
+  
+  #circle {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  #pageName {
+    font-size: 350%;
+    margin: auto;
+    display: inline-block;
+  }
+  
+  #content {
+    background-color: #fff;
+    position: relative;
+    border-style: solid;
+    border-width: 4px;
+    border-color: skyblue;
+    margin: auto;
+    margin-top: 15px;
+    width: 95%;
+    height: 90vh;
+  }
+  

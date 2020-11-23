@@ -9,6 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var fileUploadRouter = require('./routes/upload');
+var questionBoardRouter = require('./routes/questionBoard');
 
 const { sequelize } = require('./models');
 const session = require('express-session');
@@ -46,6 +47,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', fileUploadRouter);
+app.use('/questionBoard', questionBoardRouter);
 
 app.use('/upload', express.static('uploads'));
 
