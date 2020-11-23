@@ -1,6 +1,6 @@
 getTodoListFromDate = (date) =>{
     return $.ajax({
-        url : "/getTodoListFromDate",
+        url : "/todo/getTodoListFromDate",
         method : "POST",
         data : date,
         dataType : "json"
@@ -9,9 +9,9 @@ getTodoListFromDate = (date) =>{
 
 getAllTodoList = () =>{
     return $.ajax({
-        url : "/getAllTodoList",
+        url : "/todo/getAllTodoList",
         method : "POST",
         data : date,
         dataType : "json"
     })    
-}
+} 

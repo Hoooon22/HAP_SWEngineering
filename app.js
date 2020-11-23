@@ -4,14 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var calendarRouter = require('./routes/calendar');
+var boardRouter = require('./routes/board');
+var userRouter = require('./routes/user');
+var todoRouter = require('./routes/todo');
+var categoryRouter = require('./routes/category');
 
-const { sequelize } = require('./models');
-const session = require('express-session');
-
-var app = express(); //강성희 주석
-sequelize.sync();
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,22 +20,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  key: 'sid',
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 1000 * 60 * 60 // 쿠키 유효기간 1시간
-  }
-}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/static', express.static(__dirname + '/public'));
-app.use('/public', express.static(__dirname + '/public')); 
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', calendarRouter);
+app.use('/board', boardRouter);
+app.use('/user', userRouter);
+app.use('/todo', todoRouter);
+app.use('/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -52,16 +42,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-// DB 연결
-const models = require("./models/index.js");
-
-models.sequelize.sync().then( () => {
-  console.log(" DB 연결 성공");
-}).catch(err => {
-  console.log("연결 실패");
-  console.log(err);
 });
 
 module.exports = app;

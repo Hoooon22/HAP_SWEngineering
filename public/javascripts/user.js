@@ -1,7 +1,7 @@
 whoAmI = () =>{
     return $.ajax({
         // TODO :: convert to server URL
-        url : "/whoAmI",
+        url : "/user/whoAmI",
         method : "GET",
         dataType : "json"
     })
