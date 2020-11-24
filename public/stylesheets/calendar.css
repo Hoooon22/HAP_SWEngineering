@@ -5,7 +5,7 @@
 /* calendar */
 .calendar {
     padding: 20px;
-    flex : .7;
+    flex: .7;
 }
 
 .calendar .header {
@@ -14,11 +14,11 @@
     align-items: center;
 }
 
-.calendar .header .btn{
+.calendar .header .btn {
     width: 15px;
 }
 
-.calendar .header .ym{
+.calendar .header .ym {
     font-size: 20px;
     font-weight: bold;
 }
@@ -32,63 +32,68 @@
     justify-content: space-between;
     align-items: center;
 }
-.calendar .contents .week div{
+
+.calendar .contents .week div {
     padding: 20px 0;
-    flex:1;
+    flex: 1;
     text-align: center;
 }
 
-.week .sun{
-    color:#ff0000
+.week .sun {
+    color: #ff0000
 }
 
-.week .sat{
-    color:#0000ff
+.week .sat {
+    color: #0000ff
 }
 
-.calendar .contents .date-wrap{
+.calendar .contents .date-wrap {
     margin-top: 30px;
 }
 
-.calendar .contents .date-wrap .box-row{
+.calendar .contents .date-wrap .box-row {
     display: flex;
     justify-content: space-between;
 }
 
 
-.calendar .contents .date-wrap .box-row .box{
-    padding : 10px;
-    flex:1;
+.calendar .contents .date-wrap .box-row .box {
+    padding: 10px;
+    flex: 1;
 }
 
-.calendar .contents .date-wrap .box-row .box .date{
+.calendar .contents .date-wrap .box-row .box:hover {
+    background-color: #deebf7;
+}
+
+.calendar .contents .date-wrap .box-row .box .date {
     margin-bottom: 10px;
 }
 
-.calendar .contents .date-wrap .box-row .box .todo-list{
+.calendar .contents .date-wrap .box-row .box .todo-list {
     height: 125px;
     overflow-y: scroll;
 }
 
-.calendar .contents .date-wrap .box-row .box .todo-list .todo{
+.calendar .contents .date-wrap .box-row .box .todo-list .todo {
 }
 
 
-.calendar .contents .date-wrap .box-row .box .todo-list .todo{
+.calendar .contents .date-wrap .box-row .box .todo-list .todo {
     margin: 5px auto;
     box-shadow: 0 0 5px 0 #dedede;
     border-radius: 10px;
 }
 
-.calendar .contents .date-wrap .box-row .box .todo-list .todo .title{
+.calendar .contents .date-wrap .box-row .box .todo-list .todo .title {
     padding: 5px 10px;
 }
 
-.calendar .contents .date-wrap .box-row .box:first-child{
+.calendar .contents .date-wrap .box-row .box:first-child {
     color: #ff0000;
 }
 
-.calendar .contents .date-wrap .box-row .box:last-child{
+.calendar .contents .date-wrap .box-row .box:last-child {
     color: #0000ff;
 }
 
@@ -96,7 +101,7 @@
 /* schedule */
 .schedule {
     padding: 20px;
-    flex : .3;
+    flex: .3;
     box-shadow: 0 0 5px 0 #dedede;
 }
 
@@ -106,11 +111,11 @@
     text-align: center;
 }
 
-.schedule .contents{
+.schedule .contents {
     margin-top: 40px;
 }
 
-.todo{
+.todo {
     display: flex;
     margin: 15px auto;
     box-shadow: 0 0 5px 0 #dedede;
@@ -120,11 +125,75 @@
 .todo .label {
     background-color: #ff0000;
     border-radius: 10px 0 0 10px;
-    flex:.05;
+    flex: .05;
 }
 
-.todo .title{
+.todo .title {
     padding: 10px 20px;
-    flex:.95;
+    flex: .95;
     color: #000000;
+}
+
+#addTodoPop .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#addTodoPop .modal-content .title{
+    width: 100%;
+    height: 50px;
+    margin: 15px auto;
+    text-align: center;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0 0 5px 0 #dedede;
+}
+
+#addTodoPop .modal-content .due-date{
+    width: 100%;
+    height: 50px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 5px 0 #dedede;
+}
+
+#addTodoPop .modal-content .category{
+    width: 100%;
+    height: 50px;
+    margin: 10px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 5px 0 #dedede;
+}
+
+#addTodoPop .modal-content .content{
+    height: 200px;
+    margin: 10px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 5px 0 #dedede;
+}
+
+#addTodoPop .modal-content .btn-wrap{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#addTodoPop .modal-content .btn-wrap button{
+    margin: 10px 10px;
+    padding: 5px 20px;
+    border: 1px solid #deebf7;
+    border-radius: 5px;
+}
+#addTodoPop .modal-content .btn-wrap .submit{
+    background-color: #deebf7;
 }
