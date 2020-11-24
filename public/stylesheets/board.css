@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category{
+    margin: 20px;
+    width: 30%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0 #dddddd;
+}
+
+.category > div{
+    padding: 15px 20px;
+}
+
+.category > .name {
+    border-radius: 15px 15px 0 0;
+    font-size: 20px;
+}
+
+.category > .todo-list {
+    margin-top: 10px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.todo-list > .todo {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    display: flex;
+    border-bottom : 1px solid #dddddd;
+    justify-content: space-between;
+}
+
+.todo-list > .todo >.date{
+    color:#999999;
+}
