@@ -109,43 +109,6 @@ router.get('/subject', function(req, res, next) {
   });
 });
 
-// calendar
-router.get('/calendar', function(req, res, next){
-  let session = req.session
-  let user_id = req.session.user_id
-  
-  res.render("calendar", {
-    session: session,
-    user_id: user_id,
-  });
-})
-router.get('/getMonthDays/:year/:month', function(req, res, next) {
-  let _year = Number(req.params.year);
-  let _month = Number(req.params.month);
-  let cal = new Calendar();
-
-  let m = cal.monthDays(_year,_month);
-
-  res.send(m);
-});
-router.post('/getTodoListFromDate', async function (req, res, next) {
-  let date = req.body;
-  let {year,month} = date;
-
-  let result = await models.todolist.findAll({});
-
-  var aJsonArray = new Array();
-  for (let i in result)
-  {
-    aJsonArray.push(result[i].dataValues)
-  }
-  console.log(aJsonArray)
-
-  // TODO :: DB 에서 year, month 통해 TodoList 조회
-  res.json(aJsonArray)
-
-});
-
 //chat
 router.get('/chat', function(req, res, next) {
   let session = req.session

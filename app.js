@@ -10,6 +10,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var fileUploadRouter = require('./routes/upload');
 var questionBoardRouter = require('./routes/questionBoard');
+var boardRouter = require('./routes/board');
+var calendarRouter = require('./routes/calendar');
+var categoryRouter = require('./routes/category');
+var todoRouter = require('./routes/todo');
 
 const { sequelize } = require('./models');
 const session = require('express-session');
@@ -48,6 +52,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', fileUploadRouter);
 app.use('/questionBoard', questionBoardRouter);
+app.use('/board', boardRouter);
+app.use('/calendar', calendarRouter);
+app.use('/category', categoryRouter);
+app.use('/todo', todoRouter);
+
 
 app.use('/upload', express.static('uploads'));
 
