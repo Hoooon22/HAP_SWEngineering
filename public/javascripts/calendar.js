@@ -33,30 +33,18 @@ setCalendarDate = (monthDay) => {
 
 setTodoListOnSchedule = (todoList) => {
     var html = '';
-<<<<<<< HEAD
     for (let i = 0; i < todoList.length; i++) {
         html += `<div class="todo">`
         html += `<div class="label" style="background:${todoList[i].category.color}"></div>`
-=======
-    for(let i = 0 ; i < todoList.length ; i++ ){
-        html += `<div class="todo">` 
-        html += `<div class="label" style="background:${todoList[i].category_color}"></div>`
->>>>>>> origin/master
         html += `<div class="title">${todoList[i].title}</div>`
         html += `</div>`
     }
     $('.schedule .contents').html(html);
 }
 
-<<<<<<< HEAD
 setTodoListOnCalendar = async (todoList) => {
     for (let i = 0; i < todoList.length; i++) {
         let day = todoList[i].date.day.toString();
-=======
-setTodoListOnCalendar = async (todoList) =>{
-    for(let i = 0 ; i < todoList.length ; i++ ){
-        let day = todoList[i].date_day.toString();
->>>>>>> origin/master
         let html = await $(`.${day} + .todo-list`).html();
         if (!html) {
             html = ''
@@ -124,7 +112,6 @@ addTodoList = (data)=>{
     })
 }
 
-<<<<<<< HEAD
 var today = new Date();
 function prevCalendar(date){
 
@@ -183,8 +170,5 @@ function nextCalendar(date){
         setPopupCategoryList(_categoryList);
     })
 })()
-=======
-await setCalendarHeader(date);
->>>>>>> origin/master
 
 

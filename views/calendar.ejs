@@ -2,12 +2,11 @@
 <html>
 
 <head>
-<<<<<<< HEAD
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/reset.css'/>
-    <link rel='stylesheet' href='/stylesheets/global.css'/>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <link rel='stylesheet' href='/stylesheets/calendar.css'/>
+    <link rel='stylesheet' href='../public/stylesheets/reset.css'/>
+    <link rel='stylesheet' href='../public/stylesheets/global.css'/>
+    <link rel='stylesheet' href='../public/stylesheets/style.css'/>
+    <link rel='stylesheet' href='../public/stylesheets/calendar.css'/>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
@@ -17,21 +16,6 @@
     <div class="welcome"></div>
 </header>
 <div class="nav-bar">
-=======
-  <title>Calendar</title>
-  <link rel='stylesheet' href='../public/stylesheets/reset.css' />
-  <link rel='stylesheet' href='../public/stylesheets/style.css' />
-  <link rel='stylesheet' href='../public/stylesheets/calendar.css' />
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-</head>
-
-<body>
-  <header>
-    <p id="user_id"><%=user_id%></p>
-    
-  </header>
-  <div class="nav-bar">
->>>>>>> origin/master
     <div class="btn-wrap">
         <button class="calendar enable" onclick="movePage('/')">Calendar</button>
     </div>
@@ -43,9 +27,9 @@
     <div class="container">
         <div class="calendar">
             <div class="header">
-                <button class="btn" onclick=""><img src="images/chevron-back-outline.svg" alt="" onclick="prevCalendar(date)"/></button>
+                <button class="btn" onclick=""><img src="../public/images/chevron-back-outline.svg" alt="" onclick="prevCalendar(date)"/></button>
                 <div class="ym"></div>
-                <button class="btn" onclick=""><img src="images/chevron-forward-outline.svg" alt="" onclick="nextCalendar(date)"/></button>
+                <button class="btn" onclick=""><img src="../public/images/chevron-forward-outline.svg" alt="" onclick="nextCalendar(date)"/></button>
             </div>
             <div class="contents">
                 <div class="week">
@@ -98,11 +82,11 @@
 
 </div>
 <!--End Modal-->
-<script src="javascripts/util.js"></script>
-<script src="javascripts/user.js"></script>
-<script src="javascripts/todo.js"></script>
-<script src="javascripts/router.js"></script>
-<script src="javascripts/calendar.js"></script>
+<script src="../public/javascripts/util.js"></script>
+<script src="../public/javascripts/user.js"></script>
+<script src="../public/javascripts/todo.js"></script>
+<script src="../public/javascripts/router.js"></script>
+<script src="../public/javascripts/calendar.js"></script>
 </body>
 
 </html>
