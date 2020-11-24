@@ -162,5 +162,10 @@ router.get('/chat', function(req, res, next) {
   });
 })
 
+// material
+router.get('/material', function(req, res, next) {
+  res.render("material");
+});
+
 
 module.exports = router;

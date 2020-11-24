@@ -1,0 +1,117 @@
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: auto;
+}
+.stack {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+#mainPage {
+  overflow: scroll;
+  z-index: 1;
+}
+
+#modal {
+  display: none;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal_content {
+  height: 500px;
+  width: 500px;
+  border-radius: 0.5%;
+  background: white;
+}
+
+.headerComponent {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#header {
+  position: relative;
+  margin: auto;
+  width: 95%;
+  height: 10vh;
+}
+
+#logo {
+  left: 0;
+  width: 20%;
+  margin: 0px;
+  height: 10vh;
+}
+
+#pageTitle {
+  background-color: #fff;
+  right: 0;
+  width: 80%;
+  margin: 0px;
+  height: 10vh;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-color: skyblue;
+}
+
+#subjectColor {
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#subjectName {
+  font-size: 350%;
+  display: inline-block;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+  border-color: skyblue;
+  margin: auto;
+  margin-top: 15px;
+  width: 95%;
+  height: 90vh;
+}
+
+.box {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  all: unset;
+  margin-top: 20px;
+  margin-left: 21px;
+  height: 200px;
+  width: 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 30%;
+  box-shadow: 5px 5px 5px gray;
+  display: block;
+  text-align: center;
+}
+
+.name {
+  text-align: center;
+  display: block;
+}
