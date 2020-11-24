@@ -2,17 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title><%= title %></title>
+ 
     <link rel='stylesheet' href='../../public/stylesheets/questionBoard.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
-  <body>
+  <body bgcolor="E2F1F4">
   <div class="container">
     <div class="row">
-    <h1><%= title %></h1>
-    <a href="/questionBoard">리스트</a><br/>
+    <a href="/questionBoard">돌아가기</a><br/>
 
     <form action="/questionBoard/update" method="post" class="form-inline">
       <!--title, content-->
@@ -20,23 +19,20 @@
         <tr>
           <th>제목</th>
           <td>
-            <input type="hidden" name="num" value="<%=data.num%>"/>
-            <input type="hidden" name="page" value="<%=page%>"/>
-            <input type="text" name="title" size="30" maxlength="50" value="<%=data.title%>"/>
+            <input type="hidden" name="num" value="<%=data.num%>"/><!--여기에 디비 값-->
+            <input type="hidden" name="page" value="<%=page%>"/><!--여기에 디비 값-->
+            <input type="text" name="title" size="30" maxlength="50" value="<%=data.title%>"/><!--여기에 디비 값-->
           </td>
         </tr>
         <tr>
           <th>내용</th>
-          <td><textarea name="content" cols="30" rows="10"><%=data.content%></textarea></td>
-        </tr>
-        <tr>
-          <th>비밀번호</th>
-          <td><input type="password" name="passwd" size="12" maxlength="12"/></td>
+          <td><textarea name="content" cols="30" rows="10"><%=data.content%></textarea></td><!--여기에 디비 값-->
         </tr>
         <tr>
           <td colspan="2">
-            <input type="submit" value="수정" class="btn btn-primary"/>
+            <input type="submit" value="수정" class="btn btn-primary"/> <!--여기에 디비 처리 수정 처리-->
             <input type="reset" value="취소" class="btn btn-default" />
+
           </td>
         </tr>
       </table>

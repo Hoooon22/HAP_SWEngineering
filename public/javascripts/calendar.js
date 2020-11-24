@@ -6,7 +6,7 @@ var date = {
 
 getMonthDays = (_date) => {
     return $.ajax({
-        url: `/getMonthDays/${_date.year}/${_date.month}`,
+        url: `/calendar/getMonthDays/${_date.year}/${_date.month}`,
         method: "GET"
     })
 }
