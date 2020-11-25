@@ -1,30 +1,21 @@
 var express = require('express');
 var router = express.Router();
 
+var models = require('../models');
+
 /* GET home page. */
-router.get('/getCategoryList', function (req, res, next) {
-    res.json([
-        {
-            id : 1,
-            name : "데이터통신입문",
-            color : "#a81d0d"
-        },
-        {
-            id : 2,
-            name : "SW 공학",
-            color : "#27245c"
-        },
-        {
-            id : 3,
-            name : "객체지향언어",
-            color : "#ababab"
-        },
-        {
-            id : 1,
-            name : "암호학",
-            color : "#000000"
-        },
-    ])
+router.get('/getCategoryList', async function (req, res, next) {
+    let result = await models.subject.findAll({});
+
+    var aJsonArray = new Array();
+    for (let i in result)
+    {
+      aJsonArray.push(result[i].dataValues)
+    }
+    console.log(aJsonArray)
+  
+    // TODO :: DB 에서 year, month 통해 TodoList 조회
+    res.json(aJsonArray)
 });
 
 module.exports = router;
