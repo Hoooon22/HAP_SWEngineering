@@ -69,16 +69,18 @@
 <div id="addTodoPop" class="modal">
 
     <!-- Modal content -->
+    <form action='/calendar' method="POST">
     <div class="modal-content">
-        <input class="title" type="text" placeholder="Title">
-        <input class="due-date" type="date">
+        <input class="title" type="text" placeholder="Title" name="title">
+        <input class="due-date" type="date" name="date">
         <select class="category" name="category"></select>
-        <textarea class="content" placeholder="Content" cols="30" rows="10"></textarea>
+        <textarea name="content" class="content" placeholder="Content" cols="30" rows="10"></textarea>
         <div class="btn-wrap">
             <button class="cancel" onclick="closeAddTodoPop()">취소</button>
-            <button class="submit light-blue" onclick="handleAddTodoList()">저장</button>
+            <button type="submit" class="submit light-blue" onclick="handleAddTodoList()">저장</button>
         </div>
     </div>
+    </form>
 
 </div>
 <!--End Modal-->
