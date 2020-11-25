@@ -5,34 +5,230 @@ a {
 body {
   margin: auto;
 }
+
 .stack {
   position: fixed;
   height: 100%;
   width: 100%;
 }
 
+#sidebar {
+  z-index: 2;
+}
+
+.sidebar_button {
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  font-size: 300%;
+  right: 0px;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 75px;
+  height: 150px;
+}
+
+.sidebar_page {
+  overflow-y: auto;
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+}
+
+.sidebar_subject {
+  all: unset;
+  width: 100%;
+  height: 100px;
+  color: white;
+  opacity: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 #mainPage {
-  z-index: 1;
+  z-index: -1;
 }
 
 #modal {
-  /*display: flex;*/
   display: none;
-  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
   background: rgba(0, 0, 0, 0.5);
 }
 
-.modal_content {
+.modal_homework {
   display: flex;
+  position: fixed;
   height: 75%;
   width: 75%;
-  border-radius: 0.5%;
+  border-radius: 5px;
   background: white;
+}
+
+#modal_homework_header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  border-radius: 5px 5px 0px 0px;
+  background: skyblue;
+}
+
+#homework_close {
+  all: unset;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#modal_homework_content {
+}
+
+.modal_attend {
+  display: flex;
+  flex-direction: column;
+  height: 75%;
+  width: 75%;
+  border-radius: 5px;
+  background: white;
+}
+
+#modal_attend_header {
+  height: 15%;
+  display: flex;
+  flex-direction: row-reverse;
+  border-radius: 5px 5px 0px 0px;
+  background: skyblue;
+}
+
+#modal_attend_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+#attendance_status {
+  padding-left: 5%;
+  padding-top: 10px;
+  width: 95%;
+  font-size: 200%;
+}
+
+.attendance_frame {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 150px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.img_box {
+  height: 80%;
+  width: 13%;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.info_box {
+  height: 95%;
+  width: 80%;
+}
+
+.id_box {
+  align-items: center;
+  height: 25%;
+}
+
+.status_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80%;
+  width: 100%;
+  align-items: center;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 20%;
+  width: 100%;
+}
+
+.sBox {
+  width: 30%;
+}
+
+.status_element {
+  /* all: unset;*/
+  height: 50%;
+  width: 30%;
+  margin: 0;
+}
+
+#attend_close {
+  all: unset;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.save {
+  all: unset;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  color: whitesmoke;
+  background-color: skyblue;
+  text-align: center;
+  padding: 5px;
+  font-size: 300%;
+  box-shadow: 5px 5px 5px gray;
+}
+
+.submit {
+  all: unset;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px gray;
+  background-color: floralwhite;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 }
 
 .headerComponent {
   position: absolute;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   overflow: hidden;
 }
 
@@ -64,26 +260,24 @@ body {
 
 .circle {
   border-radius: 50%;
-  display: inline-block;
 }
 
 #studentAttendance {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: red;
 }
 
 #professorAttendance {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   background: red;
 }
 
 #subjectColor {
-  margin: auto;
   width: 20px;
   height: 20px;
-  background: black;
+  background: red;
 }
 
 #subjectName {
@@ -142,52 +336,77 @@ body {
 }
 
 #attendanceToggle {
-  right: -20px;
+  margin-left: 20px;
+  flex-direction: row;
   width: 600px;
   height: 200px;
   border-radius: 10px;
   border-style: solid;
   border-width: 5px;
   border-color: skyblue;
-  position: relative;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.attendanceButton {
+  all: unset;
+  font-size: 300%;
+  color: gray;
+  opacity: 50%;
 }
 
 .week {
   background-color: skyblue;
   border-radius: 35px 35px 0px 0px;
-  height: 25 px;
-  padding: 5px;
+  height: 15%;
+  width: 90%;
+  text-align: center;
+}
+
+.box {
+  all: unset;
+  width: 90%;
+  height: 70%;
+  border-radius: 0px 0px 35px 35px;
+  box-shadow: 5px 5px 5px gray;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 150%;
+}
+
+.status {
+  border-radius: 0px 0px 35px 35px;
+  width: 90%;
+  text-align: center;
+  font-size: 110%;
 }
 
 .date {
-  text-align: center;
-  border-radius: 35px;
-  display: inline-block;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #prev {
-  box-shadow: -5px 5px 5px gray;
-  width: 120px;
-  height: 120px;
-  margin-left: 100px;
-  margin-top: 40px;
+  width: 150px;
+  height: 150px;
 }
 
 #now {
-  box-shadow: 0px 5px 5px gray;
-  margin-top: 25px;
-  width: 150px;
-  height: 150px;
-  position: absolute;
+  width: 200px;
+  height: 200px;
 }
 
 #next {
-  box-shadow: 5px 5px 5px gray;
-  margin-left: 160px;
-  margin-top: 40px;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
 }
 
 #bottom {

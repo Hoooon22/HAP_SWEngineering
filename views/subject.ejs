@@ -9,22 +9,31 @@
 </head>
 
 <body bgcolor="E2F1F4">
+    <div id="sidebar">
+        <div class="sidebar_button">
+            &lt;
+        </div>
+        <div class="sidebar_page">
+        </div>
+    </div>
+
     <div class="stack" id = modal>
-        <div class = modal_content>
-            <button id = close>&#x274C;</button>
-            <div class = "modal_component block" id = img>
+        <div class = modal_attend>
+            <div id="modal_attend_header">
+                <button class = close id = attend_close>&#x274C;</button>
+            </div>
+            <div id="modal_attend_content">
+                <div id="attendance_status"></div>
+            </div>
+        </div>
+
+        <div class="modal_homework">
+            <div id="modal_homework_header">
+                <button class = close id = homework_close>&#x274C;</button>
+            </div>
+            <div id="modal_homework_content">
 
             </div>
-            
-            <div class = modal_component id = name>  
-
-            </div>
-
-            <div class = modal_component id="num">  
-
-            </div>
-
-            <button class = modal_component id = submit>submit</button>
         </div>
     </div>
 
@@ -49,20 +58,22 @@
             </div>
             
             <div id = 'attendanceToggle'>
+                <button class = attendanceButton>&#x2B05;</button>
                 <div class = 'date' id = prev>
-                    <div class = week>1주차 1강</div>
-                    <div  id = prevStatus>prev</div>
+                    <div class = week id = prevWeek>1주차 1강</div>
+                    <button class="box" id = prevBox></button>
                 </div>
             
                 <div class = 'date' id = now>
-                    <div class = week>1주차 2강</div>
-                    <div  id = nowStatus>now</div>
+                    <div class = week id = nowWeek>1주차 2강</div>
+                    <div class="box" id = nowBox></div>
                 </div>
             
                 <div class = 'date' id = next>
-                    <div class = week>2주차 1강</div>
-                    <div  id = nextStatus>next</div>
+                    <div class = week id = nextWeek>2주차 1강</div>
+                    <div class="box" id = nextBox></div>
                 </div>
+                <button class = attendanceButton>&#x27A1;</button>
             </div>
 
             <div id = bottom>
@@ -70,22 +81,9 @@
                     <a class =  btn id = homework>과제</a> </div>
                 <div id = botContent>
                     <div id="noHw">등록된 과제가 없습니다.</div>
-                <!--    <div class=hwList>
-                        <div class = top>
-                            &#x1F4CC; title<button class = submit>submit</button>
-                        </div>
-                        
-                        <div class="mid">
-                            &#x1F4C1; 첨부파일 &emsp; &#x1F4C6; deadline 
-                        </div>
-                        
-                        <div class="bot">
-                            detail
-                        </div>
-                    </div> -->
-                </>
             </div>
             
+        </div>
         </div>
     </div>
     <% var userStatus = 0 %> 
@@ -94,9 +92,26 @@
         <p style="display: none;" id="userStatus"><%=userStatus%></p>
         <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
         <p style="display: none;" id="subjectColor_value"><%=posts.color%></p>
+        <% var subject_value = []%>
+        <% var s_id_value = []%>
+        <% var date_value = []%>
+        <% var status_value = []%>
+        <% var count = 0 %>
+        <% for(let attend of attends) { %>
+            <%subject_value[count] = attend.subject%>
+            <%s_id_value[count] = attend.s_id%>
+            <%date_value[count] = attend.date%>
+            <%status_value[count] = attend.status%>
+            <% count++ %>
+        <% } %>
+        <% count-- %>
+        <p style="display: none;" id="attend_count"><%=count%></p>
+        <p style="display: none;" id="subject_value"><%=subject_value%></p>
+        <p style="display: none;" id="s_id_value"><%=s_id_value%></p>
+        <p style="display: none;" id="date_value"><%=date_value%></p>
+        <p style="display: none;" id="status_value"><%=status_value%></p>
+
 <script src="../public/javascripts/subject.js"></script>
-<script>
-</script>
 </body>
 
 </html>

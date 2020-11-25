@@ -30,16 +30,12 @@ router.post('/write', function (req, res, next) {
       res.end('<head><meta charset="UTF-8">' +
                '<script>alert("에러가 발생하여 되돌아갑니다.");history.back();</script> </head>');
     else {
-      res.redirect('/questionBoard');
+      res.redirect('questionBoard');
     }
   });
 });
 
-router.get('questionBoard', function (req, res, next) {
-  res.redirect('/questionBoard');
-});
-
-router.get('questionBoard:page', function (req, res, next) {
+router.get('/:page', function (req, res, next) {
   var page = req.params.page;
   page = parseInt(page, 10);
 

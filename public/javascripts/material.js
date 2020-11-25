@@ -35,14 +35,12 @@ materialList[5]=m2;
 materialList[6]=m3;
 materialList[7]=m4;
 
-var userStatus = 0; // 교수인지(0), 학생인지(1)
+var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(1)
 
-var subjectName=document.getElementById("subjectName"); // 과목명
-subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
-
+var subjectName= document.getElementById("subjectName_value").innerText; // 과목명 동적으로 넣어주기
 
 var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
+subjectColor.style.background = document.getElementById("subjectColor_value").innerText; // 과목 색상 동적으로 넣어주기
 
 var add = document.getElementById("add");
 var closeButton = document.getElementById("close");
