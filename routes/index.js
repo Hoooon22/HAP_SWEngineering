@@ -94,9 +94,16 @@ router.get("/logout", function(req,res,next){
 })
 
 // subject
-router.get('/subject', function(req, res, next) {
+router.get('/subject', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
+
+  let attend = await models.studentattend.findAll({
+    where: {
+        subject : "소공"
+    }
+  });
+  
   
   models.subject.findOne({
     where: {name : "소공"}
@@ -105,6 +112,7 @@ router.get('/subject', function(req, res, next) {
       posts: result,
       session: session,
       user_id: user_id,
+      attends: attend
     });
   });
 });
@@ -127,7 +135,18 @@ router.get('/chat', function(req, res, next) {
 
 // material
 router.get('/material', function(req, res, next) {
-  res.render("material");
+  let session = req.session
+  let user_id = req.session.user_id
+  
+  models.subject.findOne({
+    where: {name : "소공"}
+  }).then( result => {
+    res.render("material", {
+      posts: result,
+      session: session,
+      user_id: user_id,
+    });
+  });
 });
 
 

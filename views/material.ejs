@@ -34,7 +34,7 @@
             
             <div class = "headerComponent" id = "pageTitle">
                 <div id = subjectColor></div>
-                <div id = subjectName>page name</div>
+                <div id = subjectName><%=posts.name%></div>
             </div>
         
         </div>
@@ -47,7 +47,12 @@
             
         </div>
     </div>
-
+    <% var userStatus = 0 %> 
+    <% if (session.job == 'student') {%>
+        <% userStatus = 1 }%>  
+    <p style="display: none;" id="userStatus"><%=userStatus%></p>
+    <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
+    <p style="display: none;" id="subjectColor_value"><%=posts.color%></p>
     <script src="../public/javascripts/material.js"></script>
 </body>
 </html>
