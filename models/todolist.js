@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     content: {
       type: DataTypes.STRING
     },
+    user_id: {
+      type: DataTypes.STRING
+    },
   });
   return todolist;
 };
