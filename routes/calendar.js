@@ -3,7 +3,6 @@ const { Calendar } = require('calendar');
 var router = express.Router();
 
 var models = require('../models');
-const { DATEONLY } = require('sequelize/types');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -34,7 +33,7 @@ router.post("/", async function(req,res,next){
   let body = req.body;
   let session = req.session;
   let date = body.date;
-  let date_year = date.split;
+  let date_year = date.year;
   let date_month = date.month;
   let date_day = date.day;
 
