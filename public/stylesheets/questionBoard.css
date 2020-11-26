@@ -1,70 +1,95 @@
 body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
-  
-  a {
-    color: skyblue;
-    text-decoration: none;
-  }
-  
-  
-  .headerComponent {
-    position: absolute;
-    display: inline-block;
-    overflow: hidden;
-  }
-  
-  #header {
-    position: relative;
-    margin: auto;
-    width: 95%;
-    height: 10vh;
-  }
-  
-  #logo {
-    left: 0;
-    width: 20%;
-    margin: 0px;
-    height: 10vh;
-  }
-  
-  #pageTitle {
-    background-color: #fff;
-    right: 0;
-    width: 80%;
-    margin: 0px;
-    height: 10vh;
-    text-align: center;
-    border-style: solid;
-    border-width: 5px;
-    border-color: skyblue;
-  }
-  
-  #circle {
-    margin: auto;
-    width: 20px;
-    height: 20px;
-    background: red;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  
-  #pageName {
-    font-size: 350%;
-    margin: auto;
-    display: inline-block;
-  }
-  
-  #content {
-    background-color: #fff;
-    position: relative;
-    border-style: solid;
-    border-width: 4px;
-    border-color: skyblue;
-    margin: auto;
-    margin-top: 15px;
-    width: 95%;
-    height: 90vh;
-  }
-  
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: skyblue;
+  text-decoration: none;
+}
+
+
+.headerComponent {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#header {
+  position: relative;
+  margin: auto;
+  width: 95%;
+  height: 10vh;
+}
+
+#logo {
+  left: 0;
+  width: 20%;
+  margin: 0px;
+  height: 10vh;
+}
+
+#pageTitle {
+  background-color: #fff;
+  right: 0;
+  width: 80%;
+  margin: 0px;
+  height: 10vh;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-color: skyblue;
+}
+
+#circle {
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#pageName {
+  font-size: 350%;
+  margin: auto;
+  display: inline-block;
+}
+
+#content {
+  background-color: #fff;
+  position: relative;
+  border-style: solid;
+  border-width: 4px;
+  border-color: skyblue;
+  margin: auto;
+  margin-top: 15px;
+  width: 95%;
+  height: 90vh;
+}
+
+#table {
+  margin: auto;
+  width: 100%;
+  height: 100px;
+}
+
+td {
+  padding: 20px;
+  border: 1px solid #444444;
+}
+
+
+.ui_border{font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif}
+.ui_border .border_tit{font-size:28px;line-height:57px;color:#333;font-weight:bold;text-align:center}
+.ui_border .border_cont{border-top:3px solid #8b8b8b;border-bottom:3px solid #8b8b8b}
+.ui_border .border_cont input[type="text"], textarea{padding:0 30px;box-sizing:border-box;-webkit-box-sizing:border-box;display:block;width:100%;border:0;text-align:left}
+.ui_border .border_cont textarea{padding:38px 20px;font-size:24px;line-height:36px;color:#666}
+.ui_border .border_cont .inq_field{line-height:57px;border-bottom:1px solid #dedede !important}
+.btn_area{width :300px; margin-top:30px;text-align:center}
+
+/* 버튼 공통 */
+button,input{margin:0;padding:0;border:0}
+.ui_btn{display:block;padding:10px 0;cursor:pointer;color:#8f8f8f;text-align:center;font-size:13px;line-height:1.5em;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-weight:bold;background:0 0;border:1px solid #a8a8a8;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;text-decoration:none;box-sizing:border-box}
+.ui_btn.btn_inline{display:inline-block !important;padding:10px 0;width:48%}
+.ui_btn.btn_emph{color:#fff;background-color:#2078d2;border-color:#2078d2}
