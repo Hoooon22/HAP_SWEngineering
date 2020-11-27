@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     num: {
       type: DataTypes.INTEGER,
     },
+    subject: {
+      type: DataTypes.STRING,
+    },
   });
   return material;
 };
