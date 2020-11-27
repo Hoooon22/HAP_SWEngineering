@@ -1,0 +1,100 @@
+.banner img{
+    width: 100%;
+    height: auto;
+    background: #000;
+    position: relative;
+    margin: 0 0 100px 0;
+}
+
+.content{
+    opacity: 0.9999;
+    left: 15%;
+    top: 540px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.homepage{
+    position: relative;
+    display: flex;
+    width: 340px;
+    height: 180px;
+    background: #2072BD;
+    color:white;
+    padding : 30px 0 0 60px ;
+    font-size: larger;
+}
+
+.homepage img{
+
+    position: absolute;
+    justify-content: flex-end;
+    width: 50px;
+    height: auto;
+    bottom: 40px;
+    right: 60px;
+}
+
+.calendar{
+    position: relative;
+    display: flex;
+    width: 340px;
+    height: 180px;
+    background: #1E376F;
+    color:white;
+    padding : 30px 0 0 60px ;
+    font-size: larger;
+}
+
+.calendar img{
+    position: absolute;
+    justify-content: flex-end;
+    width: 50px;
+    height: auto;
+    bottom: 40px;
+    right: 60px;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 210px;
+    width: 400px;
+    background: #AE8B65;
+    color:white;
+    font-weight: bold;
+
+}
+.login input{
+    border:none;
+    border-radius: 5px;
+}
+
+.login td{
+    margin: 5px;
+    padding: 5px;
+}
+.btn-wrap{
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(49, 40, 21);
+    padding: 8px 10px 0 0;
+}
+
+#btn {
+    justify-content: flex-end;
+    background: #AE8B65;
+    color: rgb(49, 40, 21);
+}
+
+.bottom{
+    bottom:5px;
+    background:#;
+    text-align:center;
+    margin: 70px 0 0 0 ;
+    padding: 35px;
+    color:#707070;
+    font-size:small;
+}
