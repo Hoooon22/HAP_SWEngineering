@@ -19,6 +19,9 @@ module.exports = {
       num: {
         type: Sequelize.INTEGER,
       },
+      subject: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
