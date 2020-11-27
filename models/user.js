@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_subject: {
+      type: DataTypes.STRING,
+    },
     salt:{
       type: DataTypes.STRING
     }
