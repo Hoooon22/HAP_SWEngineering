@@ -28,6 +28,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      user_subject: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
