@@ -90,7 +90,7 @@ profAttend[0]=profAttend1;
 profAttend[1]=profAttend2;
 profAttend[2]=profAttend3;
 
-var studentList = []; 
+var studentList = []; // ?? 언제 리스트야 이건
 
 var s1 = {
     name: "Cha",
