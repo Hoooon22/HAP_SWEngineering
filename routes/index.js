@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
 const { Calendar } = require('calendar');
+const Op = sequelize.Op;
 
 // model loading
 var models = require('../models');
@@ -103,8 +104,13 @@ router.get('/subject', async function(req, res, next) {
         subject : "소공"
     }
   });
-  
-  
+
+  let subject_student = await models.user.findAll({
+    where: {
+      [Op.like]: "%" + "소공" + "%"
+    }
+  })
+
   models.subject.findOne({
     where: {name : "소공"}
   }).then( result => {
@@ -112,9 +118,11 @@ router.get('/subject', async function(req, res, next) {
       posts: result,
       session: session,
       user_id: user_id,
-      attends: attend
+      attends: attend,
+      subject_students: subject_student,
     });
   });
+
 });
 
 //chat
