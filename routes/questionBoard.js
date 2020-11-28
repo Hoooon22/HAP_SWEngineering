@@ -36,6 +36,7 @@ router.post("/", async function(req, res, next){
     content: body.content,
     reply: 0,
     subject: "소공",
+    u_id: session.user_id,
 })
 .then( result => {
   res.redirect("questionBoard");
