@@ -13,7 +13,7 @@
       
       <div class = "headerComponent" id = "pageTitle">
           <div id = circle></div>
-          <div id = pageName>page name</div>
+          <div id = pageName><%=subject.name%></div>
       </div>
     </div>
       <div id ="content" >
@@ -23,7 +23,7 @@
           <center>
         <table width = 850>
           <tr>
-              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;소프트웨어공학개론 채팅방</td> <!--db 값 받아오기-->
+              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td> <!--db 값 받아오기-->
               <td id ="t1" width="120">   <a href="/chat">채팅방 입장</a><br/></td> <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
             </table></div>

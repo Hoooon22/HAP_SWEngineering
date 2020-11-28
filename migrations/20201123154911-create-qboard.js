@@ -31,6 +31,9 @@ module.exports = {
       u_id: {
         type: Sequelize.STRING
       },
+      subject: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
