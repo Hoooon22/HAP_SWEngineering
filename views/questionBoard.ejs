@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='../public/stylesheets/questionBoard.css' />
   </head>
   <body bgcolor="E2F1F4">  
@@ -22,10 +23,10 @@
         <table width = 850>
           <tr><!-- 첫번째 줄 시작 -->
               <td width="400">채팅방</td>
-              <td width="120">   <a href="/chat">채팅방 입장</a><br/></td>
+              <td width="120">   <a href="ㅁㅁㅁ">채팅방 입장</a><br/></td>
           </tr><!-- 첫번째 줄 끝 -->
             </table></div>
-   
+    
         <p><br><br></p>
         <h3>질문 게시판</h3>
         <div class="row">
@@ -40,22 +41,52 @@
          <!-- 디비 만큼 생성-->
           <tr>
             <td>1</td>
-            <td><a href="/questionBoard/read">안녕하슈</a></td>
+            <td><a href="../views/questionBoard/read.html">안녕하슈</a></td>
+           
             <td>2018111111</td>
             <td>2018.11.20</td>
           </tr>
           <tr>
             <td>2</td>
-            <td><a href="/questionBoard/read">1번 질문이요</a></td>
+            <td><a href="/read.html">1번 질문이요</a></td>
             <td>2018110911</td>
             <td>2018.11.15</td>
           </tr>
+
         </table>
-        <a float: right; href="/questionBoard/writeform">글쓰기</a><br/>
- 
-        </div></center>
-      </div>
-      
+
+        <!--글작성 모달창-->
+              <div class="modal">
+                <div class="modal_content">
+                  <div class="ui_container">
+                    <div class="ui_border" >
+                      <br><br><br><br>
+                      
+                      <center>
+                        <h3>>>질문게시판 글 작성</h3>
+                      <div class="border_cont">
+                        
+                        <input type="text" value="제목 | " class="inq_field" />
+                        <textarea name="" id="" cols="5" rows="7" placeholder="내용을 입력해주세요."></textarea>
+                      </div>
+                    </center>
+                      <center>
+                      <div class="btn_area">
+                        <input type="button" id="close_button" value="취소" >
+                        <input type="button" id="btn_submit" value="등록">
+                      </div>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        
+            <div class="main">
+              <br><br>
+                <button id= "modal_button">글 작성</button>
+            </div>
+            <script src="../public/javascripts/modal.js"></script>
+            
 
   </body>
 </html>
