@@ -1,54 +1,24 @@
-// # 출석 객체들 애니메이션 효과
 window.onload = function(e){
     loadHomework();
     loadAttendance();
     loadSideBar();
+
+    if(userStatus==1)
+        document.getElementById("prof_new").remove();
 }
+var userStatus = 0; // 교수인지(0), 학생인지(1)
 
-var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(1)
+var action="";
 
-var action="/subject";
-
-var subjectName= document.getElementById("subjectName_value").innerText; // 과목명 동적으로 넣어주기
+var subjectName=document.getElementById("subjectName"); // 과목명
+subjectName.innerText = "과목명"; // 과목명 동적으로 넣어주기
 
 var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = document.getElementById("subjectColor_value").innerText; // 과목 색상 동적으로 넣어주기
+subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
 var created = false;
 
 subjectList = [];
-
-subject1={
-    name:"컴퓨터구조",
-    link:""
-}
-
-subject2={
-    name:"인공지능",
-    link:"" 
-}
-
-subject3={
-    name:"암호학과네트워크보안",
-    link:""
-}
-
-subjectList[0]=subject1;
-subjectList[1]=subject2;
-subjectList[2]=subject3;
-// subjectList[3]=subject1;
-// subjectList[4]=subject2;
-// subjectList[5]=subject3;
-// subjectList[6]=subject1;
-// subjectList[7]=subject2;
-// subjectList[8]=subject3;
-// subjectList[9]=subject1;
-// subjectList[10]=subject2;
-// subjectList[11]=subject3;
-// subjectList[12]=subject2;
-// subjectList[13]=subject3;
-
-/* 테스트용 데이터 */
 var studentAttend = [];
 attend_count = document.getElementById("attend_count").innerText;
 subject_value = document.getElementById("subject_value").innerText;
@@ -68,78 +38,8 @@ for (let i in attend_count)
     }
 }
 
-
-var profAttend = []; // string으로 출석 정보 전달
-
-var profAttend1 = {
-    date : "2주차 1강",
-    status: "32 | 4 | 0"
-}
-
-var profAttend2 = {
-    date : "2주차 2강",
-    status: "36 | 0 | 0"
-}
- 
-var profAttend3 = {
-    date : "3주차 1강",
-    status: "33 | 2 | 1"
-}
-
-profAttend[0]=profAttend1;
-profAttend[1]=profAttend2;
-profAttend[2]=profAttend3;
-
-var studentList = []; // ?? 언제 리스트야 이건
-
-var s1 = {
-    name: "Cha",
-    sId: "2018112081",
-    status: "attend"
-    // 사진
-}
-
-var s2 = {
-    name: "Kim",
-    sId: "2018112028",
-    status: "late"
-    // 사진
-}
-
-var s3 = {
-    name: "kang",
-    sId: "2018112047",
-    status: "absent"
-    // 사진
-}
-
-var s4 = {
-    name: "Jun",
-    sId: "2018112074",
-    status: "none"
-    // 사진
-}
-
-var s5 = {
-    name: "Park",
-    sId: "2018112048",
-    status: "none"
-    // 사진
-}
-
-var s6 = {
-    name: "Moon",
-    sId: "2018112012",
-    status: "none"
-    // 사진
-}
-
-studentList[0] = s1;
-studentList[1] = s2;
-studentList[2] = s3;
-studentList[3] = s4;
-studentList[4] = s5;
-studentList[5] = s6;
+var profAttend = [];
+var studentList = [];
 
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
@@ -155,7 +55,8 @@ if(userStatus==0){
     boxList[i].addEventListener("click",function(e){
         document.getElementById("modal").style.display="flex";
         document.getElementsByClassName("modal_homework")[0].style.display="none";
-                document.getElementsByClassName("modal_attend")[0].style.display="flex";
+        document.getElementsByClassName("modal_attend")[0].style.display="flex";
+        document.getElementsByClassName("modal_register").style.display = "none";
     });
     }
     loadModalPage();
@@ -166,36 +67,6 @@ save.addEventListener("click",saveAttend);
 }
 
 var hwList = [];
-
-// homework instance
-var homework1 = { // 과제 정보
-    title : "Homework 1",
-    deadline: "~2020.12.2 23:59",
-    detail : "Homework 1 제출하세요.",
-    fileName: "file1",
-    submitted: true
-}
-
-var homework2 = { // 과제 정보
-    title : "Homework 2",
-    deadline: "~2020.11.27 23:59",
-    detail : "Homework 2 제출하세요.",
-    fileName: "file2",
-    submitted: false
-}
-
-var homework3 = { // 과제 정보
-    title : "Homework 3",
-    deadline: "~ 2020.12.24 15:00",
-    detail : "Homework 3 제출하세요.",
-    fileName: "file3",
-    submitted: false
-}
-
-
-hwList[0]=homework1;
-hwList[1]=homework2;
-hwList[2]=homework3;
 
 var sidebar = document.getElementsByClassName("sidebar_button")[0];
 var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
@@ -222,6 +93,14 @@ for(var i=0;close.length>i;i++){
 var attendance = document.getElementById("attendance");
 var toggled = true
 attendance.addEventListener("click",toggle);
+
+var register_button = document.getElementById("prof_new");
+register_button.addEventListener("click",function(e){
+    document.getElementsByClassName("modal_homework")[0].style.display = "none";
+    document.getElementsByClassName("modal_attend")[0].style.display = "none";
+    document.getElementsByClassName("modal_register")[0].style.display = "flex";
+    document.getElementById("modal").style.display="flex";
+});
 
 function toggle(){
     if(!toggled){
@@ -345,7 +224,7 @@ function loadHomework(){
     var n = hwList.length;
     var botContent = document.getElementById("botContent");
     
-    if(n>0){
+    if(n > 0){
         botContent.removeChild(document.getElementById("noHw"));
     }
 
@@ -363,7 +242,12 @@ function loadHomework(){
 
         newTop = document.createElement("div");
         newTop.setAttribute("class","top");
-        newTop.innerHTML=imoji[0]+hwList[i].title;
+        var nbsp = "";
+        var strlen = hwList[i].title.length;
+        for(var cnt = 0 ; cnt < 126 - strlen ; cnt++){
+            nbsp += "&nbsp;";
+        }
+        newTop.innerHTML=imoji[0]+" "+hwList[i].title+nbsp;
         newHwList.appendChild(newTop);
         
         if(userStatus==1) {
@@ -383,7 +267,15 @@ function loadHomework(){
 
         newMid = document.createElement("div");
         newMid.setAttribute("class","mid");
-        newMid.innerHTML=imoji[1]+" "+ hwList[i].fileName+imoji[2]+hwList[i].deadline;
+        
+        nbsp="";
+        strlen = hwList[i].fileName.length;
+        
+        for(var cnt = 0 ; cnt < 55 - strlen ; cnt++){
+            nbsp += "&nbsp;";
+        }
+        
+        newMid.innerHTML=imoji[1]+" "+ hwList[i].fileName+nbsp+imoji[2]+" "+hwList[i].deadline;
         newHwList.appendChild(newMid);
 
         newBot = document.createElement("div");
@@ -456,7 +348,6 @@ function loadModalPage(){
             else if(k==2)
                 sBox.innerHTML = '결석';
             newBar.appendChild(sBox);
-        
         }
     
         newStatus.appendChild(newBar);
