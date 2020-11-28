@@ -20,26 +20,27 @@
 
   <div id="content">
   <p><br><br></p>
-  <button id= "btn_backtolist" href='/questionBoard.html'>목록보기</button>
+  <button id= "btn_backtolist" onclick="location.href='/questionBoard' ">목록보기</button>
   
   <br>
   <br>
 <center>
+  
     <table width="850" >
       <tr>
-        <td colspan="6" width="800"> 제목 | 안녕하슈</td>
+        <td id="t1_head" colspan="6" width="800">&nbsp; 제목 | 안녕하슈</td>
       </tr>
       <tr>
-        <td width="100" >작성자</td> <!--텍스트 내용 오른쪽 정렬-->
-        <td colspan="2" width="200">201811111111</td>
-        <td width="100">날짜</td> <!--텍스트 내용 오른쪽 정렬-->
-        <td colspan="2" width="200">2020.12.13</td>
+        <td id="t1_1" width="100" align="right">작성자</td> <!--텍스트 내용 오른쪽 정렬-->
+        <td id="t1_1" colspan="2" width="200">201811111111</td>
+        <td id="t1_1" width="100" ></td> <!--텍스트 내용 오른쪽 정렬-->
+        <td id="t1_1" colspan="2" width="200" align="right">2020.12.13</td>
       </tr>
       <tr>
-        <td colspan="6" width="800" height="5">내용</td> <!--폭 줄이기-->
+        <td id="t1" colspan="6" width="800" height="5">내용</td> <!--폭 줄이기-->
       </tr>
       <tr>
-        <td colspan="6" width="800" height="200">  <pre>
+        <td id="t1" colspan="6" width="800" height="200">  <pre>
           내용 값 :
           pre 태그는 내용 그대로를 보여준다. ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
           줄바꿈했음
@@ -64,8 +65,8 @@
                   <h3>>>질문 수정</h3>
                 <div class="border_cont">
                   
-                  <input type="text" value="제목 | " class="inq_field" />
-                  <textarea name="" id="" cols="5" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                  <input type="text" value="제목 | 데이터베이스에 있는 내용 그대로 가져오기 " class="inq_field" />
+                  <textarea name="" id="" cols="5" rows="10">데이터베이스에 있는 내용 그대로 가져오기</textarea>
                 </div>
               </center>
                 <center>
@@ -88,8 +89,27 @@
 
       <input type="button" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
 
+      <br><br><br><br>
+   
 
-    <br><br><br><br><br>
+<table width="800" position>
+  <tr>
+    <td>ㄴ 작성자 2018111111</td>
+    <td id="t2" align="right">날짜 2020.12.01</td>
+  </tr>
+  <tr>
+    <td id="t3" colspan="2" align="left" ><pre>해당 질문에 대한 답은 1입니다.
+      -------------------    </pre></td>
+  </tr>
+ 
+</table>
+
+</center>
+   
+    
+    
+    
+    <br><br>
     <textarea id="reply_content" placeholder="답글을 입력해주세요."></textarea>
     <input type="button" value="답변달기" id="btn_reply" />
 
