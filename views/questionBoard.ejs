@@ -89,8 +89,25 @@
               <br><br>
                 <button id= "modal_button">글 작성</button>
             </div>
-            <script src="../public/javascripts/modal.js"></script>
-            
+            <% var q_title = [] %>
+            <% var q_content = [] %>
+            <% var q_u_id = [] %>
+            <% var q_reply = [] %>
+            <% var count = 0 %>
+            <% for(let qboard of qboards) { %>
+                <% q_title[count] == qboard.title %>
+                <% q_content[count] == qboard.content %>
+                <% q_u_id[count] == qboard.u_id %>
+                <% q_reply[count] == qboard.reply %>
+                <% count++ %>
+            <% } %>
+            <% count-- %>
+            <p style="display: none;" id="title_value"><%=q_title%></p>
+            <p style="display: none;" id="content_value"><%=q_content%></p>
+            <p style="display: none;" id="u_id_value"><%=q_u_id%></p>
+            <p style="display: none;" id="reply_value"><%=q_reply%></p>
+            <p style="display: none;" id="count_value"><%=count%></p>
 
+            <script src="../public/javascripts/modal.js"></script>
   </body>
 </html>
