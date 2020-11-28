@@ -9,7 +9,6 @@ var models = require('../models');
 // 과목, qboard
 router.get('/', async function(req, res, next) {
   let session = req.session
-  let user_id = req.session.user_id
 
   let subject = await models.subject.findOne({
     where: {
@@ -29,6 +28,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post("/", async function(req, res, next){
+  let session = req.session;
   let body = req.body;
 
   let result = models.qboard.create({
@@ -46,8 +46,26 @@ router.post("/", async function(req, res, next){
 })
 })
 
-router.get('/read', function(req, res, next) {
-  res.render("questionBoard/read");
+router.get('/read/:subject/:title', async function(req, res, next) {
+  let session = req.session;
+
+  let subject = await models.subject.findOne({
+    where: {
+      name: req.params.subject,
+    }
+  })
+
+  let qboard = await models.qboard.findOne({
+    where: {
+      title: req.params.title,
+    }
+  })
+
+  res.render("questionBoard/read", {
+    subject: subject,
+    qboard: qboard,
+  })
 });
+
 
 module.exports = router;

@@ -41,19 +41,17 @@
             <th width="160">날짜</th>
           </tr>
          <!-- 디비 만큼 생성-->
+         <% var count = 1 %>
+         <% for (let qboard of qboards) { %>
           <tr>
-            <td id ="t1" align="center" >1</td>
-            <td id ="t1" ><a href="/questionBoard/read">안녕하슈</a></td>
-           
-            <td id ="t1" align="center">2018111111</td>
-            <td id ="t1" align="center">2018.11.20</td>
+              <td id ="t1" align="center" ><%=count%></td>
+              <td id ="t1" ><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
+    
+              <td id ="t1" align="center"><%=qboard.u_id %> </td>
+              <td id ="t1" align="center"><%=qboard.createdAt%></td>
+            <% count++ %>
           </tr>
-          <tr>
-            <td id ="t1" align="center">2</td>
-            <td id ="t1"><a href="/questionBoard/read">1번 질문이요</a></td>
-            <td id ="t1" align="center">2018110911</td>
-            <td id ="t1" align="center">2018.11.15</td>
-          </tr>
+          <% } %>
 
         </table>
         
