@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='../../public/stylesheets/questionBoard.css'/>
+  <link rel='stylesheet' href='../../../public/stylesheets/questionBoard.css'/>
 </head>
 <body bgcolor ="E2F1F4">
   <div id = "header">
     <div class = "headerComponent" id = "logo">
-        <img src="../../public/images/logo.png">
+        <img src="../../../public/images/logo.png">
     </div>
     
     <div class = "headerComponent" id = "pageTitle">
         <div id = circle></div>
-        <div id = pageName>page name</div>
+        <div id = pageName><%=subject.name%></div>
     </div>
   </div>
 
@@ -28,22 +28,20 @@
   
     <table width="850" >
       <tr>
-        <td id="t1_head" colspan="6" width="800">&nbsp; 제목 | 안녕하슈</td>
+        <td id="t1_head" colspan="6" width="800">&nbsp;<%=qboard.title%></td>
       </tr>
       <tr>
         <td id="t1_1" width="100" align="right">작성자</td> <!--텍스트 내용 오른쪽 정렬-->
-        <td id="t1_1" colspan="2" width="200">201811111111</td>
+        <td id="t1_1" colspan="2" width="200"><%=qboard.content%></td>
         <td id="t1_1" width="100" ></td> <!--텍스트 내용 오른쪽 정렬-->
-        <td id="t1_1" colspan="2" width="200" align="right">2020.12.13</td>
+        <td id="t1_1" colspan="2" width="200" align="right"><%=qboard.createdAt%></td>
       </tr>
       <tr>
         <td id="t1" colspan="6" width="800" height="5">내용</td> <!--폭 줄이기-->
       </tr>
       <tr>
         <td id="t1" colspan="6" width="800" height="200">  <pre>
-          내용 값 :
-          pre 태그는 내용 그대로를 보여준다. ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-          줄바꿈했음
+          <%=qboard.content%>
         </pre>
         </td> <!--왼쪽 위 정렬 해야함-->
       </tr>
@@ -84,7 +82,7 @@
       <div class="main">
           <button id= "modal_button2">수정</button>
       </div>
-      <script src="../../public/javascripts/modal2.js"></script>
+      <script src="../../../public/javascripts/modal2.js"></script>
 
 
       <input type="button" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
