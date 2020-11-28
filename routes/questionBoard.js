@@ -1,3 +1,22 @@
+//table의 글 제목 클릭 시
+//데이터베이스 내용 불러와서
+//read.html 형식으로 데이터베이스 내용 출력
+
+//writeform.html
+//등록 버튼 클릭시
+//데이터베이스에 입력한 내용을 저장
+//저장된 후, read.html형식으로 데이터 베이스 내용 출력
+//취소 버튼 클릭 시
+//게시판 목록, 즉 questionBoard.html로 이동
+
+
+//upadateform.html
+//수정 버튼 클릭시
+//데이터베이스에 수정된 내용으로 업데이트
+//+업데이트 완료된 상태의 read.html형식으로 데이터베이스 내용 출력
+//취소 버튼 클릭시
+//아무런 변화 없이, 해당 게시글로(read.html의 수정버튼 클릭하기 전 페이지) 이동
+
 var express = require('express');
 var router = express.Router();
 

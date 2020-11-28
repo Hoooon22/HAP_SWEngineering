@@ -49,10 +49,26 @@
     </div>
     <% var userStatus = 0 %> 
     <% if (session.job == 'student') {%>
-        <% userStatus = 1 }%>  
+        <% userStatus = 1 }%>
+    <% var m_name = [] %>
+    <% var m_maxNum = [] %>
+    <% var m_num = [] %>
+    <% var count = 0 %>
+    <% for(let material of materials) { %>
+        <% m_name[count] == material.name %>
+        <% m_maxNum[count] == material.maxNum %>
+        <% m_num[count] == material.num %>  
+        <% count++ %>
+    <% } %>
+    <% count-- %>
     <p style="display: none;" id="userStatus"><%=userStatus%></p>
     <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
     <p style="display: none;" id="subjectColor_value"><%=posts.color%></p>
+    <p style="display: none;" id="material_count"><%=count%></p>
+    <p style="display: none;" id="m_name"><%=m_name%></p>
+    <p style="display: none;" id="m_maxNum"><%=m_maxNum%></p>
+    <p style="display: none;" id="m_num"><%=m_num%></p>
+   
     <script src="../public/javascripts/material.js"></script>
 </body>
 </html>

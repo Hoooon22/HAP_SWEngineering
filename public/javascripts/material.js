@@ -1,39 +1,23 @@
 window.onload = loadMaterial;
 
 var materialList = [];
+var material_count = document.getElementById("material_count").innerText;
+material_count = material_count.split(',');
+var m_name = document.getElementById("m_name").innerText;
+m_name = document.split(',');
+var m_maxNum = document.getElementById("m_maxNum").innerText;
+m_maxNum = m_maxNum.split(',');
+var m_num = document.getElementById("m_num").innerText;
+m_num = m_num.split(',');
 
-var m1 = {
-    name: "m1",
-    maxNum: 3,
-    num: 3
+for (let i in material_count)
+{
+    materialList[i] = {
+        name: m_name[i],
+        maxNum: m_maxNum[i],
+        num: m_num[i]
+    }
 }
-
-var m2 = {
-    name: "m2",
-    maxNum: 3,
-    num: 5
-}
-
-var m3 = {
-    name: "m3",
-    maxNum: 0,
-    num: 2
-}
-
-var m4 = {
-    name: "m4",
-    maxNum: 1,
-    num: 1
-}
-
-materialList[0]=m1;
-materialList[1]=m2;
-materialList[2]=m3;
-materialList[3]=m4;
-materialList[4]=m1;
-materialList[5]=m2;
-materialList[6]=m3;
-materialList[7]=m4;
 
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(1)
 
