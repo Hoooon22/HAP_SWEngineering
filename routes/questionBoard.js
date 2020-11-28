@@ -47,7 +47,7 @@ router.post("/", async function(req, res, next){
 })
 
 router.get('/read', function(req, res, next) {
-  res.render("read");
+  res.render("questionBoard/read");
 });
 
 module.exports = router;
