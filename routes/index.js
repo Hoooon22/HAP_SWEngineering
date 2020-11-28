@@ -81,6 +81,7 @@ router.post("/login", async function(req,res,next){
     console.log("비밀번호 일치");
     // 세션 설정
     req.session.user_id = body.id;
+    req.session.user_name = result.user_name;
   }
   else{
       console.log("비밀번호 불일치");

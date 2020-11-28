@@ -85,7 +85,7 @@
             </div>
             <div class="logout">
                 <div class="welcome">
-                    <h3>~님,<br></h3>
+                    <h3><%=session.user_name%>님,<br></h3>
                     <h3>환영합니다!</h3>
                 </div>
                 <div class="logout-btn">
@@ -215,7 +215,7 @@
 
                 </table>
                 <div class="btn-wrap">
-                    <button id="btn" value="Sign Up" href="/signup">Sign Up </button> | 
+                    <button id="btn" type="button" value="Sign Up" onclick="location.href='/signup'">Sign Up </button> | 
                     <input id="btn" type="submit" value="Login">
                 </div>
             </form>
