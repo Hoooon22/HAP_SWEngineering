@@ -27,10 +27,7 @@ setTodoListOnBoard = (_categoryList) => {
 
 (async function () {
 
-    await whoAmI().done((_userInfo) => {
-        userInfo = _userInfo
-        $('header .welcome').html(`${_userInfo.name} 님 안녕하세요`);
-    });
+  
 
     await getCategoryList().done((_categoryList) => {
         setTodoListOnBoard(_categoryList)

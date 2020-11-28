@@ -83,12 +83,17 @@
                     <img src="../public/images/calendar-outline.svg" />
                 </a>
             </div>
-            <div class="login">
-
-                <h2>~님,</h2><br><h3>환영합니다!</h3>
-                <form action="/logout" method="get">
-                    <input type="submit" value="로그아웃">
-                </form>
+            <div class="logout">
+                <div class="welcome">
+                    <h3>~님,<br></h3>
+                    <h3>환영합니다!</h3>
+                </div>
+                <div class="logout-btn">
+                    <form action="/logout" method="get">
+                        <input id="logout-btn" type="submit" value="Logout">
+                    </form>
+                </div>
+    
                 <!-- <form action="/login" method="post">
                     <table>
                         <tr>
