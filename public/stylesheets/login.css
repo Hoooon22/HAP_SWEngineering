@@ -8,7 +8,7 @@
 
 .content{
     opacity: 0.9999;
-    left: 15%;
+    left: 20%;
     top: 540px;
     display: flex;
     justify-content: center;
@@ -60,8 +60,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 210px;
-    width: 400px;
+    height: 180px;
+    width: 340px;
     background: #AE8B65;
     color:white;
     font-weight: bold;
@@ -87,13 +87,15 @@
     justify-content: flex-end;
     background: #AE8B65;
     color: rgb(49, 40, 21);
+    margin:0 5px 0 5px;
+    border: none;
 }
 
 .bottom{
     bottom:5px;
     background:#deebf7;
     text-align:center;
-    margin: 70px 0 0 0 ;
+    margin: 200px 0 0 0 ;
     padding: 35px;
     color:#707070;
     font-size:small;
@@ -108,17 +110,19 @@
   /* Slideshow container */
   .slideshow-container {
     max-width: 1200px;
-    max-height: 750px;
+    max-height: 550px;
     position: relative;
     margin: auto;
+    padding-top: 50px;
   }
   .slideshow-container .mySlides img {
-    height: 750px;
+    height: 550px;
   }
   
   /* Hide the images by default */
   .mySlides {
     display: none;
+    
   }
   
   /* Next & previous buttons */
