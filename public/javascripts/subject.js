@@ -456,6 +456,7 @@ function loadModalPage(){
             else if(k==2)
                 sBox.innerHTML = '결석';
             newBar.appendChild(sBox);
+        
         }
     
         newStatus.appendChild(newBar);
