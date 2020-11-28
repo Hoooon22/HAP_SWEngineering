@@ -9,4 +9,5 @@ modal_button2.addEventListener("click",function(e){
 close_button.addEventListener("click",function(e){
    
     modal2.style.display="none";    
+
 });
