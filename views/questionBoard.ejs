@@ -13,7 +13,7 @@
       
       <div class = "headerComponent" id = "pageTitle">
           <div id = circle></div>
-          <div id = pageName>page name</div>
+          <div id = pageName><%=subject.name%></div>
       </div>
     </div>
       <div id ="content" >
@@ -23,7 +23,7 @@
           <center>
         <table width = 850>
           <tr>
-              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;소프트웨어공학개론 채팅방</td> <!--db 값 받아오기-->
+              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td> <!--db 값 받아오기-->
               <td id ="t1" width="120">   <a href="/chat">채팅방 입장</a><br/></td> <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
             </table></div>
@@ -65,21 +65,21 @@
                     <div class="ui_border" >
                       <br><br><br><br>
                       
+                      <form action="/questionBoard" method="POST" >
                       <center>
                         <h3>>>질문게시판 글 작성</h3>
                       <div class="border_cont">
-                        <form action="/questionBoard" method="POST" >
-                        <input type="text" value="제목 | " class="inq_field" />
-                        <textarea name="" id="" cols="5" rows="7" placeholder="내용을 입력해주세요."></textarea>
-                        </form>
+                        <input name="title" type="text" class="inq_field" />
+                        <input name="content" id="" cols="5" rows="7" placeholder="내용을 입력해주세요."></textarea>
                       </div>
                     </center>
                       <center>  
                       <div class="btn_area">
                         <input type="button" id="close_button" value="취소" >
-                        <input type="button" id="btn_submit" value="등록">
+                        <input type="submit" id="btn_submit" value="등록">
                       </div>
                       </center>
+                    </form>
                     </div>
                   </div>
                 </div>

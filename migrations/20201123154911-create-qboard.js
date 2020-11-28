@@ -10,7 +10,6 @@ module.exports = {
       },
       num: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         unique: true
       },
       title: {
