@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     u_id: {
       type: DataTypes.STRING
     },
+    subject: {
+      type: DataTypes.STRING
+    },
   });
   return qboard;
 };
