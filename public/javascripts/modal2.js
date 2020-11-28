@@ -1,3 +1,4 @@
+/*modify*/
 var modal2 = document.getElementsByClassName("modal2")[0];
 var modal_button2 = document.getElementById("modal_button2");
 var close_button = document.getElementById("close_button");
@@ -10,4 +11,4 @@ close_button.addEventListener("click",function(e){
    
     modal2.style.display="none";    
 
-});
+}); 
