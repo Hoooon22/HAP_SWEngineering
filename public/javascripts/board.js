@@ -14,7 +14,7 @@ setTodoListOnBoard = (_categoryList) => {
         for(let j =0; j<_categoryList[i].todoList.length; j++){
             html += `<div class="todo">`
             html += `<div class="title">${_categoryList[i].todoList[j].title}</div>`
-            html += `<div class="date">${convertDateObjectToFormatDate(_categoryList[i].todoList[j].date)}</div>`
+            html += `<div class="date">${_categoryList[i].todoList[j].date}</div>`
             html += `</div>`
         }
         html += `</div>`;

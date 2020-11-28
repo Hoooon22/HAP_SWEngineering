@@ -44,12 +44,14 @@ setTodoListOnSchedule = (todoList) => {
 
 setTodoListOnCalendar = async (todoList) => {
     for (let i = 0; i < todoList.length; i++) {
-        let day = todoList[i].date_day.toString();
+        let day = todoList[i].date.substr(8,2);
+        console.log(typeof(day), day);
         let html = await $(`.${day} + .todo-list`).html();
+        console.log(html);  
         if (!html) {
             html = ''
         }
-        console.log(html);
+        
         html += `<div class="todo">`;
         html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
         html += `<div class="title">${todoList[i].title}</div>`
