@@ -32,16 +32,10 @@ router.get('/getMonthDays/:year/:month', function(req, res, next) {
 router.post("/", async function(req,res,next){
   let body = req.body;
   let session = req.session;
-  let date = body.date;
-  let date_year = date.year;
-  let date_month = date.month;
-  let date_day = date.day;
 
   let result = models.todolist.create({
       title: body.title,
-      date_year: body.date_year,
-      date_month: body.date_month,
-      date_day: body.date_day,
+      date: body.date,
       //category_id : ,
       category_name: body.category,
       content : body.content,
