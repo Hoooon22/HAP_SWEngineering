@@ -28,6 +28,23 @@ router.get('/', async function(req, res, next) {
   })
 });
 
+router.post("/", async function(req, res, next){
+  let body = req.body;
+
+  let result = models.qboard.create({
+    title: body.title,
+    content: body.content,
+    reply: 0,
+    subject: "소공",
+})
+.then( result => {
+  res.redirect("questionBoard");
+})
+.catch( err => {
+  console.log(err)
+})
+})
+
 
 
 module.exports = router;

@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   var qboard = sequelize.define('qboard', {
     num: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       unique: true
     },
     title: {
