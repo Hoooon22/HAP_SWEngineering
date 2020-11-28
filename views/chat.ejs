@@ -17,15 +17,14 @@
   </head>
   <body>
     <p style="display: none;" id="user_id"><%=user_id%></p>
-    
       <div id="main">
       <div id="chat">
         <!-- 채팅 메시지 영역 -->
       </div>
 
       <div id="textbox">
-        <input type="text" id="test" placeholder="메시지를 입력해주세요.." style="width:900px; height:30px;">
-        <button onclick="send()" style="width:30px; height:30px">↑</button>
+        <input type="text" id="text_send" placeholder="메시지를 입력해주세요.." >
+        <button id="btn_send" onclick="send()" >↑</button>
       </div>
     </div>
 

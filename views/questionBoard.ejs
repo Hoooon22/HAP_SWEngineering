@@ -16,19 +16,21 @@
           <div id = pageName>page name</div>
       </div>
     </div>
-      <div id ="content" ><center>
+      <div id ="content" >
         <div id ="table_chat">
           <p><br><br></p>
-          <h3 >실시간 질문방</h3>
+          <h3 id="qb_text" >실시간 질문방</h3>
+          <center>
         <table width = 850>
-          <tr><!-- 첫번째 줄 시작 -->
-              <td width="400">채팅방</td>
-              <td width="120">   <a href="ㅁㅁㅁ">채팅방 입장</a><br/></td>
+          <tr>
+              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;소프트웨어공학개론 채팅방</td> <!--db 값 받아오기-->
+              <td id ="t1" width="120">   <a href="/chat">채팅방 입장</a><br/></td> <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
             </table></div>
-    
+          </center>
         <p><br><br></p>
-        <h3>질문 게시판</h3>
+        <h3 id="qb_text">질문 게시판</h3>
+        <center>
         <div class="row">
         <table width="850" class="table table-condensed">
           <tr>
@@ -40,20 +42,21 @@
           </tr>
          <!-- 디비 만큼 생성-->
           <tr>
-            <td>1</td>
-            <td><a href="../views/questionBoard/read.html">안녕하슈</a></td>
+            <td id ="t1" align="center" >1</td>
+            <td id ="t1" ><a href="/questionBoard/read">안녕하슈</a></td>
            
-            <td>2018111111</td>
-            <td>2018.11.20</td>
+            <td id ="t1" align="center">2018111111</td>
+            <td id ="t1" align="center">2018.11.20</td>
           </tr>
           <tr>
-            <td>2</td>
-            <td><a href="/read.html">1번 질문이요</a></td>
-            <td>2018110911</td>
-            <td>2018.11.15</td>
+            <td id ="t1" align="center">2</td>
+            <td id ="t1"><a href="/questionBoard/read">1번 질문이요</a></td>
+            <td id ="t1" align="center">2018110911</td>
+            <td id ="t1" align="center">2018.11.15</td>
           </tr>
 
         </table>
+        
 
         <!--글작성 모달창-->
               <div class="modal">
