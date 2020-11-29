@@ -4,23 +4,35 @@
 /* body */
 
 body{
-  padding : 20px;
-  background-color: #f5f9fd;
+  margin: auto;
+  width: 70%;
+  background-color: white;
 }
 
 /* header */
 
 header{
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  /* flex-direction: column; */
+  justify-content: space-between;
+
+  
 }
 
-header .logo{
-
+header img{
+  width: 190px;
+  height: auto;
+  position: relative;
+  float: left;
 }
-
 header .welcome{
+  font-size: small;
+  padding: 20px;
+}
+
+
+hr{
+  border: 1px solid #dedede;
 
 }
 
@@ -28,37 +40,40 @@ header .welcome{
 
 .nav-bar{
   display: flex;
-  align-items: center;
+  /* justify-content: flex-end; */
 }
 
 .nav-bar > .btn-wrap {
-  width: 200px;
+  /* width: 200px;
   position: relative;
   margin-right: 10px;
   padding : 5px 5px 0 5px;
   top: 5px;
   left: 60px;
-  background: #deebf7;
-  border-radius: 10px 10px  0 0;
+  background: white;
+  border-radius: 10px 10px  0 0; */
 }
 
 .nav-bar > .btn-wrap > button {
-  width: 100%;
-  padding : 10px 45px;
+  /* width: 100%; */
+  /* padding : 10px 45px; */
   font-size: 15px;
   font-weight: bold;
 }
 
 .nav-bar > .btn-wrap > button.enable{
   background: #ffffff;
-  border-radius: 10px 10px  0 0;
+  
 }
 
+.board{
+  padding: 20px ;
+}
 /* container */
 
 .container-wrap{
   padding : 5px;
-  background: #deebf7;
+  background: white;
   border-radius: 10px;
 }
 
