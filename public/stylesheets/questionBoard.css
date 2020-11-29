@@ -4,6 +4,9 @@ body {
 }
 
 
+*{
+  font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
+}
 
 .headerComponent {
   position: absolute;
