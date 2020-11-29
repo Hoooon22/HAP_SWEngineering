@@ -1,11 +1,12 @@
-*{
-  font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
+* {
+  font-family: "Nanum Gothic", "나눔고딕", "돋움", Dotum, "돋움체", DotumChe,
+    sans-serif;
 }
 
 /* 메인 */
 #main {
   margin: auto;
-  border-color:black;
+  border-color: black;
   background-color: white;
   text-align: center;
   width: 1000px;
@@ -18,8 +19,6 @@
   width: 1000px;
   overflow-y: auto;
 }
-
-
 
 /* 접속 알림 */
 .connect {
@@ -43,16 +42,15 @@
 .me {
   width: 90%;
   text-align: right;
-  float:right;
+  float: right;
   background-color: white;
- /* margin-top: 10px;*/
- border:1px;
+  /* margin-top: 10px;*/
+  border: 1px;
 }
-.me:after{
-  background-color:white;
+.me:after {
+  background-color: white;
   content: "  :  나";
 }
-
 
 /* 상대방이 보낸 메시지 */
 .other {
@@ -60,21 +58,21 @@
   margin: auto;
   text-align: left;
   background-color: white;
- /* margin-top: 10px;*/
+  /* margin-top: 10px;*/
 }
 
-#btn_send{
-  float:center;
-  border: 1px solid #dedede;background-color: rgba(0,0,0,0);
-
-  width:54px; 
-  height:54px
-  }
-
-#text_send{
-
+#btn_send {
+  float: center;
   border: 1px solid #dedede;
-  width:760px;
-  height:50px;
-  resize:none;
+  background-color: rgba(0, 0, 0, 0);
+
+  width: 54px;
+  height: 54px;
+}
+
+#text_send {
+  border: 1px solid #dedede;
+  width: 760px;
+  height: 50px;
+  resize: none;
 }
