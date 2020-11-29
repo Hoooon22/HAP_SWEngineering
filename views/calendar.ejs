@@ -12,14 +12,24 @@
 
 <body>
     <header>
-        <p id="user_id"><%=user_id%></p>
-        <div class="welcome"></div>
+        <div class="logo">
+            <a href="../login">
+                <img src='../public/images/logo.png' />
+            </a>
+        </div>
+
+
+        <div class="welcome">
+            <p id="user_id"><%=user_id%></p>님, 환영합니다!
+        </div>
+
     </header>
-    <hr class="line">
+    <hr>
     <div class="nav-bar">
         <div class="btn-wrap">
             <button class="calendar enable" onclick="movePage('/calendar')">Calendar</button>
         </div>
+        <h1>|</h1>
         <div class="btn-wrap">
             <button class="board" onclick="movePage('/board')">Board</button>
         </div>
@@ -58,7 +68,7 @@
         </div>
 
     </div>
-    
+
 
     <!-- The Modal -->
     <div id="addTodoPop" class="modal">
