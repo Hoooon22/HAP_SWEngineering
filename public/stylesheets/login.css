@@ -1,5 +1,5 @@
 *{
-  font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
+    font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
 }
 
 .banner img{
@@ -122,7 +122,7 @@
 
 .bottom{
     bottom:5px;
-    background:#deebf7;
+    background:#F6F6F6;
     text-align:center;
     margin: 200px 0 0 0 ;
     padding: 35px;
