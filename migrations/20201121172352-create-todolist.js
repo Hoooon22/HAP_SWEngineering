@@ -11,14 +11,8 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      date_year: {
-        type: Sequelize.INTEGER
-      },
-      date_month: {
-        type: Sequelize.INTEGER
-      },
-      date_day: {
-        type: Sequelize.INTEGER
+      date: {
+        type: Sequelize.DATE
       },
       category_id: {
         type: Sequelize.INTEGER
