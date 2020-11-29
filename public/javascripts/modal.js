@@ -11,3 +11,15 @@ close_button.addEventListener("click",function(e){
    
 });
 
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+
+sidebar.addEventListener('mouseover',function(e){
+    sidebar_page.style.display="block"; // 수정
+    sidebar.style.display = "none";
+});
+
+sidebar_page.addEventListener('mouseleave',function(e){
+    sidebar_page.style.display="none";
+    sidebar.style.display="flex";
+})
