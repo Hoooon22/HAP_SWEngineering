@@ -9,18 +9,16 @@
 
 <body>
   <div id="header">
-    <div class="headerComponent" id="logo">
+
+    <div id="logo">
       <a href="../calendar">
         <img src='../public/images/logo.png' /></a>
+
     </div>
 
-
-    <div class="headerComponent" id="pageTitle">
-      
-      <div id=pageName>소프트웨어공학개론</div>
-    </div>
-
+    <div id=pageName>소프트웨어공학개론</div>
   </div>
+
   <hr>
 
 
@@ -35,56 +33,60 @@
 
 
   <div id="content">
-    <div id="table_chat" style="width:100%">
 
-      <p><br><br></p>
-      <!-- <h3 id="qb_text" style="width:100%;">실시간 질문방</h3> -->
-      <div>
-        <h3 id="qb_text" style="width:100%">실시간 질문방</h3>
-        <table width=850>
+    <p><br><br></p>
+    <div style="width:80%;">
+      <h3>실시간 질문방</h3>
+      <br>
+
+      <center>
+        <table width="100%">
 
           <tr>
-            <td id="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td>
+            <td id="t1_2" width="80" style="font-weight: 550">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td>
             <!--db 값 받아오기-->
-            <td id="t1" width="120"> <a href="/chat">채팅방 입장</a><br /></td>
+
+            <th id="t1_2" width="20" style="font-weight: 550"> <a href="#" onclick="window.open('/chat','window','width=400,height=700')">채팅방 입장</a><br /></th>
+        
             <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
         </table>
-      </div>
+      </center>
     </div>
 
 
+    <br><br><br><br>
+    <div style="width:80%;">
+      <h3>질문 게시판</h3>
+      <br>
+      <center>
+        <table width="100%">
+          <tr>
+            <!-- 번호, 제목, 작성자, 날짜-->
+            <th id="t1_2" width="10%">No</th>
+            <th id="t1_2" width="50%"> 제목</th>
+            <th id="t1_2" width="20%">작성자</th>
+            <th id="t1_2" width="20%">날짜</th>
+          </tr>
+          <!-- 디비 만큼 생성-->
+          <% var count = 1 %>
+          <% for (let qboard of qboards) { %>
+          <tr>
+            <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
+            <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
 
-    <p><br><br></p>
+            <td id="t1" align="center"><%=qboard.u_id %> </td>
+            <td id="t1" align="center"><%=qboard.createdAt%></td>
+            <% count++ %>
+          </tr>
+          <% } %>
 
-    <div class="row">
-      <h3 id="qb_text" style="width:100%">질문 게시판</h3>
-      <table width="850" class="table table-condensed">
-        <tr>
-          <!-- 번호, 제목, 작성자, 날짜-->
-          <th width="40">번호</th>
-          <th width="260">제목</th>
-          <th width="100">작성자</th>
-          <th width="160">날짜</th>
-        </tr>
-        <!-- 디비 만큼 생성-->
-        <% var count = 1 %>
-        <% for (let qboard of qboards) { %>
-        <tr>
-          <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
-          <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
+        </table>
+      </center>
 
-          <td id="t1" align="center"><%=qboard.u_id %> </td>
-          <td id="t1" align="center"><%=qboard.createdAt%></td>
-          <% count++ %>
-        </tr>
-        <% } %>
+      <br>
+      <button id="modal_button" style="float:right;">글 작성</button>
 
-      </table>
-
-      <div class="main">
-        <button id="modal_button">글 작성</button>
-      </div>
       <!--글작성 모달창-->
       <div class="modal">
         <div class="modal_content">
@@ -94,17 +96,25 @@
 
               <form action="/questionBoard" method="POST">
 
-                <h3>>>질문게시판 글 작성</h3>
+                <center>
+                  <h2>>>질문게시판 글 작성</h2>
+                  <br><br>
+
+                </center>
                 <div class="border_cont">
-                  <input name="title" placeholder="제목" type="text" class="inq_field" />
-                  <input name="content" id="" cols="5" rows="7" placeholder="내용을 입력해주세요.">
+                  <input name="title" placeholder="제목" type="text" class="inq_field"
+                    style="font-size: 2ch;  border-top: 1px solid #dedede;border-bottom: 1px solid #dedede; padding-top: 10px; padding-bottom: 10px;" />
+
+                  <textarea name="content" id="" cols=5 rows="7" placeholder="내용을 입력해주세요."></textarea>
                 </div>
 
                 <form>
-                  <div class="btn_area">
-                    <input type="button" id="close_button" value="취소">
-                    <input type="submit" id="btn_submit" value="등록">
-                  </div>
+                  <center>
+                    <div class="btn_area">
+                      <input type="button" id="close_button" value="취소">
+                      <input type="submit" id="btn_submit" value="등록">
+                    </div>
+                  </center>
                 </form>
               </form>
             </div>
@@ -136,6 +146,7 @@
       <p style="display: none;" id="count_value"><%=count%></p>
 
       <script src="../public/javascripts/modal.js"></script>
+    </div>
 </body>
 
 </html>
