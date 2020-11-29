@@ -61,7 +61,7 @@
          <% var count = 1 %>
          <% for (let qboard of qboards) { %>
           <tr>
-              <td id ="t1" align="center" ><%=count%></td>
+              <td id ="t1" align="center" ><%=qboard.q_board_count-count+1%></td>
               <td id ="t1" ><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
     
               <td id ="t1" align="center"><%=qboard.u_id %> </td>
