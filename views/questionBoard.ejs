@@ -1,127 +1,141 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='../public/stylesheets/questionBoard.css' />
-  </head>
-  <body>  
-    <div id = "header">
-      <div class = "headerComponent" id = "logo">
-        <a href="../calendar">
-          <img src='../public/images/logo.png'/></a>
-      </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='../public/stylesheets/questionBoard.css' />
+</head>
+
+<body>
+  <div id="header">
+    <div class="headerComponent" id="logo">
+      <a href="../calendar">
+        <img src='../public/images/logo.png' /></a>
+    </div>
+
+
+    <div class="headerComponent" id="pageTitle">
       
-      <div class = "headerComponent" id = "pageTitle">
-          <div id = circle></div>
-          <div id = pageName><%=subject.name%></div>
+      <div id=pageName>소프트웨어공학개론</div>
+    </div>
+
+  </div>
+  <hr>
+
+
+
+  <div id="sidebar">
+    <div class="sidebar_button">
+      &lt;
+    </div>
+    <div class="sidebar_page">
+    </div>
+  </div>
+
+
+  <div id="content">
+    <div id="table_chat" style="width:100%">
+
+      <p><br><br></p>
+      <!-- <h3 id="qb_text" style="width:100%;">실시간 질문방</h3> -->
+      <div>
+        <h3 id="qb_text" style="width:100%">실시간 질문방</h3>
+        <table width=850>
+
+          <tr>
+            <td id="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td>
+            <!--db 값 받아오기-->
+            <td id="t1" width="120"> <a href="/chat">채팅방 입장</a><br /></td>
+            <!--페이지 연결-->
+          </tr><!-- 첫번째 줄 끝 -->
+        </table>
       </div>
     </div>
 
-    <div id="sidebar">
-      <div class="sidebar_button">
-          &lt;
-      </div>
-      <div class="sidebar_page">
-      </div>
-  </div>
 
-    <div id ="content">
-        <div id ="table_chat" style = "width:100%">
-          
-          <p><br><br></p>
-          <!-- <h3 id="qb_text" style="width:100%;">실시간 질문방</h3> -->
-          <div>
-            <h3 id="qb_text" style="width:100%">실시간 질문방</h3>
-        <table width = 850>
-          
-          <tr>
-              <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td> <!--db 값 받아오기-->
-              <td id ="t1" width="120">   <a href="/chat">채팅방 입장</a><br/></td> <!--페이지 연결-->
-          </tr><!-- 첫번째 줄 끝 -->
-            </table>
+
+    <p><br><br></p>
+
+    <div class="row">
+      <h3 id="qb_text" style="width:100%">질문 게시판</h3>
+      <table width="850" class="table table-condensed">
+        <tr>
+          <!-- 번호, 제목, 작성자, 날짜-->
+          <th width="40">번호</th>
+          <th width="260">제목</th>
+          <th width="100">작성자</th>
+          <th width="160">날짜</th>
+        </tr>
+        <!-- 디비 만큼 생성-->
+        <% var count = 1 %>
+        <% for (let qboard of qboards) { %>
+        <tr>
+          <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
+          <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
+
+          <td id="t1" align="center"><%=qboard.u_id %> </td>
+          <td id="t1" align="center"><%=qboard.createdAt%></td>
+          <% count++ %>
+        </tr>
+        <% } %>
+
+      </table>
+
+      <div class="main">
+        <button id="modal_button">글 작성</button>
+      </div>
+      <!--글작성 모달창-->
+      <div class="modal">
+        <div class="modal_content">
+          <div class="ui_container">
+            <div class="ui_border">
+              <br><br><br><br>
+
+              <form action="/questionBoard" method="POST">
+
+                <h3>>>질문게시판 글 작성</h3>
+                <div class="border_cont">
+                  <input name="title" placeholder="제목" type="text" class="inq_field" />
+                  <input name="content" id="" cols="5" rows="7" placeholder="내용을 입력해주세요.">
+                </div>
+
+                <form>
+                  <div class="btn_area">
+                    <input type="button" id="close_button" value="취소">
+                    <input type="submit" id="btn_submit" value="등록">
+                  </div>
+                </form>
+              </form>
+            </div>
           </div>
         </div>
-          
+      </div>
 
-          
-        <p><br><br></p>
-        
-        <div class="row">
-          <h3 id="qb_text" style = "width:100%">질문 게시판</h3>
-        <table width="850" class="table table-condensed">
-          <tr>
-                <!-- 번호, 제목, 작성자, 날짜-->
-            <th width="40">번호</th>
-            <th width="260">제목</th>
-            <th width="100">작성자</th>
-            <th width="160">날짜</th>
-          </tr>
-         <!-- 디비 만큼 생성-->
-         <% var count = 1 %>
-         <% for (let qboard of qboards) { %>
-          <tr>
-              <td id ="t1" align="center" ><%=count%></td>
-              <td id ="t1" ><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
-    
-              <td id ="t1" align="center"><%=qboard.u_id %> </td>
-              <td id ="t1" align="center"><%=qboard.createdAt%></td>
-            <% count++ %>
-          </tr>
-          <% } %>
 
-        </table>
-        
 
-        <!--글작성 모달창-->
-              <div class="modal">
-                <div class="modal_content">
-                  <div class="ui_container">
-                    <div class="ui_border" >
-                      <br><br><br><br>
-                      
-                      <form action="/questionBoard" method="POST" >
-                      
-                        <h3>>>질문게시판 글 작성</h3>
-                      <div class="border_cont">
-                        <input name="title" placeholder="제목" type="text" class="inq_field" />
-                        <input name="content" id="" cols="5" rows="7" placeholder="내용을 입력해주세요.">
-                      </div>
-                    
-                      <form>  
-                      <div class="btn_area">
-                        <input type="button" id="close_button" value="취소" >
-                        <input type="submit" id="btn_submit" value="등록">
-                      </div>
-                      </form>
-                    </form>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="main">
-              <!-- <br><br> -->
-                <button id= "modal_button">글 작성</button>
-            </div>
-            <% var q_title = [] %>
-            <% var q_content = [] %>
-            <% var q_u_id = [] %>
-            <% var q_reply = [] %>
-            <% var count = 0 %>
-            <% for(let qboard of qboards) { %>
-                <% q_title[count] == qboard.title %>
-                <% q_content[count] == qboard.content %>
-                <% q_u_id[count] == qboard.u_id %>
-                <% q_reply[count] == qboard.reply %>
-                <% count++ %>
-            <% } %>
-            <% count-- %>
-            <p style="display: none;" id="title_value"><%=q_title%></p>
-            <p style="display: none;" id="content_value"><%=q_content%></p>
-            <p style="display: none;" id="u_id_value"><%=q_u_id%></p>
-            <p style="display: none;" id="reply_value"><%=q_reply%></p>
-            <p style="display: none;" id="count_value"><%=count%></p>
 
-            <script src="../public/javascripts/modal.js"></script>
-  </body>
+
+      <% var q_title = [] %>
+      <% var q_content = [] %>
+      <% var q_u_id = [] %>
+      <% var q_reply = [] %>
+      <% var count = 0 %>
+      <% for(let qboard of qboards) { %>
+      <% q_title[count] == qboard.title %>
+      <% q_content[count] == qboard.content %>
+      <% q_u_id[count] == qboard.u_id %>
+      <% q_reply[count] == qboard.reply %>
+      <% count++ %>
+      <% } %>
+      <% count-- %>
+      <p style="display: none;" id="title_value"><%=q_title%></p>
+      <p style="display: none;" id="content_value"><%=q_content%></p>
+      <p style="display: none;" id="u_id_value"><%=q_u_id%></p>
+      <p style="display: none;" id="reply_value"><%=q_reply%></p>
+      <p style="display: none;" id="count_value"><%=count%></p>
+
+      <script src="../public/javascripts/modal.js"></script>
+</body>
+
 </html>
