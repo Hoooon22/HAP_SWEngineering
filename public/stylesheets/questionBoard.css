@@ -3,11 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: skyblue;
-  text-decoration: none;
-}
 
+*{
+  font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
+}
 
 .headerComponent {
   position: absolute;
@@ -123,13 +122,25 @@ h2{
 
 }
 
+.a_field{
+  font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif;
+  width: 720px;
+  height:270px;
+  resize:none;
+  text-align: top;
+  vertical-align: top; 
+}
 
-.ui_border{font-family:"Nanum Gothic","나눔고딕","돋움", Dotum, "돋움체", DotumChe, sans-serif}
-.ui_border .border_tit{font-size:28px;line-height:57px;color:black;font-weight:bold;text-align:center}
-.ui_border .border_cont{width: 800px ;border-top:0px solid #E2F1F4;border-bottom:3px solid #dedede}
-.ui_border .border_cont input[type="text"], textarea{padding:0 30px;box-sizing:border-box;-webkit-box-sizing:border-box;display:block;width:100%;border:0;text-align:left}
-.ui_border .border_cont textarea{padding:38px 20px;font-size:14px;line-height:36px;color:black}
-.ui_border .border_cont .inq_field{line-height:57px;border-bottom:3px solid #dedede !important}
+.inq_1_field{
+  font-size: 2.5ch;
+  line-height:57px;border-bottom:3px solid #dedede !important
+
+}
+
+.border_cont{width: 800px ;border-top:0px solid #E2F1F4;border-bottom:3px solid #dedede}
+.border_cont input[type="text"], textarea{padding:0 30px;box-sizing:border-box;-webkit-box-sizing:border-box;display:block;width:100%;border:0;text-align:left}
+.border_cont textarea{padding:38px 20px;font-size:14px;line-height:36px;color:black}
+.border_cont {line-height:57px;border-bottom:3px solid #dedede !important}
 .btn_area{margin-top:30px;text-align:center; background-color:E2F1F4;}
 
 /* 버튼 공통 */
