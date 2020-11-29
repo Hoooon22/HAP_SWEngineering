@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dataRoom</title>
+    <link rel='stylesheet' href="dataRoom.css"/>
+</head>
+<body bgcolor="E2F1F4">
+    <div id="sidebar">
+        <div class="sidebar_button">
+            &lt;
+        </div>
+        <div class="sidebar_page">
+        </div>
+    </div>
+    
+    <div class = stack id="modal">
+        <div class = modal_main>
+            <div class="modal_header">
+                <button class = close>&#x274C;</button>
+            </div>
+            <div class="modal_content">
+                
+                <form action="">
+                    <input type="text" placeholder = '카테고리 이름' id = modal_add_name>
+                    <input type="submit" value = "추가" id = modal_add_button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="stack" id = mainPage>
+        <div id = "header">
+            <div class = "headerComponent" id = "logo">
+                <img src='../source/logo.png'/>
+            </div>
+            
+            <div class = "headerComponent" id = "pageTitle">
+                <div id = subjectColor></div>
+                <div id = subjectName>page name</div>
+            </div>
+        
+        </div>
+    
+        <div class = root id = "content">
+            <div class="download">
+                <button class = button id = all>전체 다운로드</button>
+                <button class = button id = selected>선택 다운로드</button>
+            </div>
+            <div id="container">
+                <div class="box" id = back>
+                    <button class= block style = "font-size:700%">&#x21A9;</button>
+                </div> 
+                <div class="box" id = add>
+                    <button class= block style = "font-size:500%">&#x2795;</button>
+                </div> 
+            </div>
+        
+            <div id="blank"></div>
+        </div>
+    </div>
+
+    <script src="dataRoom.js"></script>
+</body>
+</html>

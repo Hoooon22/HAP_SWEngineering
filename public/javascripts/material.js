@@ -1,54 +1,102 @@
-window.onload = loadMaterial;
+window.onload=function(e){
+    loadMaterial();
+    dynamicBinding();
 
-var materialList = [];
-var material_count = document.getElementById("material_count").innerText;
-material_count = material_count.split(',');
-var m_name = document.getElementById("m_name").innerText;
-m_name = document.split(',');
-var m_maxNum = document.getElementById("m_maxNum").innerText;
-m_maxNum = m_maxNum.split(',');
-var m_num = document.getElementById("m_num").innerText;
-m_num = m_num.split(',');
-
-for (let i in material_count)
-{
-    materialList[i] = {
-        name: m_name[i],
-        maxNum: m_maxNum[i],
-        num: m_num[i]
+    if(userStatus == 1) {
+        document.getElementById("add").style.display="none";
     }
 }
 
-var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(1)
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
 
-var subjectName= document.getElementById("subjectName_value").innerText; // 과목명 동적으로 넣어주기
+sidebar.addEventListener('mouseover',function(e){
+    sidebar_page.style.display="block"; // 수정
+    sidebar.style.display = "none";
+});
+
+sidebar_page.addEventListener('mouseleave',function(e){
+    sidebar_page.style.display="none";
+    sidebar.style.display="flex";
+})
+
+var materialList = [];
+
+var m1 = {
+    name: "m1",
+    maxNum: 3,
+    num: 3
+}
+
+var m2 = {
+    name: "m2",
+    maxNum: 5,
+    num: 3
+}
+
+var m3 = {
+    name: "m3",
+    maxNum: 2,
+    num: 0
+}
+
+var m4 = {
+    name: "m4",
+    maxNum: 1,
+    num: 1
+}
+
+materialList[0]=m1;
+materialList[1]=m2;
+materialList[2]=m3;
+materialList[3]=m4;
+materialList[4]=m1;
+materialList[5]=m2;
+materialList[6]=m3;
+materialList[7]=m4;
+
+var userStatus = 0; // 교수인지(0), 학생인지(1)
+
+var subjectName=document.getElementById("subjectName"); // 과목명
+subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
+
 
 var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = document.getElementById("subjectColor_value").innerText; // 과목 색상 동적으로 넣어주기
+subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
 var add = document.getElementById("add");
-var closeButton = document.getElementById("close");
-var submitButton = document.getElementById("submit");
+add.addEventListener("click",function(e){
+    document.getElementsByClassName("modal_prof")[0].style.display="flex";
+    document.getElementsByClassName("modal_content")[0].style.display="none";
+    popUp();
+});
+closeButton_add =document.getElementsByClassName("close")[1];
+closeButton_add.addEventListener("click",popOff);
+var registerButton = document.getElementById("register_button");
+registerButton.addEventListener("click",submit);
 
-add.addEventListener("click",popUp);
-closeButton.addEventListener("click",popOff);
-submitButton.addEventListener("click",submit);
+var closeButton_obj = document.getElementsByClassName("close")[0];
+closeButton_obj.addEventListener("click",popOff);
 
 function loadMaterial(){
-    var content = document.getElementById("content");
+    var container = document.getElementById("container");
     var add = document.getElementById("add");
     var newBox;
     var newBlock;
+    var newImg;
     var newName;
 
     for(var i = 0 ; i < materialList.length ; i++){
         newBox = document.createElement("div");
         newBox.setAttribute("class","box");
-        content.insertBefore(newBox,add);
+        container.insertBefore(newBox,add);
 
         newBlock = document.createElement("button");
         newBlock.setAttribute("class","block");
-        newBlock.innerHTML="aaa";
+        newImg = document.createElement("img");
+        newImg.setAttribute("src","../source/logo.png");
+        newImg.setAttribute("class","image");
+        newBlock.appendChild(newImg);
         newBox.appendChild(newBlock);
 
         newName = document.createElement("div");
@@ -70,33 +118,89 @@ function popOff(){
 }
 
 function submit(){
-    if(userStatus == 0) { // 교수
         var isFull = false; 
         
         // isFull 검사(이미지 제외)
 
         if(!isFull){
             var newBox = document.createElement("div");
-            var newBlock = document.createElement("div");
+            var newBlock = document.createElement("button");
+            var newImg = document.createElement("img");
             var newName = document.createElement("div");
             newBox.setAttribute("class","box");
             newBlock.setAttribute("class","block");
+            newImg.setAttribute("class","iamge");
+            newImg.setAttribute("src",""); // 이미지 넣기
             newName.setAttribute("class","name");
 
-            var one = document.getElementById("content");
-            content.insertBefore(newBox,add);
+            var container = document.getElementById("container");
+            newBlock.appendChild(newImg);
             newBox.appendChild(newBlock);
             newBox.appendChild(newName);
-
-            document.getElementById("modal").style.display="none";    
+            container.insertBefore(newBox,add);
+            console.log("done");
         }
 
         else{
             alert("alert");
         }
-    }
+}
 
-    else { // 학생
-        document.getElementById("modal").style.display="none";
+function rentMaterial(){
+
+}
+
+function registerMaterial(){
+
+}
+
+function dynamicBinding(){
+    var parent = document.getElementsByClassName('block');
+    var child = document.getElementsByClassName('image');
+
+    for(var i = 0 ; i < parent.length-1 ; i++){
+        parent[i].addEventListener('click',function(e){
+            var name = e.target.parentElement.getElementsByClassName("name")[0].innerText;
+            var num;
+            var maxNum;
+
+            document.getElementsByClassName("student_modal_name")[0].innerHTML = name;
+            
+            for(var j=0;j<materialList.length;j++){
+                if(name == materialList[j].name) {
+                    num = String(materialList[j].num);
+                    maxNum = String(materialList[j].maxNum);
+                    break;
+                }
+            }
+            
+            document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
+            
+            document.getElementsByClassName("modal_content")[0].style.display = "flex";
+            document.getElementsByClassName("modal_prof")[0].style.display = "none";
+            popUp();
+        })
+
+        child[i].addEventListener('click',function(e){
+            var name = e.target.parentElement.parentElement.getElementsByClassName("name")[0].innerText;
+            var num;
+            var maxNum;
+
+            document.getElementsByClassName("student_modal_name")[0].innerHTML = name;
+            
+            for(var j=0;j<materialList.length;j++){
+                if(name == materialList[j].name) {
+                    num = String(materialList[j].num);
+                    maxNum = String(materialList[j].maxNum);
+                    break;
+                }
+            }
+            
+            document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
+            
+            document.getElementsByClassName("modal_content")[0].style.display = "flex";
+            document.getElementsByClassName("modal_prof")[0].style.display = "none";
+            popUp();
+        })
     }
 }
