@@ -5,9 +5,9 @@
     <title>Chatting Room</title>
    
     <center>
-      <h3 style="background-color:aliceblue;">
+      <h2 style="border-bottom: 3px solid #dedede; padding-top: 20px; padding-bottom: 20px;">
         <div id="chatname">
-        <%= posts.name %> 채팅방</h3>
+        <%= posts.name %> 채팅방</h2>
         </div>
     </center>
 
@@ -21,14 +21,12 @@
       <div id="chat">
         <!-- 채팅 메시지 영역 -->
       </div>
-
+    </div>
       <center>
-      <div id="textbox">
         <input type="text" id="text_send" placeholder="메시지를 입력해주세요.." >
         <button id="btn_send" onclick="send()" >↑</button>
-      </div>
     </center>
-    </div>
+   
 
   </body>
 </html>

@@ -132,6 +132,8 @@ function prevCalendar(date){
         setTodoListOnCalendar(_todoList);
     })
 }
+
+
 function nextCalendar(date){ 
    
     today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());

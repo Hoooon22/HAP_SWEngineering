@@ -6,28 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='../../../public/stylesheets/questionBoard.css'/>
 </head>
-<body bgcolor ="E2F1F4">
-  <div id = "header">
-    <div class = "headerComponent" id = "logo">
+<body >
+
+  <div id="header">
+  
+    <div id="logo">
       <a href="../../../calendar">
-        <img src='../../../public/images/logo.png'/></a>
+        <img src='../../../public/images/logo.png' /></a>
+
     </div>
-    
-    <div class = "headerComponent" id = "pageTitle">
-        <div id = circle></div>
-        <div id = pageName><%=subject.name%></div>
-    </div>
+ 
+    <div id=pageName>소프트웨어공학개론</div>
   </div>
 
-  <div id="content">
-  <p><br><br></p>
-  <button id= "btn_backtolist" onclick="location.href='/questionBoard' ">목록보기</button>
+
+  <hr>
+  <br>
+
   
-  <br>
-  <br>
+  
+  
+  <div id="content">
+
+  <button id= "btn_backtolist" onclick="location.href='/questionBoard' " style="float:right;">목록보기</button>
+  <br><br>
+  <div style="width:80%;">
 <center>
   
-    <table width="850" >
+    <table width="100%" >
       <tr>
         <td id="t1_head" colspan="6" width="800">&nbsp;<%=qboard.title%></td>
       </tr>
@@ -48,6 +54,8 @@
       </tr>
 
     </table>
+</center>
+  </div>
   
   <br>
    
@@ -80,18 +88,21 @@
           </div>
       </div>
   
-      <div class="main">
+
+      <div >
           <button id= "modal_button2">수정</button>
-      </div>
+      
       <script src="../../../public/javascripts/modal2.js"></script>
 
 
       <input type="button" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
 
-      <br><br><br><br>
+      <br><br>
+    </div>
    
+<div style="width:80%;">
 
-<table width="800" position>
+<table width="100%" >
   <tr>
     <td>ㄴ 작성자 2018111111</td>
     <td id="t2" align="right">날짜 2020.12.01</td>
@@ -103,16 +114,17 @@
  
 </table>
 
-</center>
-   
-    
-    
+
     
     <br><br>
-    <textarea id="reply_content" placeholder="답글을 입력해주세요."></textarea>
-    <input type="button" value="답변달기" id="btn_reply" />
+    <textarea id="reply_content" placeholder="답글을 입력해주세요." width="50%"></textarea>
+    <input type="button" value="답변달기" id="btn_reply" width="20%" />
 
-  </center>
+    <br><br>
+    <br><br>
+
+    
   </div>
+</div>
 </body>
 </html>
