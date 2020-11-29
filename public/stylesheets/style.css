@@ -4,7 +4,9 @@
 /* body */
 
 body{
-  padding : 20px;
+  margin: auto;
+  width: 75%;
+  padding : 50px;
   background-color: white;
 }
 
@@ -24,6 +26,11 @@ header .welcome{
 
 }
 
+hr{
+  border: 1px solid #dedede;
+
+}
+
 /* navigator */
 
 .nav-bar{
@@ -38,7 +45,7 @@ header .welcome{
   padding : 5px 5px 0 5px;
   top: 5px;
   left: 60px;
-  background: #deebf7;
+  background: white;
   border-radius: 10px 10px  0 0;
 }
 
@@ -58,7 +65,7 @@ header .welcome{
 
 .container-wrap{
   padding : 5px;
-  background: #deebf7;
+  background: white;
   border-radius: 10px;
 }
 
