@@ -26,22 +26,29 @@
       </div>
   </div>
 
-    <div id ="content" >
-        <div id ="table_chat">
+    <div id ="content">
+        <div id ="table_chat" style = "width:100%">
+          
           <p><br><br></p>
-          <h3 id="qb_text" >실시간 질문방</h3>
-          <center>
+          <!-- <h3 id="qb_text" style="width:100%;">실시간 질문방</h3> -->
+          <div>
+            <h3 id="qb_text" style="width:100%">실시간 질문방</h3>
         <table width = 850>
+          
           <tr>
               <td id ="t1" width="400">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td> <!--db 값 받아오기-->
               <td id ="t1" width="120">   <a href="/chat">채팅방 입장</a><br/></td> <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
-            </table></div>
-          </center>
+            </table>
+          </div>
+        </div>
+          
+
+          
         <p><br><br></p>
-        <h3 id="qb_text">질문 게시판</h3>
-        <center>
+        
         <div class="row">
+          <h3 id="qb_text" style = "width:100%">질문 게시판</h3>
         <table width="850" class="table table-condensed">
           <tr>
                 <!-- 번호, 제목, 작성자, 날짜-->
@@ -74,27 +81,26 @@
                       <br><br><br><br>
                       
                       <form action="/questionBoard" method="POST" >
-                      <center>
+                      
                         <h3>>>질문게시판 글 작성</h3>
                       <div class="border_cont">
                         <input name="title" placeholder="제목" type="text" class="inq_field" />
                         <input name="content" id="" cols="5" rows="7" placeholder="내용을 입력해주세요.">
                       </div>
-                    </center>
-                      <center>  
+                    
+                      <form>  
                       <div class="btn_area">
                         <input type="button" id="close_button" value="취소" >
                         <input type="submit" id="btn_submit" value="등록">
                       </div>
-                      </center>
+                      </form>
                     </form>
                     </div>
                   </div>
                 </div>
             </div>
-        
             <div class="main">
-              <br><br>
+              <!-- <br><br> -->
                 <button id= "modal_button">글 작성</button>
             </div>
             <% var q_title = [] %>
