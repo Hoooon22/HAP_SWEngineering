@@ -38,15 +38,17 @@
 /* 내가 보낸 메시지 */
 .me {
   width: 90%;
-  margin: auto;
   text-align: right;
-  
+  float:right;
   background-color: white;
  /* margin-top: 10px;*/
+ border:1px;
 }
 .me:after{
+  background-color:white;
   content: "  :  나";
 }
+
 
 /* 상대방이 보낸 메시지 */
 .other {
@@ -58,9 +60,7 @@
 }
 
 #btn_send{
-  position: relative;
-  center:900px;
-  float:left;
+  float:center;
   border: 1px solid #dedede;background-color: rgba(0,0,0,0);
 
   width:54px; 
@@ -68,9 +68,7 @@
   }
 
 #text_send{
-  position: relative;
-  center:0px;
-  float:left;
+
   border: 1px solid #dedede;
   width:760px;
   height:50px;
