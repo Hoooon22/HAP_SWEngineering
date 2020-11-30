@@ -5,6 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='../../../public/stylesheets/questionBoard.css'/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> 
+	
+	<script>	
+	$(document).ready(function(){ 
+		$("#btn_reply").click(function(){
+				if($("#reply_content").val().length==0){ alert("내용을 입력하세요."); $("#reply_content").focus(); return false; }
+				
+			});		
+	});
+  </script>
+  
 </head>
 <body >
 
@@ -106,13 +117,15 @@
         <form action="/questionBoard/read/questionDelete" method="POST">
           <input style="display: none;" type="text" name="title" value="<%=qboard.title %>" />
           <input style="display: none;" type="text" name="u_id" value="<%=qboard.u_id %>" />
-          <input type="submit" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
+          <input type="submit" value="삭제" id="btn_del" />
         </form>
 
       <br><br>
     </div>
    
 <div style="width:80%;">
+
+  
 
 <table width="100%" >
 <% var u_id%>
@@ -126,9 +139,16 @@
     <% } %> 
      
     <% } %> 
+    <%   var rYear = qreply.createdAt.getFullYear(); %>
+  <%   var rMonth = qreply.createdAt.getMonth() + 1; %>
+  <%   var rDate = qreply.createdAt.getDate(); %>
+  <%   var rHour = qreply.createdAt.getHours(); %>
+  <%   var rMinute =qreply.createdAt.getMinutes(); %>
+  <%   rMonth = rMonth > 9 ? rMonth : "0" + rMonth; %>
+  <%   rDate = rDate > 9 ? rDate : "0" + rDate; %>
   <tr>
     <td>ㄴ 작성자 : <%=u_id %>  </td>
-    <td id="t2" align="right"><%=qreply.createdAt%></td>
+    <td id="t2" align="right"><%= sYear%>.<%=sMonth%>.<%=sDate%>. <%=sHour%>:<%=sMinute%></td>
   </tr>
   <tr>
     <td id="t3" colspan="2" align="left" ><pre><%=qreply.content%></pre></td>
