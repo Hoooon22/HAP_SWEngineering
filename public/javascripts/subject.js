@@ -37,15 +37,19 @@ s_id_value = document.getElementById("s_id_value").innerText;
 s_id_value = s_id_value.split(',');
 date_value = document.getElementById("date_value").innerText;
 date_value = date_value.split(',');
+num_value = document.getElementById("num_value").innerText;
+num_value = num_value.split(',');
 status_value = document.getElementById("status_value").innerText;
 status_value = status_value.split(',');
 
 for (let i in attend_count)
 {
     studentAttend[i] = {
+        subject: subject_value[i],
+        s_id: s_id_value[i],
         date: date_value[i],
+        num: num_value[i],
         status: status_value[i],
-        s_id: s_id_value[i] // 내가 추가
     }
 }
 
