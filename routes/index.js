@@ -20,7 +20,7 @@ router.post("/signup", async function(req,res,next){
   let salt = Math.round((new Date().valueOf() * Math.random())) + "";
   let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
-  let result = mo dels.user.create({
+  let result = models.user.create({
       user_id: body.id,
       user_password: hashPassword,
       user_name : body.name,
