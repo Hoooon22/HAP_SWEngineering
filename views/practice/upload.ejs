@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Document</title>
+        </head>
 
-<form action="/upload/create" method="post" enctype="multipart/form-data">
-    <input type="file" name="imgFile">
-    <input type="submit" value="파일 업로드하기">
-</form>
-
-</body>
-</html>
+        <body>
+            <form action="/upload/create" method="post" enctype="multipart/form-data">
+                <input type="file" name="imgFile">
+                <img src = "../../public/images/logo.png" onclick = "func1(e){alert("done");}">
+            </form>
+        </body>
+        
+        <script>
+            func1(){
+                alert("done");
+            }
+        </script>
+    </html>
