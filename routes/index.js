@@ -53,12 +53,19 @@ router.get('/', function(req, res, next) {
 });
 
 // 로그인 GET
-router.get('/login', function(req, res, next) {
+router.get('/login', async function(req, res, next) {
   let session = req.session;
 
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id
+    }
+  })
+
   res.render("login", {
-      session : session
-  });
+      session : session,
+      user_session: user_session,
+  }); 
 });
 
 // 로그인 POST
@@ -150,6 +157,12 @@ router.get('/material', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
 
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id
+    }
+  })
+
   let subject = models.subject.findOne({
     where:{
       name: "소공",
@@ -164,6 +177,7 @@ router.get('/material', async function(req, res, next) {
       materials: result,
       session: session,
       user_id: user_id,
+      user_session: user_session,
     });
   });
 });

@@ -11,6 +11,13 @@ router.get('/', async function(req, res, next) {
   
   let subject = await models.subject.findAll({})
 
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id,
+      user_session: user_session,
+    }
+  })
+
   models.subject.findAll({
   }).then( result => {
     res.render("calendar", {
