@@ -19,18 +19,22 @@
   </script>
 </head>
 
-<body>
-  <div id="header">
 
-    <div id="logo">
-      <a href="../calendar">
-        <img src='../public/images/logo.png' /></a>
 
-    </div>
-
-    <div id=pageName><%=subject.name%></div>
+<header>
+  <div id="logo">
+    <a href="../login">
+      <img src='../public/images/logo.png' /></a>
+  </div>
+  <div id=pageName><%=subject.name%></div>
+  <div class="welcome" width="190px">
+    <p id="user_id"><%=seesion.user_name%>님, 환영합니다!</p>
+    <button style="float: right;" onclick="location.href='logout' ">로그아웃</button>
   </div>
 
+</header>
+
+<body>
   <hr>
 
 
@@ -46,23 +50,21 @@
 
   <div id="content">
 
-    <p><br><br></p>
+    <p><br></p>
     <div style="width:80%;">
       <h3>실시간 질문방</h3>
-      <br>
+
+    
 
       <center>
         <table width="100%">
-
           <tr>
             <td id="t1_2" width="80" style="font-weight: 550">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td>
-            <!--db 값 받아오기-->
-
             <th id="t1_2" width="20" style="font-weight: 550"> <a href="#"
                 onclick="window.open('/chat','window','width=400,height=700')">채팅방 입장</a><br /></th>
 
-            <!--페이지 연결-->
-          </tr><!-- 첫번째 줄 끝 -->
+
+          </tr>
         </table>
       </center>
     </div>
@@ -73,6 +75,9 @@
       <h3>질문 게시판</h3>
       <br>
       <center>
+
+
+
         <table width="100%">
           <tr>
             <!-- 번호, 제목, 작성자, 날짜-->
@@ -81,12 +86,22 @@
             <th id="t1_2" width="20%">작성자</th>
             <th id="t1_2" width="20%">날짜</th>
           </tr>
-          <!-- 디비 만큼 생성-->
+       
           <% var count = 1 %>
           <% var user_name = null %>
-          <% for (let qboard of qboards) { %>
+          <% for (qboard of qboards) { %>
+
+          <% var rowCount=5; %>
+          <% var pageCount=0; %>
+
+          <% if (qboard.qboard_count % rowCount != 0) %>
+          <% {pageCount=pageCount+1;}%>
+
+
+
+
           <tr>
-            <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
+            <td id="t1" align="center"><%=count%></td>
             <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
             <% for (let user of users) {%>
             <% if (user.user_id == qboard.u_id) {%>
@@ -109,10 +124,15 @@
           <% } %>
 
         </table>
-      </center>
 
-      <br>
-      <button id="modal_button" style="float:right;">글 작성</button>
+
+        <br>
+        <button id="modal_button" style="float:right">글 작성</button>
+        <%if (pageCount>=1) { %>
+        <% for(var i = 1 ; i <=pageCount ; i++){ %>
+        <a href="#"> <%=i%></a>
+        <%}}%>
+      </center>
 
       <!--글작성 모달창-->
       <div class="modal">
@@ -139,7 +159,7 @@
                 <center>
                   <div class="btn_area">
                     <input type="button" id="close_button" value="취소">
-                    <input type="submit" id="btn_submit" value="등록" >
+                    <input type="submit" id="btn_submit" value="등록">
                     <br>
 
                   </div>

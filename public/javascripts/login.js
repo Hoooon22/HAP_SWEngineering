@@ -13,7 +13,6 @@ window.onload=function(){
   }, sec);
 }
 
-
 // Next/previous controls
 function moveSlides(n) {
   slideIndex = slideIndex + n

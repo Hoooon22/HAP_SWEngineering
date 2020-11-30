@@ -1,11 +1,3 @@
-// var userStatus = document.getElementById("userStatus").innerText; 
-
-// var hwList = [];
-
-// var prev = document.getElementById("prevBox");
-// var now = document.getElementById("nowBox");
-// var next = document.getElementById("nextBox");
-
 window.onload = function(e){
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 
@@ -14,13 +6,9 @@ var hwList = [];
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
-    // loadHomework();
-    // loadAttendance();
-    // loadSideBar();
 
     if(userStatus!=0)
         document.getElementsByClassName("register_button")[0].remove();
-// }
 
 var action="";
 
@@ -56,6 +44,8 @@ num_value = document.getElementById("num_value").innerText;
 num_value = num_value.split(',');
 status_value = document.getElementById("status_value").innerText;
 status_value = status_value.split(',');
+// subject_students = document.getElementById("subject_students").innerText;
+// subject_students = subject_students.split(',');
 
 attend_count = parseInt(attend_count)+1;
 
@@ -72,11 +62,29 @@ for (var i = 0 ;  i < attend_count ; i ++)
     };
 }
 
+// 로그인 유저의 과목
+user_subject = document.getElementById("user_subject").innerText;
+user_subject = user_subject.split(',');
+subjectList = user_subject;
+
+
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+loadSideBar(subjectList);
+
 var userAttend = [];
 var rangedAttend = [];
 var attendList= [];
 
 var profAttend = [{
+    date: String,
+    status: String
+},
+{
+    date: String,
+    status: String
+},
+{
     date: String,
     status: String
 }];
@@ -124,6 +132,9 @@ if(userStatus == '0') {
         }
     }
 
+
+    console.log(profAttend);
+
     profAttend[0].date = weekList[weekList.length-2];
     profAttend[0].status = String(statusList[statusList.length-2].attend)+"|"+String(statusList[statusList.length-2].late)+"|"+String(statusList[statusList.length-2].absent);
     profAttend[1].date = weekList[weekList.length-1];
@@ -167,11 +178,11 @@ if(userStatus=='0'){
         document.getElementsByClassName("modal_register").style.display = "none";
     });
     }
-    loadModalPage();
+    // loadModalPage();
 
-    var save = document.querySelector(".save");
+//     var save = document.querySelector(".save");
 
-save.addEventListener("click",saveAttend);
+// save.addEventListener("click",saveAttend);
 }
 
 
@@ -503,19 +514,21 @@ function loadModalPage(){
     
 }
 
-function loadSideBar(){
+function loadSideBar(subjectList){
     var newSubject;
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
 
     for(var i=0;subjectList.length>i;i++){
         newSubject = document.createElement("button");
         newSubject.setAttribute("class","sidebar_subject");
-        newSubject.innerHTML=subjectList[i].name;
-        var url = subjectList[i].link;
+        newSubject.innerHTML=subjectList[i];
+        var url = subjectList[i];
 
         newSubject.addEventListener('click',function(e){
             // 링크로 이동하기
-            console.log(url);
         });
+
         sidebar_page.appendChild(newSubject);
     }   
 }

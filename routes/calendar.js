@@ -5,16 +5,26 @@ var router = express.Router();
 var models = require('../models');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
   
+  let subject = await models.subject.findAll({})
+
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id,
+    }
+  })
+
   models.subject.findAll({
   }).then( result => {
     res.render("calendar", {
       posts: result,
       session: session,
-      user_id: user_id
+      user_id: user_id,
+      subjects: subject,
+      user_session: user_session,
     });
   });
 });

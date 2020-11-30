@@ -35,6 +35,26 @@
 
             </div>
         </div>
+
+        <div class="modal_register">
+            <div id="modal_register_header">
+                <button class = close id = register_close>&#x274C;</button>
+            </div>
+            <div id="modal_register_content">
+                <form id = form_prof action="" style = "display: flex;">
+                    <div class="top_prof">
+                        <input style = "width : 90%; " type="text" placeholder="과제 이름">
+                    </div>
+                    <div class="mid_prof">
+                        <button style = "height:42%; width: 90%;">첨부파일</button><input style = "height: 30%; width: 90%;" type="text" placeholder="제출기한">
+                    </div>
+                    <div class="bot_prof">
+                        <textarea style = " height: 80%; width: 90%;"type="text" placeholder="과제 설명"></textarea>
+                        <button type = submit> 등록 </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     
     <div id = "header">
@@ -113,6 +133,7 @@
         <% var num_value = []%>
         <% var status_value = []%>
         <% var count = 0 %>
+        <% var cnt = 0 %>
         <% for(let attend of attends) { %>
             <%subject_value[count] = attend.subject%>
             <%s_id_value[count] = attend.s_id%>
@@ -128,7 +149,7 @@
         <p style="display: none;" id="date_value"><%=date_value%></p>
         <p style="display: none;" id="num_value"><%=num_value%></p>
         <p style="display: none;" id="status_value"><%=status_value%></p>
-        <p style="display: none;" id="subject_students"><%=subject_students%></p>
+        <p style="display: none;" id="user_subject"><%=user_session.user_subject%></p>
 
 <script src="../public/javascripts/subject.js"></script>
 </body>

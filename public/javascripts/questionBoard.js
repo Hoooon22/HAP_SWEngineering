@@ -9,9 +9,7 @@ var qboard_reply = document.getElementById("reply_value").innerText;
 qboard_reply = qboard_reply.split(',');
 // count 
 var qboard_count = document.getElementById("count_value").innerText;
-var rowCount = 10;
-var pageCount = 0;
-var printDate;
+
 
 for (let i in qboard_count) {
     qboard[i] = {
@@ -20,11 +18,8 @@ for (let i in qboard_count) {
         u_id: qboard_u_id[i],
         reply: qboard_reply[i],
     }
-    if (rowCount % 15) pageCount++;
+   
 }
-
-rowCount; //게시판의 총 개수
-pageCount; //게시판의 페이지 개수
 
 
 

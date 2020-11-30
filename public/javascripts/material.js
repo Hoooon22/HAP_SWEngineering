@@ -1,8 +1,32 @@
 window.onload=function(e){
     loadMaterial();
     dynamicBinding();
+    
+    user_subject = document.getElementById("user_subject").innerText;
+user_subject = user_subject.split(',');
+subjectList = user_subject;
 
-    if(userStatus == 1) {
+
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+loadSideBar(subjectList);
+
+
+    var uploadFile = document.getElementById("uploadImg");
+    uploadFile.addEventListener("click",function(e) { // 사진 넣으면 사진 뜨기
+        var input = document.createElement("input");
+        input.setAttribute("type","file");
+        input.setAttribute("name","imgFile");
+        input.setAttribute("style","display: none;");
+        uploadFile.parentElement.appendChild(input);
+        input.click();
+        input.addEventListener("change",function(e){
+            input.parentElement.style.background="yellow";
+        })
+    });
+
+
+    if(userStatus != 0) {
         document.getElementById("add").style.display="none";
     }
 }
@@ -187,7 +211,6 @@ function dynamicBinding(){
             var maxNum;
 
             document.getElementsByClassName("student_modal_name")[0].innerHTML = name;
-            
             for(var j=0;j<materialList.length;j++){
                 if(name == materialList[j].name) {
                     num = String(materialList[j].num);
@@ -195,6 +218,8 @@ function dynamicBinding(){
                     break;
                 }
             }
+            document.getElementsByClassName("student_modal_number")[0].placeholder = "최대 수량: " + maxNum + "개";
+
             
             document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
             
@@ -203,4 +228,23 @@ function dynamicBinding(){
             popUp();
         })
     }
+}
+
+function loadSideBar(subjectList){
+    var newSubject;
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+
+    for(var i=0;subjectList.length>i;i++){
+        newSubject = document.createElement("button");
+        newSubject.setAttribute("class","sidebar_subject");
+        newSubject.innerHTML=subjectList[i];
+        var url = subjectList[i];
+
+        newSubject.addEventListener('click',function(e){
+            // 링크로 이동하기
+        });
+
+        sidebar_page.appendChild(newSubject);
+    }   
 }
