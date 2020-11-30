@@ -399,3 +399,7 @@ input:checked + .switch-container {
 input:checked + .switch-container .mid {
   border-color: #000000;
 }
+
+header{
+  color:#9e9de4;
+}
