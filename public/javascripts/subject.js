@@ -1,16 +1,26 @@
-var userStatus = document.getElementById("userStatus").innerText; 
+// var userStatus = document.getElementById("userStatus").innerText; 
+
+// var hwList = [];
+
+// var prev = document.getElementById("prevBox");
+// var now = document.getElementById("nowBox");
+// var next = document.getElementById("nextBox");
+
+window.onload = function(e){
+var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 
 var hwList = [];
 
-window.onload = function(e){
-    loadHomework();
-    loadAttendance();
-    loadSideBar();
+var prev = document.getElementById("prevBox");
+var now = document.getElementById("nowBox");
+var next = document.getElementById("nextBox");
+    // loadHomework();
+    // loadAttendance();
+    // loadSideBar();
 
     if(userStatus!=0)
-        document.getElementById("prof_new").remove();
-}
-var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
+        document.getElementsByClassName("register_button")[0].remove();
+// }
 
 var action="";
 
@@ -27,8 +37,13 @@ var studentAttend = [];
 
 var date = new Date();
 var year = date.getFullYear();
+console.log(year);
+console.log(typeof(year));
 var month = date.getMonth() + 1;
+console.log(month);
 var day = date.getDate();
+console.log(day);
+
 
 attend_count = document.getElementById("attend_count").innerText;
 subject_value = document.getElementById("subject_value").innerText;
@@ -42,7 +57,11 @@ num_value = num_value.split(',');
 status_value = document.getElementById("status_value").innerText;
 status_value = status_value.split(',');
 
-for (let i in attend_count)
+attend_count = parseInt(attend_count)+1;
+
+console.log(attend_count);
+
+for (var i = 0 ;  i < attend_count ; i ++)
 {
     studentAttend[i] = {
         subject: subject_value[i],
@@ -50,9 +69,8 @@ for (let i in attend_count)
         date: date_value[i],
         num: num_value[i],
         status: status_value[i],
-    }
+    };
 }
-
 
 var userAttend = [];
 var rangedAttend = [];
@@ -66,18 +84,20 @@ var profAttend = [{
 var statusList = [];// 교수용, 출결 정보 저장
 var weekList = [];
 
-
-
 if(userStatus == '0') {
     for(var i = 0 ; i < attend_count ; i++) { // 범위 안의 전체 학생 출석 값 추출
-        if(checkDate(studentAttend[i].num))
+        
+        
+        if(checkDate(studentAttend[i].num , year , month , day))
             rangedAttend.push(studentAttend[i]);
     }
 
     for( var i = 0 ; i < rangedAttend.length ; i++){ // 범위 안의 주차 추가
-        for(var j = 0 ; j < weekList.length ; j++){
-            if(!weekList.includes(rangedAttend[i].date))
+
+        for(var j = 0 ; j <= weekList.length ; j++){
+            if(!weekList.includes(rangedAttend[i].date,0)){
                 weekList.push(rangedAttend[i].date);
+            }
         }
     }
 
@@ -88,8 +108,6 @@ if(userStatus == '0') {
             absent: 0
         };
     }
-
-
 
     for(var i = 0 ; i < weekList.length ; i++) { // statusList 값 입력
         for(var j = 0 ; j < rangedAttend.length ; j++) {
@@ -120,7 +138,7 @@ else {
     }
 
     for (var i = 0 ; i < userAttend.length ; i++) { // 전체 출석 값에서 당일 기준 출석만 추출
-        if(checkDate(studentAttend[i].num)) 
+        if(checkDate(studentAttend[i].num,year,month,day)) 
             rangedAttend.push(userAttend[i]);
     }
 
@@ -190,6 +208,11 @@ register_button.addEventListener("click",function(e){
     document.getElementsByClassName("modal_register")[0].style.display = "flex";
     document.getElementById("modal").style.display="flex";
 });
+    }
+
+        // loadHomework();
+        loadAttendance();
+        loadSideBar();
 }
 
 function toggle(){
@@ -538,14 +561,28 @@ function registerHomework(){
 
 }
 
-function checkDate(dateData){
+function checkDate(num,year,month,day){
+    var dateData = new Date(num);
     var tYear = dateData.getFullYear();
     var tMonth = dateData.getMonth()+1;
     var tDay = dateData.getDate();
 
-    if(tYear <= year && tMonth <= month && tDay <= day)
-        return true;
-    
-    else
+    if(tYear <= year) {
+        if(tYear==year) {
+            if(tMonth <= month) {
+                if(tMonth == month) {
+                    if(tDay <= day)
+                        return true;
+                }
+
+                else
+                    return true;
+            }
+        }
+
+        else
+            return true;
+    }
+
         return false;
 }

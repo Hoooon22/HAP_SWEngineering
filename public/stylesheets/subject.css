@@ -4,6 +4,7 @@
 }
 
 a {
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -67,7 +68,12 @@ input::placeholder {
 }
 
 #modal {
+  width: 100vw;
+  height: 100vh;
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: center;
   z-index: 3;
@@ -268,13 +274,6 @@ form {
   border-color: black;
 }
 
-#mainPage {
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #header {
   display: flex;
   width: 100%;
@@ -329,7 +328,7 @@ hr {
   background: red;
 }
 
-#subjectColor {
+/* #subjectColor {
   width: 20px;
   height: 20px;
   background: red;
@@ -338,9 +337,10 @@ hr {
 #subjectName {
   font-size: 350%;
   display: inline-block;
-}
+} */
 
 #content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -348,7 +348,7 @@ hr {
 }
 
 .nav_bar {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -364,20 +364,28 @@ hr {
 
 .btn {
   all: unset;
-  width: 100px;
-  height: 30px;
+  color: black;
+  cursor: pointer;
+  width: 150px;
+  height: 40px;
   border-radius: 10px;
   text-align: center;
-  color: black;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+.btn:hover {
+}
+
 #attendanceToggle {
+  position: relative;
+  right: 20%;
   flex-direction: row;
-  width: 90%;
+  width: 50%;
   height: 200px;
   border-radius: 10px;
   border-style: solid;
@@ -449,8 +457,7 @@ hr {
 }
 
 #botHeader {
-  height: 130px;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
 }
@@ -464,11 +471,17 @@ hr {
   align-items: center;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%;
   border-radius: 35px;
   border-style: solid;
   border-width: 5px;
   border-color: skyblue;
+}
+
+.register_button {
+  width: 90%;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 #noHw {
