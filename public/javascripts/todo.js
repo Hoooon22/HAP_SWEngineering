@@ -2,7 +2,10 @@ getTodoListFromDate = (date) =>{
     return $.ajax({
         url : "/todo/getTodoListFromDate",
         method : "POST",
-        data : date,
+        data : {
+            year : date.year,
+            month : date.month >= 10 ? date.month : '0'+date.month
+        },
         dataType : "json"
     })    
 }
