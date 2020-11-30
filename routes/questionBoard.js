@@ -96,23 +96,27 @@ router.post("/read/questionDelete", async function(req, res, next){
 })
 
 // 질문 수정
-router.post("/read/questionModify", async function(req, res, next){
+router.post("/read/questionModify", function(req, res, next){
   let session = req.session;
   let body = req.body;
 
-  models.sequelize.query(query, { replacements: values })
+  let qboards = models.qboard.findOne({
+    where: {
+      title: body.pre_title,
+    }
+  })
 
-  await models.qboard.update(
+  models.qboard.update(
     {    
       title: body.title,
-      content: body.content
+      content: body.content,
     },
     {where:{
-      title: body.pre_title,
+      title: qboards.p_title,
       u_id: session.user_id,
     }})
 
-    res.redirect("/questionBoard")  
+    res.redirect("/questionBoard/read/"+qboards.subject+"/"+qboards.title);
   })
 
 // 답글 추가
