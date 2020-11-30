@@ -6,15 +6,15 @@ window.onload = function(e){
     if(userStatus==1)
         document.getElementById("prof_new").remove();
 }
-var userStatus = 0; // 교수인지(0), 학생인지(1)
+var userStatus = 0; // 교수인지(0), 학생인지(s_Id)
 
 var action="";
 
-var subjectName=document.getElementById("subjectName"); // 과목명
-subjectName.innerText = "과목명"; // 과목명 동적으로 넣어주기
+var pageName=document.getElementById("pageName"); // 과목명
+pageName.innerText = "과목명"; // 과목명 동적으로 넣어주기
 
-var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
+// var subjectColor=document.getElementById("subjectColor"); // 과목 색상
+// subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
 var created = false;
 
@@ -93,7 +93,7 @@ for(var i=0;close.length>i;i++){
 var attendance = document.getElementById("attendance");
 var toggled = true
 attendance.addEventListener("click",toggle);
-
+if(userStatus==0){
 var register_button = document.getElementById("prof_new");
 register_button.addEventListener("click",function(e){
     document.getElementsByClassName("modal_homework")[0].style.display = "none";
@@ -101,6 +101,7 @@ register_button.addEventListener("click",function(e){
     document.getElementsByClassName("modal_register")[0].style.display = "flex";
     document.getElementById("modal").style.display="flex";
 });
+}
 
 function toggle(){
     if(!toggled){
