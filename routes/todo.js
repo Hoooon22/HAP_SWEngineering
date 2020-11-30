@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 // model loading
 var models = require('../models');
@@ -7,10 +9,16 @@ var models = require('../models');
 
 /* GET home page. */
 router.post('/getTodoListFromDate', async function (req, res, next) {
-    let date = req.body;
+  let date = req.body;
   let {year,month} = date;
 
-  let result = await models.todolist.findAll({});
+  await models.todolist.update({
+    where:{
+      date_year: year,
+      date_month: month,
+  }})
+
+  let result = await models.todolist.findAll({  });
 
   var aJsonArray = new Array();
   for (let i in result)

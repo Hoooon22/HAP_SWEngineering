@@ -14,6 +14,15 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
+      date_year: {
+        type: Sequelize.INTEGER
+      },
+      date_month: {
+        type: Sequelize.INTEGER
+      },
+      date_day: {
+        type: Sequelize.INTEGER
+      },
       category_id: {
         type: Sequelize.INTEGER
       },

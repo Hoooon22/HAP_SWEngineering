@@ -7,6 +7,15 @@ module.exports = (sequelize, DataTypes) => {
     date: {
       type: DataTypes.DATE
     },
+    date_year: {
+      type: DataTypes.INTEGER
+    },
+    date_month: {
+      type: DataTypes.INTEGER
+    },
+    date_day: {
+      type: DataTypes.INTEGER
+    },
     category_id: {
       type: DataTypes.INTEGER
     },

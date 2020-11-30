@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const sequelize = require("sequelize");
 const crypto = require('crypto');
 const { Calendar } = require('calendar');
+const sequelize = require("sequelize");
 const Op = sequelize.Op;
 
 // model loading
