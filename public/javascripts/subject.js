@@ -60,6 +60,10 @@ for (var i = 0 ;  i < attend_count ; i ++)
     };
 }
 
+// 로그인 유저의 과목
+user_subject = document.getElementById("user_subject").innerText;
+user_subject = user_subject.split(',');
+
 var userAttend = [];
 var rangedAttend = [];
 var attendList= [];

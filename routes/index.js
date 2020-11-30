@@ -109,14 +109,6 @@ router.get('/subject', async function(req, res, next) {
     ],
   });
 
-  let subject_student = await models.user.findAll({
-    where: {
-      user_subject: {
-        [Op.like]: "%" + "소공" + "%",
-      },
-    },
-  })
-
   models.subject.findOne({
     where: {name : "소공"}
   }).then( result => {
@@ -125,7 +117,6 @@ router.get('/subject', async function(req, res, next) {
       session: session,
       user_id: user_id,
       attends: attend,
-      subject_students: subject_student,
     });
   });
 
