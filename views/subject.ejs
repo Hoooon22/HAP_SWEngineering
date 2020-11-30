@@ -8,7 +8,7 @@
     <link rel = "stylesheet" href="../public/stylesheets/subject.css"/>
 </head>
 
-<body bgcolor="E2F1F4">
+<body>
     <div id="sidebar">
         <div class="sidebar_button">
             &lt;
@@ -43,19 +43,16 @@
                 <a href="../calendar">
                   <img src='../public/images/logo.png'/></a>
               </div>
-            
-            <div id = "pageTitle">
-                <div class = circle id = subjectColor></div>
-                <div id = subjectName><%=posts.name%></div>
-            </div>  
+            <div id = pageName><%=posts.name%></div>
         </div>
+        <hr>
 
         <div id = content>
             <div id = top>
-                <a class = 'btn topContent' id = attendance href = #>출석 &#9661;</a>
-                <a class = 'btn topContent' id = material href="material.html">기자재 &#8614;</a>
-                <a class = 'btn topContent' id = dataRoom href="dataRoom.html">학습자료실 &#8614;</a>    
-                <a class = 'btn topContent' id = question href="question.html">질문게시판 &#8614;</a>    
+                <a class = 'btn' id = attendance href = #>출석 &#9661;</a>
+                <a class = 'btn' id = material href="material.ejs">기자재 &#8614;</a>
+                <a class = 'btn' id = dataRoom href="dataRoom.ejs">학습자료실 &#8614;</a>    
+                <a class = 'btn' id = question href="question.ejs">질문게시판 &#8614;</a>    
             </div>
             
             <div id = 'attendanceToggle'>
@@ -111,7 +108,7 @@
         <p style="display: none;" id="s_id_value"><%=s_id_value%></p>
         <p style="display: none;" id="date_value"><%=date_value%></p>
         <p style="display: none;" id="status_value"><%=status_value%></p>
-        <!-- <p style="display: none;" id="subject_students"><%=subject_students%></p> -->
+        <!-- <p style="display: none;" id="subject_students"></p> -->
 
 <script src="../public/javascripts/subject.js"></script>
 </body>
