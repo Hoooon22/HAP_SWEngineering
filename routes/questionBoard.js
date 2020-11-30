@@ -20,10 +20,12 @@ router.get('/', async function(req, res, next) {
       subject : "소공"
     }
   })
+  let user = await models.user.findAll({  })
 
   res.render("questionBoard", {
     subject: subject,
     qboards: qboard,
+    users: user,
   })
 });
 

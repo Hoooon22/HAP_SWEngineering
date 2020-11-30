@@ -70,12 +70,16 @@
           </tr>
           <!-- 디비 만큼 생성-->
           <% var count = 1 %>
+          <% var user_name = null %>
           <% for (let qboard of qboards) { %>
           <tr>
             <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
             <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
-
-            <td id="t1" align="center"><%=qboard.u_id %> </td>
+            <% for (let user of users) {%>
+              <% if (user.user_id == qboard.u_id) {%>
+              <% user_name = user.user_name }%> 
+              <% } %>   
+            <td id="t1" align="center"><%=user_name %> </td>
             <td id="t1" align="center"><%=qboard.createdAt%></td>
             <% count++ %>
           </tr>
