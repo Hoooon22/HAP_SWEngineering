@@ -2,7 +2,25 @@ window.onload=function(e){
     loadMaterial();
     dynamicBinding();
 
-    if(userStatus == 1) {
+    var uploadFile = document.getElementById("uploadImg");
+    uploadFile.addEventListener("click",function(e) { // 사진 넣으면 사진 뜨기
+        var input = document.createElement("input");
+        input.setAttribute("type","file");
+        input.setAttribute("name","imgFile");
+        input.setAttribute("style","display:none;");
+        uploadFile.parentElement.appendChild(input);
+        uploadFile.remove();
+        input.click();
+        input.addEventListener("change",function(e){
+            var fileImg = document.createElement("img");
+            fileImg.setAttribute("src",input.value);
+            input.parentElement.appendChild(fileImg);
+        })
+    });
+
+
+
+    if(userStatus != 0) {
         document.getElementById("add").style.display="none";
     }
 }
@@ -187,7 +205,6 @@ function dynamicBinding(){
             var maxNum;
 
             document.getElementsByClassName("student_modal_name")[0].innerHTML = name;
-            
             for(var j=0;j<materialList.length;j++){
                 if(name == materialList[j].name) {
                     num = String(materialList[j].num);
@@ -195,6 +212,8 @@ function dynamicBinding(){
                     break;
                 }
             }
+            document.getElementsByClassName("student_modal_number")[0].placeholder = "최대 수량: " + maxNum + "개";
+
             
             document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
             
