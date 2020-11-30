@@ -86,7 +86,7 @@
     </div>
     <% var userStatus = 0 %> 
         <% if (session.job == 'student') {%>
-            <% userStatus = 1 }%>  
+            <% userStatus = session.user_id }%>  
         <p style="display: none;" id="userStatus"><%=userStatus%></p>
         <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
         <p style="display: none;" id="subjectColor_value"><%=posts.color%></p>
