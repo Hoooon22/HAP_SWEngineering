@@ -1,11 +1,3 @@
-// var userStatus = document.getElementById("userStatus").innerText; 
-
-// var hwList = [];
-
-// var prev = document.getElementById("prevBox");
-// var now = document.getElementById("nowBox");
-// var next = document.getElementById("nextBox");
-
 window.onload = function(e){
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 
@@ -14,13 +6,9 @@ var hwList = [];
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
-    // loadHomework();
-    // loadAttendance();
-    // loadSideBar();
 
     if(userStatus!=0)
         document.getElementsByClassName("register_button")[0].remove();
-// }
 
 var action="";
 
@@ -79,6 +67,14 @@ var attendList= [];
 var profAttend = [{
     date: String,
     status: String
+},
+{
+    date: String,
+    status: String
+},
+{
+    date: String,
+    status: String
 }];
 
 var statusList = [];// 교수용, 출결 정보 저장
@@ -124,6 +120,9 @@ if(userStatus == '0') {
         }
     }
 
+
+    console.log(profAttend);
+
     profAttend[0].date = weekList[weekList.length-2];
     profAttend[0].status = String(statusList[statusList.length-2].attend)+"|"+String(statusList[statusList.length-2].late)+"|"+String(statusList[statusList.length-2].absent);
     profAttend[1].date = weekList[weekList.length-1];
@@ -167,11 +166,11 @@ if(userStatus=='0'){
         document.getElementsByClassName("modal_register").style.display = "none";
     });
     }
-    loadModalPage();
+    // loadModalPage();
 
-    var save = document.querySelector(".save");
+//     var save = document.querySelector(".save");
 
-save.addEventListener("click",saveAttend);
+// save.addEventListener("click",saveAttend);
 }
 
 

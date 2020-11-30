@@ -22,13 +22,16 @@
             </div>
 
             <div class="modal_main">
-                <div class = "modal_block"><img src=""/></div>
-                <form action="">
+                <form action="" method = "post" enctype="multipart/form-data">
+                    <div class = "modal_block"><img id = uploadImg src="../public/images/basic.png"/></div>
+                    <br>
                     <input type="text" placeholder = '이름' class = "prof_modal_name">
+                    <br>
                     <input type="text" placeholder = '수량' class = "prof_modal_number">
-                    <button class = "button" id = register_button>등록</button>
+                    <br>
+                    <input type = "submit" class = "button" id = register_button value="등록">
                 </form>
-            </div>
+            </div>        
         </div>
 
         <div class = modal_content>
@@ -36,10 +39,13 @@
                 <button class = close>&#x274C;</button>
             </div>
             <div class="modal_main">
-                <div class = "modal_block"><img src=""/></div>
-                <form action="">
+                <form action="" enctype="multipart/form-data">
+                    <div class = "modal_block"><img src=""/></div>
+                    <br>
                     <div class="student_modal_name"></div>
+                    <br>
                     <input type="text" class = student_modal_number>
+                    <br>
                     <button class = "button" id = rent_button>대여</button>
                 </form>
             </div>
@@ -52,7 +58,7 @@
               <img src='../public/images/logo.png'/>
             </a>
         </div>
-        <div id = subjectName><%=posts.name%></div>
+        <div id = pageName><%=posts.name%></div>
     </div>
     
     <hr>
