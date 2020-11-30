@@ -79,9 +79,9 @@
                 <center>
                   <h3>>>질문 수정</h3>
                 <div class="border_cont">
-                  
-                  <input type="text" value=<%=qboard.title%> class="inq_field" />
-                  <textarea name="" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
+                  <input type="text" value=<%=qboard.title%> name="pre_title" style="display: none;"/>
+                  <input type="text" value=<%=qboard.title%> class="inq_field" name="title" />
+                  <textarea name="content" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
                 </div>
               </center>
                 <center>
