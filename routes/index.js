@@ -56,15 +56,8 @@ router.get('/', function(req, res, next) {
 router.get('/login', async function(req, res, next) {
   let session = req.session;
 
-  let user_session = await models.user.findOne({
-    where:{
-      user_id: session.user_id
-    }
-  })
-
   res.render("login", {
       session : session,
-      user_session: user_session,
   }); 
 });
 
