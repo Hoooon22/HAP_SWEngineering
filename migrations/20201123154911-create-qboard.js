@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       regdate: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       reply: {
         type: Sequelize.INTEGER

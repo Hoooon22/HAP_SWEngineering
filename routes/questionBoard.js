@@ -36,6 +36,7 @@ router.post("/", async function(req, res, next){
   let result = models.qboard.create({
     title: body.title,
     content: body.content,
+    regdate: body.date,
     reply: 0,
     subject: "소공",
     u_id: session.user_id,
