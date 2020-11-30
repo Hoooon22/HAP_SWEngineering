@@ -41,7 +41,15 @@
         <td id="t1_1" width="100" align="right">작성자</td> <!--텍스트 내용 오른쪽 정렬-->
         <td id="t1_1" colspan="2" width="200"><%=qboard.u_id%></td>
         <td id="t1_1" width="100" ></td> <!--텍스트 내용 오른쪽 정렬-->
-        <td id="t1_1" colspan="2" width="200" align="right"><%=qboard.createdAt%></td>
+        <%   var sYear = qboard.createdAt.getFullYear(); %>
+        <%   var sMonth = qboard.createdAt.getMonth() + 1; %>
+        <%   var sDate = qboard.createdAt.getDate(); %>
+        <%   var sHour = qboard.createdAt.getHours(); %>
+        <%   var sMinute =qboard.createdAt.getMinutes(); %>
+        <%   sMonth = sMonth > 9 ? sMonth : "0" + sMonth; %>
+        <%   sDate = sDate > 9 ? sDate : "0" + sDate; %>
+
+        <td id="t1_1" colspan="2" width="200" align="right"><%= sYear%>.<%=sMonth%>.<%=sDate%>. <%=sHour%>:<%=sMinute%></td>
       </tr>
       <tr>
         <td id="t1" colspan="6" width="800" height="5">내용</td> <!--폭 줄이기-->

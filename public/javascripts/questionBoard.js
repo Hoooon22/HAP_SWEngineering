@@ -9,18 +9,18 @@ var qboard_reply = document.getElementById("reply_value").innerText;
 qboard_reply = qboard_reply.split(',');
 // count 
 var qboard_count = document.getElementById("count_value").innerText;
-var rowCount=10;
-var pageCount=0;
+var rowCount = 10;
+var pageCount = 0;
+var printDate;
 
-for (let i in qboard_count)
-{
+for (let i in qboard_count) {
     qboard[i] = {
         title: qboard_title[i],
         content: qboard_content[i],
         u_id: qboard_u_id[i],
         reply: qboard_reply[i],
     }
-    if(rowCount%15) pageCount++;
+    if (rowCount % 15) pageCount++;
 }
 
 rowCount; //게시판의 총 개수
