@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="stack" id = modal>
+    <div id = modal>
         <div class = modal_attend>
             <div id="modal_attend_header">
                 <button class = close id = attend_close>&#x274C;</button>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class = stack id="mainPage" style = "overflow: scroll">
+    
         <div id = "header">
             <div id = "logo">
                 <a href="../calendar">
@@ -51,9 +51,9 @@
         <div id = content>
             <div id = top>
                 <div class="nav_bar">
-                    <a class = 'btn' id = material href="material.ejs">기자재 &#8614;</a>
-                    <a class = 'btn' id = dataRoom href="dataRoom.ejs">학습자료실 &#8614;</a>    
-                    <a class = 'btn' id = question href="question.ejs">질문게시판 &#8614;</a>    
+                    <a class = 'btn' id = material href="../material">기자재 &#8614;</a>
+                    <a class = 'btn' id = dataRoom href="../dataRoom">학습자료실 &#8614;</a>    
+                    <a class = 'btn' id = question href="../questionBoard">질문게시판 &#8614;</a>    
                 </div>
 
                 <a class = 'btn' id = attendance href = #>출석 &#9661;</a>
@@ -90,7 +90,7 @@
             
             </div>
         </div>
-    </div>
+    
     <% var userStatus = 0 %> 
         <% if (session.job == 'student') {%>
             <% userStatus = session.user_id }%>  
