@@ -14,7 +14,6 @@ router.get('/', async function(req, res, next) {
   let user_session = await models.user.findOne({
     where:{
       user_id: session.user_id,
-      user_session: user_session,
     }
   })
 
@@ -25,6 +24,7 @@ router.get('/', async function(req, res, next) {
       session: session,
       user_id: user_id,
       subjects: subject,
+      user_session: user_session,
     });
   });
 });
