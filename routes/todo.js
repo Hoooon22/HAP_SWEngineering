@@ -12,16 +12,16 @@ router.post('/getTodoListFromDate', async function (req, res, next) {
   let date = req.body;
   let {year,month} = date;
 
-  // await models.todolist.update(
-  //   {    
-  //     date_year: year,
-  //     date_month: month,
-  //   },
-  //   {where:{
-  //     date: {
-  //       [Op.like]: "%" + year + "%",
-  //     },
-  // }})
+  await models.todolist.update(
+    {    
+      date_year: year,
+      date_month: month,
+    },
+    {where:{
+      date: {
+        [Op.like]: "%" + year + "-" + month + "%",
+      },
+  }})
 
   let result = await models.todolist.findAll({  });
 
