@@ -10,30 +10,32 @@ var models = require('../models');
 /* GET home page. */
 router.post('/getTodoListFromDate', async function (req, res, next) {
   let date = req.body;
-  let {year,month} = date;
+  let { year, month } = date;
 
-
-  console.log(12122121212121);
-  console.log("%" + year + "-" + month + "%");
- 
-  console.log(12122121212121);
-
-  await models.todolist.update(
-    {    
-      date_year: year,
-      date_month: month,
-    },
-    {where:{
+  // await models.todolist.update(
+  //   {    
+  //     date_year: year,
+  //     date_month: month,
+  //   },
+  //   {where:{
+  //     date: {
+  //       [Op.like]: "%" + year + "-" + month + "%",
+  //     },
+  // }})
+  let nextMonth = month >=12 ? {year:Number(year)+1,month:'01'} : {year : year,month : (Number(month)+1)>=10 ? (Number(month)+1):'0'+(Number(month)+1)}
+  console.log(nextMonth);
+  let result = await models.todolist.findAll({
+    where: {
       date: {
-        [Op.like]: "%" + year + "-" + month + "%",
-      },
-  }})
-
-  let result = await models.todolist.findAll({  });
+        [Op.gte]: new Date(year + "-" + month + '-01'),
+        [Op.lt]: new Date(nextMonth.year + "-" + nextMonth.month + "-01")
+      }
+    }
+  })
+  console.log(result);
 
   var aJsonArray = new Array();
-  for (let i in result)
-  {
+  for (let i in result) {
     aJsonArray.push(result[i].dataValues)
   }
   console.log(aJsonArray)
@@ -43,9 +45,9 @@ router.post('/getTodoListFromDate', async function (req, res, next) {
 });
 
 router.post('/addTodoList', function (req, res, next) {
-    //AddTodoList data 가 넘어옴
+  //AddTodoList data 가 넘어옴
 
-    console.log(req.body);
+  console.log(req.body);
 });
 
 

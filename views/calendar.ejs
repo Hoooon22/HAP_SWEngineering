@@ -36,13 +36,6 @@
     <hr class="line">
 
     <div class="container-wrap">
-        <div id="sidebar">
-            <div class="sidebar_button">
-                &lt;
-            </div>
-            <div class="sidebar_page">
-            </div>
-        </div>
         <div class="container">
             <div class="calendar">
                 <div class="header">
@@ -98,27 +91,24 @@
     </div>
     <!--End Modal-->
     
-    <!-- The Modal -->
-    <div id="addTodoPop" class="modal">
+    <div id="editTodoPop" class="modal">
 
         <!-- Modal content -->
-        <form action='/calendar/modify' method="POST">
+        <form action='/calendar' method="POST">
             <div class="modal-content">
                 <input class="title" type="text" placeholder="Title" name="title">
                 <input class="due-date" type="date" name="date">
                 <select class="category" name="category"></select>
                 <textarea name="content" class="content" placeholder="Content" cols="30" rows="10"></textarea>
                 <div class="btn-wrap">
-                    <button type="button" class="cancel" onclick="closeAddTodoPop()">취소</button>
-                    <button type="submit" class="submit light-blue" onclick="handleAddTodoList(); alert('일정이 등록되었습니다.');" style="cursor:pointer">저장</button>
+                    <button type="button" class="cancel" onclick="deleteTodo()">삭제</button>
+                    <button type="submit" class="submit light-blue" onclick="handleAddTodoList(); alert('일정이 등록되었습니다.');" style="cursor:pointer">수정</button>
                 </div>
             </div>
         </form>
 
     </div>
-    <!--End Modal-->
-    
-    <p style="display: none;" id="user_subject"><%=user_session.user_subject%></p>
+
     
     <script src="../public/javascripts/util.js"></script>
     <script src="../public/javascripts/user.js"></script>
