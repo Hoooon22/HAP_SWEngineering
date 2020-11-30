@@ -51,6 +51,54 @@ router.get('/', function(req, res, next) {
   //   content: "과제2 소공",   
   // })
 
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112081",
+    date: "1주차 1강",
+    num: "2020-09-01",
+    status: "출석",   
+  })
+
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112028",
+    date: "1주차 1강",
+    num: "2020-09-01",
+    status: "출석",   
+  })
+
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112081",
+    date: "1주차 2강",
+    num: "2020-09-03",
+    status: "출석",   
+  })
+
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112028",
+    date: "1주차 2강",
+    num: "2020-09-03",
+    status: "지각",   
+  })
+
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112081",
+    date: "2주차 1강",
+    num: "2020-09-08",
+    status: "결석",   
+  })
+
+  models.studentattend.create({
+    subject: "소공",
+    s_id: "2018112028",
+    date: "2주차 1강",
+    num: "2020-09-08",
+    status: "결석",   
+  })
+
 });
 
 // 로그인 GET
@@ -104,14 +152,19 @@ router.get('/subject', async function(req, res, next) {
   let attend = await models.studentattend.findAll({
     where: {
         subject : "소공"
-    }
+    },
+    order: [
+      ['date', 'ASC'],
+    ],
   });
 
-  // let subject_student = await models.user.findAll({
-  //   where: {
-  //     [Op.like]: "%" + "소공" + "%"
-  //   }
-  // })
+  let subject_student = await models.user.findAll({
+    where: {
+      user_subject: {
+        [Op.like]: "%" + "소공" + "%",
+      },
+    },
+  })
 
   models.subject.findOne({
     where: {name : "소공"}
@@ -121,6 +174,7 @@ router.get('/subject', async function(req, res, next) {
       session: session,
       user_id: user_id,
       attends: attend,
+      subject_students: subject_student,
     });
   });
 
