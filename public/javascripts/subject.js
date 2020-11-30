@@ -6,7 +6,7 @@ window.onload = function(e){
     if(userStatus==1)
         document.getElementById("prof_new").remove();
 }
-var userStatus = 0; // 교수인지(0), 학생인지(s_Id)
+var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 
 var action="";
 
