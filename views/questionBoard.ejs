@@ -46,8 +46,9 @@
             <td id="t1_2" width="80" style="font-weight: 550">&nbsp;&nbsp;&nbsp;<%=subject.name%> 채팅방</td>
             <!--db 값 받아오기-->
 
-            <th id="t1_2" width="20" style="font-weight: 550"> <a href="#" onclick="window.open('/chat','window','width=400,height=700')">채팅방 입장</a><br /></th>
-        
+            <th id="t1_2" width="20" style="font-weight: 550"> <a href="#"
+                onclick="window.open('/chat','window','width=400,height=700')">채팅방 입장</a><br /></th>
+
             <!--페이지 연결-->
           </tr><!-- 첫번째 줄 끝 -->
         </table>
@@ -76,11 +77,20 @@
             <td id="t1" align="center"><%=(qboard.qboard_count)-count+1%></td>
             <td id="t1"><a href="/questionBoard/read/<%=subject.name%>/<%=qboard.title%>"><%=qboard.title%></a></td>
             <% for (let user of users) {%>
-              <% if (user.user_id == qboard.u_id) {%>
-              <% user_name = user.user_name }%> 
-              <% } %>   
+            <% if (user.user_id == qboard.u_id) {%>
+            <% user_name = user.user_name }%>
+            <% } %>
             <td id="t1" align="center"><%=user_name %> </td>
-            <td id="t1" align="center"><%=qboard.date%></td>
+
+    
+    
+              <%   var sYear = qboard.createdAt.getFullYear(); %>
+              <%   var sMonth = qboard.createdAt.getMonth() + 1; %>
+              <%   var sDate = qboard.createdAt.getDate(); %>
+              <%   sMonth = sMonth > 9 ? sMonth : "0" + sMonth; %>
+              <%   sDate = sDate > 9 ? sDate : "0" + sDate; %>
+          
+            <td id="t1" align="center" style="white-space: nowrap; overflow: hidden;"><%= sYear%>.<%=sMonth%>.<%=sDate%></td>
             <% count++ %>
           </tr>
           <% } %>
@@ -112,17 +122,16 @@
                   <textarea name="content" id="" cols=5 rows="7" placeholder="내용을 입력해주세요."></textarea>
                 </div>
 
-                
-                  <center>
-                    <div class="btn_area">
-                      <input type="button" id="close_button" value="취소">
-                      <input type="submit" id="btn_submit" onclick="btn_submit_click()" value="등록">
-                      <br>
-                      <input name="date" type="text" style="display :none;" id="date_value">
-            
-                    </div>
-                  </center>
-                </form>
+
+                <center>
+                  <div class="btn_area">
+                    <input type="button" id="close_button" value="취소">
+                    <input type="submit" id="btn_submit"  value="등록">
+                    <br>
+           
+                  </div>
+                </center>
+              </form>
             </div>
           </div>
         </div>
