@@ -69,5 +69,19 @@ router.get('/read/:subject/:title', async function(req, res, next) {
   })
 });
 
+// 질문 삭제
+router.post("/read/questionDelete", async function(req, res, next){
+  let session = req.session;
+  let body = req.body;
+
+  await models.qboard.destroy({
+    where:{
+      title: body.title,
+      u_id: session.user_id, 
+    }})
+
+    res.redirect("/questionBoard")
+})
+
 
 module.exports = router;
