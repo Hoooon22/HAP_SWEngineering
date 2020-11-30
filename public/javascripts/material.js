@@ -2,7 +2,21 @@ window.onload=function(e){
     loadMaterial();
     dynamicBinding();
 
-    if(userStatus == 1) {
+    var uploadFile = document.getElementById("uploadImg");
+    uploadFile.addEventListener("click",function(e) { // 사진 넣으면 사진 뜨기
+        var input = document.createElement("input");
+        input.setAttribute("type","file");
+        input.setAttribute("name","imgFile");
+        input.setAttribute("style","display: none;");
+        uploadFile.parentElement.appendChild(input);
+        input.click();
+        input.addEventListener("change",function(e){
+            input.parentElement.style.background="yellow";
+        })
+    });
+
+
+    if(userStatus != 0) {
         document.getElementById("add").style.display="none";
     }
 }
@@ -57,12 +71,12 @@ materialList[7]=m4;
 
 var userStatus = 0; // 교수인지(0), 학생인지(1)
 
-var subjectName=document.getElementById("subjectName"); // 과목명
-subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
+// var subjectName=document.getElementById("subjectName"); // 과목명
+// subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
 
 
-var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
+// var subjectColor=document.getElementById("subjectColor"); // 과목 색상
+// subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
 var add = document.getElementById("add");
 add.addEventListener("click",function(e){
@@ -94,7 +108,7 @@ function loadMaterial(){
         newBlock = document.createElement("button");
         newBlock.setAttribute("class","block");
         newImg = document.createElement("img");
-        newImg.setAttribute("src","../source/logo.png");
+        newImg.setAttribute("src","");
         newImg.setAttribute("class","image");
         newBlock.appendChild(newImg);
         newBox.appendChild(newBlock);
@@ -187,7 +201,6 @@ function dynamicBinding(){
             var maxNum;
 
             document.getElementsByClassName("student_modal_name")[0].innerHTML = name;
-            
             for(var j=0;j<materialList.length;j++){
                 if(name == materialList[j].name) {
                     num = String(materialList[j].num);
@@ -195,6 +208,8 @@ function dynamicBinding(){
                     break;
                 }
             }
+            document.getElementsByClassName("student_modal_number")[0].placeholder = "최대 수량: " + maxNum + "개";
+
             
             document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
             

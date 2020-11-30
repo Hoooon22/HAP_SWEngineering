@@ -8,7 +8,6 @@
 
 /* calendar */
 .calendar {
-    padding: 20px;
     flex: .8;
 }
 
@@ -75,7 +74,10 @@
 }
 
 .calendar .contents .date-wrap .box-row .box .todo-list {
-    height: 125px;
+    display: flex;
+    flex-direction: column;
+    height: 110px;
+    padding: 1px;
     overflow-y: scroll;
 }
 
@@ -117,22 +119,24 @@
 
 .schedule .contents {
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
-.todo {
+#todo-btn .todo {
     display: flex;
     margin: 15px auto;
     box-shadow: 0 0 5px 0 #dedede;
     border-radius: 10px;
 }
 
-.todo .label {
+#todo-btn .todo .label {
     background-color: #ff0000;
     border-radius: 10px 0 0 10px;
     flex: .05;
 }
 
-.todo .title {
+#todo-btn .todo .title {
     padding: 10px 20px;
     flex: .95;
     color: #000000;

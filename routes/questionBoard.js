@@ -99,14 +99,20 @@ router.post("/read/questionModify", async function(req, res, next){
   let session = req.session;
   let body = req.body;
 
-  await models.qboard.update({
-    where:{
+  models.sequelize.query(query, { replacements: values })
+
+  await models.qboard.update(
+    {    
       title: body.title,
+      content: body.content
+    },
+    {where:{
+      title: body.pre_title,
       u_id: session.user_id,
     }})
 
-    res.redirect("/questionBoard")
-})
+    res.redirect("/questionBoard")  
+  })
 
 // 답글 추가
 router.post("/read/createReply", async function(req, res, next){
