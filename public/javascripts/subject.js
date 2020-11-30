@@ -1,9 +1,13 @@
+var userStatus = document.getElementById("userStatus").innerText; 
+
+var hwList = [];
+
 window.onload = function(e){
     loadHomework();
     loadAttendance();
     loadSideBar();
 
-    if(userStatus==1)
+    if(userStatus!=0)
         document.getElementById("prof_new").remove();
 }
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
@@ -18,8 +22,14 @@ pageName.innerText = "과목명"; // 과목명 동적으로 넣어주기
 
 var created = false;
 
-subjectList = [];
+var subjectList = [];
 var studentAttend = [];
+
+var date = new Date();
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var day = date.getDate();
+
 attend_count = document.getElementById("attend_count").innerText;
 subject_value = document.getElementById("subject_value").innerText;
 subject_value = subject_value.split(',');
@@ -34,23 +44,99 @@ for (let i in attend_count)
 {
     studentAttend[i] = {
         date: date_value[i],
-        status: status_value[i]
+        status: status_value[i],
+        s_id: s_id_value[i] // 내가 추가
     }
 }
 
-var profAttend = [];
+
+var userAttend = [];
+var rangedAttend = [];
+var attendList= [];
+
+var profAttend = [{
+    date: String,
+    status: String
+}];
+
+var statusList = [];// 교수용, 출결 정보 저장
+var weekList = [];
+
+
+
+if(userStatus == '0') {
+    for(var i = 0 ; i < attend_count ; i++) { // 범위 안의 전체 학생 출석 값 추출
+        if(checkDate(studentAttend[i].num))
+            rangedAttend.push(studentAttend[i]);
+    }
+
+    for( var i = 0 ; i < rangedAttend.length ; i++){ // 범위 안의 주차 추가
+        for(var j = 0 ; j < weekList.length ; j++){
+            if(!weekList.includes(rangedAttend[i].date))
+                weekList.push(rangedAttend[i].date);
+        }
+    }
+
+    for( var i = 0 ; i < weekList.length ; i++) { // statusList 초기화
+        statusList[i]= {
+            attend : 0,
+            late : 0,
+            absent: 0
+        };
+    }
+
+
+
+    for(var i = 0 ; i < weekList.length ; i++) { // statusList 값 입력
+        for(var j = 0 ; j < rangedAttend.length ; j++) {
+            if(rangedAttend[j].date != weekList[i])
+                break;
+            else {
+                if (rangedAttend[j].status == '출석')
+                    statusList[i].attend++;
+                else if(rangedAttend[j].status == '지각')
+                    statusList[i].late++;
+                else
+                    statusList[i].absent++;
+            }
+        }
+    }
+
+    profAttend[0].date = weekList[weekList.length-2];
+    profAttend[0].status = String(statusList[statusList.length-2].attend)+"|"+String(statusList[statusList.length-2].late)+"|"+String(statusList[statusList.length-2].absent);
+    profAttend[1].date = weekList[weekList.length-1];
+    profAttend[1].status = String(statusList[statusList.length-1].attend)+"|"+String(statusList[statusList.length-1].late)+"|"+String(statusList[statusList.length-1].absent);
+    // next 선정
+}
+
+else {
+    for (var i = 0; i < attend_count ; i++) { // 전체 학생 출석 값에서 본인의 출석만 추출
+        if(studentAttend[i].s_id==userStatus)
+            userAttend.push(studentAttend[i]);
+    }
+
+    for (var i = 0 ; i < userAttend.length ; i++) { // 전체 출석 값에서 당일 기준 출석만 추출
+        if(checkDate(studentAttend[i].num)) 
+            rangedAttend.push(userAttend[i]);
+    }
+
+    attendList[0] = userAttend[userAttend.length-2]; // 범위 안의 출석 값 중 prev 선정
+    attendList[1] = userAttend[userAttend.length-1]; // 범위 안의 출석 값 중 now  선정
+    // next 값 선정 ? : 데이터 넘어올 때 어떻게 정렬된 채로 넘어오는지
+}
+
 var studentList = [];
 
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
 
-boxList=[];
+var boxList=[];
 boxList[0]=prev;
 boxList[1]=now;
 boxList[2]=next;
 
-if(userStatus==0){
+if(userStatus=='0'){
     for(var i=0;i<3;i++){
     boxList[i].addEventListener("click",function(e){
         document.getElementById("modal").style.display="flex";
@@ -66,7 +152,6 @@ if(userStatus==0){
 save.addEventListener("click",saveAttend);
 }
 
-var hwList = [];
 
 var sidebar = document.getElementsByClassName("sidebar_button")[0];
 var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
@@ -93,7 +178,7 @@ for(var i=0;close.length>i;i++){
 var attendance = document.getElementById("attendance");
 var toggled = true
 attendance.addEventListener("click",toggle);
-if(userStatus==0){
+if(userStatus=='0'){
 var register_button = document.getElementById("prof_new");
 register_button.addEventListener("click",function(e){
     document.getElementsByClassName("modal_homework")[0].style.display = "none";
@@ -124,35 +209,35 @@ function checkStatus(s){
 }
 
 function loadAttendance(){    
-        if(userStatus == 1) {
+        if(userStatus != '0') {
             var prevW = document.getElementById("prevWeek");
             var prevC = document.createElement("div");
-            prevW.innerHTML = studentAttend[0].date;
+            prevW.innerHTML = attendList[0].date;
             prevC.setAttribute("class","circle");
             prevC.setAttribute("id","studentAttendance");
-            prevC.style.backgroundColor=checkStatus(studentAttend[0].status);
+            prevC.style.backgroundColor=checkStatus(attendList[0].status);
             prev.appendChild(prevC);
-            prev.append(studentAttend[0].status);
+            prev.append(attendList[0].status);
             
             var nowW = document.getElementById("nowWeek");
             var nowC = document.createElement("div");
-            nowW.innerHTML = studentAttend[1].date;
+            nowW.innerHTML = attendList[1].date;
             nowC.setAttribute("class","circle");
             nowC.setAttribute("id","studentAttendance");
             nowC.style.width="80px";
             nowC.style.height="80px";
-            nowC.style.backgroundColor=checkStatus(studentAttend[1].status);
+            nowC.style.backgroundColor=checkStatus(attendList[1].status);
             now.appendChild(nowC);
-            now.append(studentAttend[1].status);
+            now.append(attendList[1].status);
 
             var nextW = document.getElementById("nextWeek");
             var nextC = document.createElement("div");
-            nextW.innerHTML = studentAttend[2].date;
+            nextW.innerHTML = attendList[2].date;
             nextC.setAttribute("class","circle");
             nextC.setAttribute("id","studentAttendance");
-            nextC.style.backgroundColor=checkStatus(studentAttend[2].status);
+            nextC.style.backgroundColor=checkStatus(attendList[2].status);
             next.appendChild(nextC);
-            next.append(studentAttend[2].status);
+            next.append(attendList[2].status);
         }
     
         else {
@@ -223,6 +308,7 @@ function loadAttendance(){
 
 function loadHomework(){
     var n = hwList.length;
+    var n = 1;
     var botContent = document.getElementById("botContent");
     
     if(n > 0){
@@ -243,15 +329,11 @@ function loadHomework(){
 
         newTop = document.createElement("div");
         newTop.setAttribute("class","top");
-        var nbsp = "";
-        var strlen = hwList[i].title.length;
-        for(var cnt = 0 ; cnt < 126 - strlen ; cnt++){
-            nbsp += "&nbsp;";
-        }
-        newTop.innerHTML=imoji[0]+" "+hwList[i].title+nbsp;
+
+        newTop.innerHTML=imoji[0]+" "+hwList[i].title;
         newHwList.appendChild(newTop);
         
-        if(userStatus==1) {
+        if(userStatus!='0') {
             newButton = document.createElement("button");
             newButton.setAttribute("class","submit");
             if(!hwList[i].submitted)
@@ -269,14 +351,7 @@ function loadHomework(){
         newMid = document.createElement("div");
         newMid.setAttribute("class","mid");
         
-        nbsp="";
-        strlen = hwList[i].fileName.length;
-        
-        for(var cnt = 0 ; cnt < 55 - strlen ; cnt++){
-            nbsp += "&nbsp;";
-        }
-        
-        newMid.innerHTML=imoji[1]+" "+ hwList[i].fileName+nbsp+imoji[2]+" "+hwList[i].deadline;
+        newMid.innerHTML=imoji[1]+" "+ hwList[i].fileName+imoji[2]+" "+hwList[i].deadline;
         newHwList.appendChild(newMid);
 
         newBot = document.createElement("div");
@@ -457,4 +532,16 @@ function submitHomework(){
 
 function registerHomework(){
 
+}
+
+function checkDate(dateData){
+    var tYear = dateData.getFullYear();
+    var tMonth = dateData.getMonth()+1;
+    var tDay = dateData.getDate();
+
+    if(tYear <= year && tMonth <= month && tDay <= day)
+        return true;
+    
+    else
+        return false;
 }
