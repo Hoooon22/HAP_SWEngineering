@@ -1,3 +1,42 @@
+window.onload=function(e){
+    user_subject = document.getElementById("user_subject").innerText;
+    user_subject = user_subject.split(',');
+    subjectList = user_subject;
+    
+    
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+    sidebar.addEventListener('mouseover',function(e){
+        sidebar_page.style.display="block"; // 수정
+        sidebar.style.display = "none";
+    });
+    
+    sidebar_page.addEventListener('mouseleave',function(e){
+        sidebar_page.style.display="none";
+        sidebar.style.display="flex";
+    })
+    loadSideBar(subjectList);
+}
+
+function loadSideBar(subjectList){
+    var newSubject;
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+
+    for(var i=0;subjectList.length>i;i++){
+        newSubject = document.createElement("button");
+        newSubject.setAttribute("class","sidebar_subject");
+        newSubject.innerHTML=subjectList[i];
+        var url = subjectList[i];
+
+        newSubject.addEventListener('click',function(e){
+            // 링크로 이동하기
+        });
+
+        sidebar_page.appendChild(newSubject);
+    }   
+}
+
 var userInfo;
 var date = {
     year: new Date().getFullYear(),

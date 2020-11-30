@@ -12,6 +12,14 @@
 
 
     <% if(session.user_id){ %>
+        <div id="sidebar">
+            <div class="sidebar_button">
+                &lt;
+            </div>
+            <div class="sidebar_page">
+            </div>
+        </div>
+
         <div class="slideshow-container">
 
             <!-- Full-width images with number and caption text -->
@@ -230,7 +238,7 @@
     </div>
 
 
-
+    <p style="display: none;" id="user_subject"><%=user_session.user_subject%></p>
     <% } %>
 
 </body>

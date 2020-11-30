@@ -3,6 +3,47 @@
     sans-serif;
 }
 
+#sidebar {
+  z-index: 2;
+}
+
+.sidebar_button {
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  font-size: 300%;
+  right: 0px;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 75px;
+  height: 150px;
+}
+
+.sidebar_page {
+  overflow-y: auto;
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+}
+
+.sidebar_subject {
+  all: unset;
+  width: 100%;
+  height: 100px;
+  color: white;
+  opacity: 90%;
+  font-size:200%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
 .banner img {
   width: 100%;
   height: auto;
