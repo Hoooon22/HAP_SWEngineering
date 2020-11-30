@@ -1,4 +1,5 @@
 var userInfo;
+var todoList;
 var date = {
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1,
@@ -34,10 +35,7 @@ setCalendarDate = (monthDay) => {
 setTodoListOnSchedule = (todoList) => {
     var html = '';
     for (let i = 0; i < todoList.length; i++) {
-        console.log(todoList[i]);
-
-        console.log(todoList[i].category_color);
-        html += `<button id="todo-btn" onclick="floatAddTodoPop();" style="cursor:pointer">`;
+        html += `<button id="todo-btn" onclick='floatEditTodoPop(${i});' style="cursor:pointer">`;
         html += `<div class="todo">`;
         html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
         html += `<div class="title">${todoList[i].title}</div>`;
@@ -60,6 +58,7 @@ setTodoListOnCalendar = async (todoList) => {
         html += `<div class="title">${todoList[i].title}</div>`;
         html += `</div>`;
         html += `</button>`;
+        console.log(html);
         await $(`.${day} + .todo-list`).html(html);
     }
 }
@@ -80,25 +79,55 @@ getCategoryList = () => {
 };
 
 ////////////////////////////////////////////////////////////////
-floatTodoPop = async (todoList) => {
+floatTodoPop = async () => {
+    let ymd = getFormatDate(new Date(todoList.date_year, todoList.date_month, todoList.date_day));
+console.log(123);
+    $('#modifyTodoPop .modal-content .due-date')[0].value = ymd
+    var html = '';
+    html += `<div id="modifyTodoPop" class="modal">`
+    html += `<form action='/calendar' method="POST">`
+    html += `<div class="modal-content">`
+    html += `<input class="title" type="text" name="title">${todoList.title}`
+    html += `<input class="due-date" type="date" name="date">`
+    html += `<select class="category" name="category">${todoList.category}</select>`
+    html += `<textarea name="content" class="content" cols="30" rows="10">${todoList.content}</textarea>`
+    html += `<div class="btn-wrap">`
+    html += `<button type="button" class="cancel" onclick="deleteTodo()">삭제</button>`
+    html += `<button type="submit" class="submit light-blue" onclick="handleAddTodoList(); alert('일정이 등록되었습니다.');" style="cursor:pointer">저장</button>`
+    html += `</div>`
+    html += `</div>`
+    html += `</form>`
+    html += `</div>`
+    console.log(125432663);
+    await html(html).show();
 
-
-
-    await $('#addTodoPop').show();
 };
 /////////////////////////////////////////////////////////////////////
 
 floatAddTodoPop = async (day) => {
     let ymd = getFormatDate(new Date(date.year, date.month, day));
-
     $('#addTodoPop .modal-content .due-date')[0].value = ymd
     await $('#addTodoPop').show();
+};
+
+floatEditTodoPop = async (todo_idx) => {
+    let todoInfo = this.todoList[todo_idx];
+    let ymd = getFormatDate(new Date(todoInfo.date));
+    console.log(ymd);
+    $('#editTodoPop .modal-content .due-date')[0].value = ymd
+    $('#editTodoPop .modal-content .title')[0].value = todoInfo.title
+    $('#editTodoPop .modal-content .category')[0].value = todoInfo.category_name
+    $('#editTodoPop .modal-content .content')[0].value = todoInfo.content
+    await $('#editTodoPop').show();
 };
 
 closeAddTodoPop = () => {
     $('#addTodoPop').hide();
 }
 
+deleteTodo = () => {
+    $('#modifyTodoPop').hide();
+}
 
 handleAddTodoList = async () => {
     const title = $('#addTodoPop .modal-content .title')[0].value;
@@ -132,37 +161,54 @@ addTodoList = (data)=>{
     })
 }
 
-var today = new Date();
-function prevCalendar(date){
-
-    today = new Date(today.getFullYear(), today.getMonth() -1, today.getDate());
-    date = {
-        year: today.getFullYear(),
-        month: today.getMonth()+1
+async function prevCalendar(date){
+    console.log(date);
+    if(date.month ===1){
+        date = {
+            year: date.year-1,
+            month: 12
+        }
+    }else{
+        date = {
+            year: date.year,
+            month: date.month-1
+        }
     }
-    setCalendarHeader(date);
-    getMonthDays(date).done((_monthDays) => {
+    this.date = date;
+
+    await setCalendarHeader(date);
+    await getMonthDays(date).done((_monthDays) => {
         setCalendarDate(_monthDays);
     })
-    getTodoListFromDate(date).done((_todoList) => {
+    await getTodoListFromDate(date).done((_todoList) => {
+        this.todoList = _todoList;
         setTodoListOnSchedule(_todoList);
         setTodoListOnCalendar(_todoList);
     })
 }
 
 
-function nextCalendar(date){ 
-   
-    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-    date = {
-        year: today.getFullYear(),
-        month: today.getMonth() +1
+async function nextCalendar(date){ 
+    console.log(date);
+    if(date.month === 12){
+        date = {
+            year: date.year+1,
+            month: 1
+        }
+    }else{
+        date = {
+            year: date.year,
+            month: date.month +1
+        }
     }
-    setCalendarHeader(date);
-    getMonthDays(date).done((_monthDays) => {
+    this.date = date;
+   
+    await setCalendarHeader(date);
+    await getMonthDays(date).done((_monthDays) => {
         setCalendarDate(_monthDays);
     })
-    getTodoListFromDate(date).done((_todoList) => {
+    await getTodoListFromDate(date).done((_todoList) => {
+        this.todoList = _todoList;
         setTodoListOnSchedule(_todoList);
         setTodoListOnCalendar(_todoList);
     })
@@ -180,6 +226,7 @@ function nextCalendar(date){
     })
 
     await getTodoListFromDate(date).done((_todoList) => {
+        this.todoList = _todoList;
         setTodoListOnSchedule(_todoList);
         setTodoListOnCalendar(_todoList);
     })

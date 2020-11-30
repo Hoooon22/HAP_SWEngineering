@@ -125,7 +125,7 @@
 
 #todo-btn .todo {
     display: flex;
-    margin: 15px auto;
+    margin: 6px auto;
     box-shadow: 0 0 5px 0 #dedede;
     border-radius: 10px;
 }
@@ -142,14 +142,14 @@
     color: #000000;
 }
 
-#addTodoPop .modal-content {
+#addTodoPop .modal-content, #editTodoPop .modal-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
 }
 
-#addTodoPop .modal-content .title{
+#addTodoPop .modal-content .title, #editTodoPop .modal-content .title{
     width: 100%;
     height: 50px;
     margin: 15px auto;
@@ -159,7 +159,7 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
-#addTodoPop .modal-content .due-date{
+#addTodoPop .modal-content .due-date, #editTodoPop .modal-content .due-date{
     width: 100%;
     height: 50px;
     margin: 10px auto;
@@ -169,7 +169,7 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
-#addTodoPop .modal-content .category{
+#addTodoPop .modal-content .category, #editTodoPop .modal-content .category{
     width: 100%;
     height: 50px;
     margin: 10px auto;
@@ -180,7 +180,7 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
-#addTodoPop .modal-content .content{
+#addTodoPop .modal-content .content, #editTodoPop .modal-content .content{
     height: 200px;
     margin: 10px auto;
     padding: 0 20px;
@@ -190,18 +190,18 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
-#addTodoPop .modal-content .btn-wrap{
+#addTodoPop .modal-content .btn-wrap, #editTodoPop .modal-content .btn-wrap{
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-#addTodoPop .modal-content .btn-wrap button{
+#addTodoPop .modal-content .btn-wrap button, #editTodoPop .modal-content .btn-wrap button{
     margin: 10px 10px;
     padding: 5px 20px;
     border: 1px solid #deebf7;
     border-radius: 5px;
 }
-#addTodoPop .modal-content .btn-wrap .submit{
+#addTodoPop .modal-content .btn-wrap .submit, #editTodoPop .modal-content .btn-wrap .submit{
     background-color: #deebf7;
 }
