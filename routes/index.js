@@ -50,55 +50,6 @@ router.get('/', function(req, res, next) {
   //   category_color: "#27245c",
   //   content: "과제2 소공",   
   // })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112081",
-    date: "1주차 1강",
-    num: "2020-09-01",
-    status: "출석",   
-  })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112028",
-    date: "1주차 1강",
-    num: "2020-09-01",
-    status: "출석",   
-  })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112081",
-    date: "1주차 2강",
-    num: "2020-09-03",
-    status: "출석",   
-  })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112028",
-    date: "1주차 2강",
-    num: "2020-09-03",
-    status: "지각",   
-  })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112081",
-    date: "2주차 1강",
-    num: "2020-09-08",
-    status: "결석",   
-  })
-
-  models.studentattend.create({
-    subject: "소공",
-    s_id: "2018112028",
-    date: "2주차 1강",
-    num: "2020-09-08",
-    status: "결석",   
-  })
-
 });
 
 // 로그인 GET
