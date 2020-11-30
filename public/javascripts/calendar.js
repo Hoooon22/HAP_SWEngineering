@@ -34,10 +34,15 @@ setCalendarDate = (monthDay) => {
 setTodoListOnSchedule = (todoList) => {
     var html = '';
     for (let i = 0; i < todoList.length; i++) {
-        html += `<div class="todo">`
-        html += `<div class="label" style="background:${todoList[i].category_color}"></div>`
-        html += `<div class="title">${todoList[i].title}</div>`
-        html += `</div>`
+        console.log(todoList[i]);
+
+        console.log(todoList[i].category_color);
+        html += `<button id="todo-btn" onclick="floatAddTodoPop();" style="cursor:pointer">`;
+        html += `<div class="todo">`;
+        html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
+        html += `<div class="title">${todoList[i].title}</div>`;
+        html += `</div>`;
+        html += `</button>`;
     }
     $('.schedule .contents').html(html);
 }
@@ -49,11 +54,12 @@ setTodoListOnCalendar = async (todoList) => {
         if (!html) {
             html = ''
         }
-        
+        html += `<button id="todo-btn" onclick="alert('일정이 등록되었습니다.');" style="cursor:pointer">`;
         html += `<div class="todo">`;
         html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
-        html += `<div class="title">${todoList[i].title}</div>`
-        html += `</div>`
+        html += `<div class="title">${todoList[i].title}</div>`;
+        html += `</div>`;
+        html += `</button>`;
         await $(`.${day} + .todo-list`).html(html);
     }
 }
@@ -73,6 +79,15 @@ getCategoryList = () => {
     })
 };
 
+////////////////////////////////////////////////////////////////
+floatTodoPop = async (todoList) => {
+
+
+
+    await $('#addTodoPop').show();
+};
+/////////////////////////////////////////////////////////////////////
+
 floatAddTodoPop = async (day) => {
     let ymd = getFormatDate(new Date(date.year, date.month, day));
 
@@ -83,6 +98,7 @@ floatAddTodoPop = async (day) => {
 closeAddTodoPop = () => {
     $('#addTodoPop').hide();
 }
+
 
 handleAddTodoList = async () => {
     const title = $('#addTodoPop .modal-content .title')[0].value;
@@ -102,6 +118,11 @@ handleAddTodoList = async () => {
     await addTodoList(data);
     await closeAddTodoPop();
 }
+
+modifyAddTodoList = async () =>{
+    
+}
+
 
 addTodoList = (data)=>{
     return $.ajax({
