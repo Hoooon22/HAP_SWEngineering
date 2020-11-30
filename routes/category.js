@@ -16,14 +16,14 @@ router.get('/getCategoryList', async function (req, res, next) {
     });
 
     var aJsonArray = new Array();
-    for (let i in todolists)
+    for (let i in subjects)
     {
-      for (let j in subjects)
+      for (let j in todolists)
       {
         if (subjects[j].name == todolists[i].category_name)
         {         
-          aJsonArray.push(subjects[j].dataValues);
-          aJsonArray.subjects[j].push(todolists[i].dataValues);
+          aJsonArray.push(subjects[i].dataValues);
+          aJsonArray.subjects[i].push(todolists[j].dataValues);
           break;
         }
       }
