@@ -6,48 +6,67 @@
     <title>material</title>
     <link rel='stylesheet' href="../public/stylesheets/material.css"/>
 </head>
-<body bgcolor="E2F1F4">
-    <div class = stack id="modal">
-        <div class = modal_content>
-            <button id = close>X</button>
-            <div class = "modal_component block" id = img>
-
-            </div>
-            
-            <div class = modal_component id = name>  
-
-            </div>
-
-            <div class = modal_component id="num">  
-
-            </div>
-
-            <button class = modal_component id = submit>submit</button>
+<body>
+    <div id="sidebar">
+        <div class="sidebar_button">
+            &lt;
+        </div>
+        <div class="sidebar_page">
         </div>
     </div>
 
-    <div class="stack" id = mainPage>
-        <div id = "header">
-            <div class = "headerComponent" id = "logo">
-                <a href="../calendar">
-                  <img src='../public/images/logo.png'/></a>
-              </div>
-            
-            <div class = "headerComponent" id = "pageTitle">
-                <div id = subjectColor></div>
-                <div id = subjectName><%=posts.name%></div>
+    <div id="modal">
+        <div class="modal_prof">
+            <div class="modal_header">
+                <button class = close>&#x274C;</button>
             </div>
-        
+
+            <div class="modal_main">
+                <div class = "modal_block"><img src=""/></div>
+                <form action="">
+                    <input type="text" placeholder = '이름' class = "prof_modal_name">
+                    <input type="text" placeholder = '수량' class = "prof_modal_number">
+                    <button class = "button" id = register_button>등록</button>
+                </form>
+            </div>
+        </div>
+
+        <div class = modal_content>
+            <div class="modal_header">
+                <button class = close>&#x274C;</button>
+            </div>
+            <div class="modal_main">
+                <div class = "modal_block"><img src=""/></div>
+                <form action="">
+                    <div class="student_modal_name"></div>
+                    <input type="text" class = student_modal_number>
+                    <button class = "button" id = rent_button>대여</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id = "header">
+        <div id = "logo">
+            <a href="../calendar">
+              <img src='../public/images/logo.png'/>
+            </a>
+        </div>
+        <div id = subjectName><%=posts.name%></div>
+    </div>
+    
+    <hr>
+
+    <div class = root id = "content">
+        <div id="container">
+            <div class="box" id = add>
+                <button class= block style = "font-size:500%">&#x2795;</button>
+            </div> 
         </div>
     
-        <div id = "content">
-                <div class="box" id = add>
-                    <button class= block style = "font-size:500%">&#x2795;</button>
-                <!--    <div class = name>name</div> -->
-                </div> 
-            
-        </div>
+        <div id="blank"></div>
     </div>
+
     <% var userStatus = 0 %> 
     <% if (session.job == 'student') {%>
         <% userStatus = 1 }%>
@@ -69,7 +88,8 @@
     <p style="display: none;" id="m_name"><%=m_name%></p>
     <p style="display: none;" id="m_maxNum"><%=m_maxNum%></p>
     <p style="display: none;" id="m_num"><%=m_num%></p>
-   
+    
+    
     <script src="../public/javascripts/material.js"></script>
 </body>
 </html>

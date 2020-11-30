@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="stack" id = modal>
+    <div id = modal>
         <div class = modal_attend>
             <div id="modal_attend_header">
                 <button class = close id = attend_close>&#x274C;</button>
@@ -36,25 +36,28 @@
             </div>
         </div>
     </div>
-
-    <div class = stack id="mainPage" style = "overflow: scroll">
-        <div id = "header">
+    
+    <div id = "header">
             <div id = "logo">
                 <a href="../calendar">
                   <img src='../public/images/logo.png'/></a>
               </div>
             <div id = pageName><%=posts.name%></div>
-        </div>
-        <hr>
-
-        <div id = content>
+    </div>
+        
+    <hr>
+        
+    <div id = content>
             <div id = top>
-                <a class = 'btn' id = attendance href = #>출석 &#9661;</a>
-                <a class = 'btn' id = material href="material.ejs">기자재 &#8614;</a>
-                <a class = 'btn' id = dataRoom href="dataRoom.ejs">학습자료실 &#8614;</a>    
-                <a class = 'btn' id = question href="question.ejs">질문게시판 &#8614;</a>    
+                <div class="nav_bar">
+                    <a class = 'btn' id = material href="../material">기자재 &#8614;</a>
+                    <a class = 'btn' id = dataRoom href="../dataRoom">학습자료실 &#8614;</a>    
+                    <a class = 'btn' id = question href="../questionBoard">질문게시판 &#8614;</a>    
+                </div>
+
+                <button class = 'btn' id = attendance>출석 &#9661;</button>
             </div>
-            
+            <br>
             <div id = 'attendanceToggle'>
                 <button class = attendanceButton>&#x2B05;</button>
                 <div class = 'date' id = prev>
@@ -74,16 +77,30 @@
                 <button class = attendanceButton>&#x27A1;</button>
             </div>
 
+            <br>
+            
+
             <div id = bottom>
                 <div id = botHeader> 
-                    <a class =  btn id = homework>과제</a> </div>
+                    <a class =  btn id = homework>과제</a>
+                </div>
+                <br>
+                
+
+                <center>
                 <div id = botContent>
-                    <div id="noHw">등록된 과제가 없습니다.</div>
+                    <br>
+                    <div class="register_button"> <button class="btn" id="prof_new">과제 등록</button> </div>
+                    
+                    <div id="noHw">
+                        등록된 과제가 없습니다.
+                    </div>
             </div>
+        </center>
             
-        </div>
-        </div>
+            </div>
     </div>
+    
     <% var userStatus = 0 %> 
         <% if (session.job == 'student') {%>
             <% userStatus = session.user_id }%>  
@@ -93,6 +110,7 @@
         <% var subject_value = []%>
         <% var s_id_value = []%>
         <% var date_value = []%>
+        <% var num_value = []%>
         <% var status_value = []%>
         <% var count = 0 %>
         <% for(let attend of attends) { %>

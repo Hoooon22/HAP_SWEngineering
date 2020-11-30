@@ -57,12 +57,12 @@ materialList[7]=m4;
 
 var userStatus = 0; // 교수인지(0), 학생인지(1)
 
-var subjectName=document.getElementById("subjectName"); // 과목명
-subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
+// var subjectName=document.getElementById("subjectName"); // 과목명
+// subjectName.innerText = "과목명"+"기자재 요청"; // 과목명 동적으로 넣어주기
 
 
-var subjectColor=document.getElementById("subjectColor"); // 과목 색상
-subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
+// var subjectColor=document.getElementById("subjectColor"); // 과목 색상
+// subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
 var add = document.getElementById("add");
 add.addEventListener("click",function(e){
@@ -94,7 +94,7 @@ function loadMaterial(){
         newBlock = document.createElement("button");
         newBlock.setAttribute("class","block");
         newImg = document.createElement("img");
-        newImg.setAttribute("src","../source/logo.png");
+        newImg.setAttribute("src","");
         newImg.setAttribute("class","image");
         newBlock.appendChild(newImg);
         newBox.appendChild(newBlock);
