@@ -7,17 +7,13 @@ window.onload=function(e){
         var input = document.createElement("input");
         input.setAttribute("type","file");
         input.setAttribute("name","imgFile");
-        input.setAttribute("style","display:none;");
+        input.setAttribute("style","display: none;");
         uploadFile.parentElement.appendChild(input);
-        uploadFile.remove();
         input.click();
         input.addEventListener("change",function(e){
-            var fileImg = document.createElement("img");
-            fileImg.setAttribute("src",input.value);
-            input.parentElement.appendChild(fileImg);
+            input.parentElement.style.background="yellow";
         })
     });
-
 
 
     if(userStatus != 0) {
