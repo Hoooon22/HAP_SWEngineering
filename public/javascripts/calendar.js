@@ -44,10 +44,8 @@ setTodoListOnSchedule = (todoList) => {
 
 setTodoListOnCalendar = async (todoList) => {
     for (let i = 0; i < todoList.length; i++) {
-        let day = todoList[i].date.substr(8,2);
-        console.log(typeof(day), day);
+        let day = new Date(todoList[i].date).getDate();
         let html = await $(`.${day} + .todo-list`).html();
-        console.log(html);  
         if (!html) {
             html = ''
         }
@@ -65,7 +63,6 @@ setPopupCategoryList = (categoryList) => {
     for (let i = 0; i < categoryList.length; i++) {
         html += `<option value=${categoryList[i].name}>${categoryList[i].name}</option>`;
     }
-    console.log(html);
     $('#addTodoPop .modal-content .category').html(html);
 }
 
@@ -117,7 +114,6 @@ addTodoList = (data)=>{
 var today = new Date();
 function prevCalendar(date){
 
-    
     today = new Date(today.getFullYear(), today.getMonth() -1, today.getDate());
     date = {
         year: today.getFullYear(),

@@ -3,6 +3,14 @@ getCategoryList = () =>{
         url:"/category/getCategoryList",
         method:"GET"
     })
+
+    // ...data,
+    // todoList : [
+    //     {
+    //         title : ,
+    //         date : ,
+    //     }
+    // ]
 }
 
 setTodoListOnBoard = (_categoryList) => {
@@ -11,6 +19,8 @@ setTodoListOnBoard = (_categoryList) => {
         html += `<div class="category">`;
         html += `<div class="name" style="background:${_categoryList[i].color}">${_categoryList[i].name}</div>`;
         html += `<div class="todo-list">`;
+
+        console.log(_categoryList);
         for(let j =0; j<_categoryList[i].todoList.length; j++){
             html += `<div class="todo">`
             html += `<div class="title">${_categoryList[i].todoList[j].title}</div>`

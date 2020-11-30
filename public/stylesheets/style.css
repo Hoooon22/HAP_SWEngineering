@@ -40,7 +40,8 @@ hr{
 
 .nav-bar{
   display: flex;
-  /* justify-content: flex-end; */
+  align-items: center;
+  padding: 38px 0 0 0 ;
 }
 
 .nav-bar > .btn-wrap {
@@ -67,7 +68,7 @@ hr{
 }
 
 .board{
-  padding: 20px ;
+  padding: 20px;
 }
 /* container */
 
@@ -78,7 +79,7 @@ hr{
 }
 
 .container {
-  padding : 10px 25px;
+  padding : 10px ;
   background :#ffffff;
   border-radius: 10px;
 }
