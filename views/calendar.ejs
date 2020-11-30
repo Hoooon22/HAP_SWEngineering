@@ -36,6 +36,13 @@
     <hr class="line">
 
     <div class="container-wrap">
+        <div id="sidebar">
+            <div class="sidebar_button">
+                &lt;
+            </div>
+            <div class="sidebar_page">
+            </div>
+        </div>
         <div class="container">
             <div class="calendar">
                 <div class="header">
@@ -111,7 +118,7 @@
     </div>
     <!--End Modal-->
     
-
+    <p style="display: none;" id="user_subject"><%=user_session.user_subject%></p>
     
     <script src="../public/javascripts/util.js"></script>
     <script src="../public/javascripts/user.js"></script>
