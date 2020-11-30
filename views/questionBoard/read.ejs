@@ -17,20 +17,22 @@
   </script>
   
 </head>
-<body >
 
-  <div id="header">
-  
-    <div id="logo">
-      <a href="../../../calendar">
-        <img src='../../../public/images/logo.png' /></a>
-
-    </div>
- 
-    <div id=pageName><%=subject.name%></div>
+<header>
+  <div id="logo">
+    <a href="../../../login">
+      <img src='../../../public/images/logo.png' /></a>
+  </div>
+  <div id=pageName><%=subject.name%></div>
+  <div class="welcome" width="190px">
+    <p id="user_id">김지훈님, 환영합니다!</p>
   </div>
 
+</header>
 
+<body >
+
+  
   <hr>
   <br>
 
@@ -88,11 +90,13 @@
                 <br><br><br><br>
                 <form action="/questionBoard/read/questionModify" method="POST">
                 <center>
-                  <h3>>>질문 수정</h3>
+                  <h2>>>질문 수정</h2>
+                  <br><br>
                 <div class="border_cont">
                   
-                  <input type="text" value=<%=qboard.title%> class="inq_field" />
-                  <textarea name="" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
+                  <input type="text" value=<%=qboard.title%> class="inq_field"
+                  style="font-size: 2ch;  border-top: 1px solid #dedede;border-bottom: 1px solid #dedede; padding-top: 10px; padding-bottom: 10px;"  />
+                  <textarea name="" id="" cols="5" rows="7"><%=qboard.content %> </textarea>
                 </div>
               </center>
                 <center>
@@ -100,6 +104,7 @@
                   
                   <input type="button" id="close_button" value="취소"  >
                   <input type="submit" id="btn_submit" value="등록" onclick="alert('질문이 수정되었습니다.');">
+                  <br>
                 </div>
                 </center>
               </form>
