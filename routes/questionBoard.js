@@ -83,5 +83,19 @@ router.post("/read/questionDelete", async function(req, res, next){
     res.redirect("/questionBoard")
 })
 
+// 질문 수정
+router.post("/read/questionModify", async function(req, res, next){
+  let session = req.session;
+  let body = req.body;
+
+  await models.qboard.update({
+    where:{
+      title: body.title,
+      u_id: session.user_id,
+    }})
+
+    res.redirect("/questionBoard")
+})
+
 
 module.exports = router;
