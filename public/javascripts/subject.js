@@ -44,8 +44,8 @@ num_value = document.getElementById("num_value").innerText;
 num_value = num_value.split(',');
 status_value = document.getElementById("status_value").innerText;
 status_value = status_value.split(',');
-subject_students = document.getElementById("subject_students").innerText;
-subject_students = subject_students.split(',');
+// subject_students = document.getElementById("subject_students").innerText;
+// subject_students = subject_students.split(',');
 
 attend_count = parseInt(attend_count)+1;
 
@@ -65,6 +65,12 @@ for (var i = 0 ;  i < attend_count ; i ++)
 // 로그인 유저의 과목
 user_subject = document.getElementById("user_subject").innerText;
 user_subject = user_subject.split(',');
+subjectList = user_subject;
+
+
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+loadSideBar(subjectList);
 
 var userAttend = [];
 var rangedAttend = [];
@@ -508,19 +514,21 @@ function loadModalPage(){
     
 }
 
-function loadSideBar(){
+function loadSideBar(subjectList){
     var newSubject;
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
 
     for(var i=0;subjectList.length>i;i++){
         newSubject = document.createElement("button");
         newSubject.setAttribute("class","sidebar_subject");
-        newSubject.innerHTML=subjectList[i].name;
-        var url = subject_students[i];
+        newSubject.innerHTML=subjectList[i];
+        var url = subjectList[i];
 
         newSubject.addEventListener('click',function(e){
             // 링크로 이동하기
-            console.log(url);
         });
+
         sidebar_page.appendChild(newSubject);
     }   
 }

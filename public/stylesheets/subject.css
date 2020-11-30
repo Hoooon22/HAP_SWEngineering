@@ -64,6 +64,8 @@ input::placeholder {
   height: 100px;
   color: white;
   opacity: 90%;
+  font-size:200%;
+  text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 

@@ -111,7 +111,7 @@ router.get('/subject', async function(req, res, next) {
 
   let user_session = await models.user.findOne({
     where:{
-      user_id: session.user_idm
+      user_id: session.user_id
     }
   })
 
@@ -119,6 +119,7 @@ router.get('/subject', async function(req, res, next) {
     where: {name : "소공"}
   }).then( result => {
     res.render("subject", {
+      session: session,
       posts: result,
       user_session: user_session,
       user_id: user_id,
