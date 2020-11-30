@@ -36,6 +36,7 @@ router.post("/", async function(req,res,next){
   let result = models.todolist.create({
       title: body.title,
       date: body.date,
+      
       //category_id : ,
       category_name: body.category,
       content : body.content,

@@ -16,7 +16,7 @@
 
     </div>
  
-    <div id=pageName>소프트웨어공학개론</div>
+    <div id=pageName><%=subject.name%></div>
   </div>
 
 
@@ -72,8 +72,8 @@
                   <h3>>>질문 수정</h3>
                 <div class="border_cont">
                   
-                  <input type="text" value="제목 | 데이터베이스에 있는 내용 그대로 가져오기 " class="inq_field" />
-                  <textarea name="" id="" cols="5" rows="10">데이터베이스에 있는 내용 그대로 가져오기</textarea>
+                  <input type="text" value=<%=qboard.title%> class="inq_field" />
+                  <textarea name="" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
                 </div>
               </center>
                 <center>
@@ -94,8 +94,11 @@
       
       <script src="../../../public/javascripts/modal2.js"></script>
 
-
-      <input type="button" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
+        <form action="/questionBoard/read/questionDelete" method="POST">
+          <input style="display: none;" type="text" name="title" value="<%=qboard.title %>" />
+          <input style="display: none;" type="text" name="u_id" value="<%=qboard.u_id %>" />
+          <input type="submit" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
+        </form>
 
       <br><br>
     </div>
