@@ -44,6 +44,8 @@ num_value = document.getElementById("num_value").innerText;
 num_value = num_value.split(',');
 status_value = document.getElementById("status_value").innerText;
 status_value = status_value.split(',');
+subject_students = document.getElementById("subject_students").innerText;
+subject_students = subject_students.split(',');
 
 attend_count = parseInt(attend_count)+1;
 
@@ -509,7 +511,7 @@ function loadSideBar(){
         newSubject = document.createElement("button");
         newSubject.setAttribute("class","sidebar_subject");
         newSubject.innerHTML=subjectList[i].name;
-        var url = subjectList[i].link;
+        var url = subject_students[i];
 
         newSubject.addEventListener('click',function(e){
             // 링크로 이동하기
