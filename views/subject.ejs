@@ -106,6 +106,7 @@
             <%subject_value[count] = attend.subject%>
             <%s_id_value[count] = attend.s_id%>
             <%date_value[count] = attend.date%>
+            <%num_value[count] = attend.num%>
             <%status_value[count] = attend.status%>
             <% count++ %>
         <% } %>
@@ -114,8 +115,9 @@
         <p style="display: none;" id="subject_value"><%=subject_value%></p>
         <p style="display: none;" id="s_id_value"><%=s_id_value%></p>
         <p style="display: none;" id="date_value"><%=date_value%></p>
+        <p style="display: none;" id="num_value"><%=num_value%></p>
         <p style="display: none;" id="status_value"><%=status_value%></p>
-        <!-- <p style="display: none;" id="subject_students"></p> -->
+        <p style="display: none;" id="subject_students"><%=subject_students%></p>
 
 <script src="../public/javascripts/subject.js"></script>
 </body>
