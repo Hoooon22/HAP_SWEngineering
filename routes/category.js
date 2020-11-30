@@ -18,17 +18,17 @@ router.get('/getCategoryList', async function (req, res, next) {
     var aJsonArray = new Array();
     for (let i in todolists)
     {
-      
-      aJsonArray.push(subjects[j].dataValues)
       for (let j in subjects)
       {
         if (subjects[j].name == todolists[i].category_name)
-        {
+        {         
+          aJsonArray.push(subjects[j].dataValues);
           aJsonArray.subjects[j].push(todolists[i].dataValues);
           break;
         }
       }
     }
+    console.log("dfsfsdfsdfsdfsdfsdfsdfsdf")
     console.log(aJsonArray)
   
     // TODO :: DB 에서 year, month 통해 TodoList 조회
