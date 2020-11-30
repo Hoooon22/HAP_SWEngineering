@@ -33,18 +33,16 @@ router.post("/", async function(req,res,next){
   let body = req.body;
   let session = req.session;
 
-  let category = await models.subject.findOne({
-    where: {
-      name: body.category,
-    }
+  let subject = await models.subject.findOne({
+    name: body.category,
   })
 
   let result = models.todolist.create({
       title: body.title,
       date: body.date,
-      category_id : category.id,
-      category_name: category.name,
-      category_color: category.color,
+      category_id: subject.id,
+      category_name: subject.name,
+      category_color: subject.color,
       content : body.content,
       user_id : session.user_id,
   })

@@ -5,6 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='../public/stylesheets/questionBoard.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $("#btn_submit").click(function () {
+        if ($("#qB_title").val().length == 0) { alert("제목을 입력하세요."); $("#qB_title").focus(); return false; }
+        if ($("#qB_content").val().length == 0) { alert("내용을 입력하세요."); $("#qB_content").focus(); return false; }
+        else { alert('질문이 등록되었습니다.'); }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -82,15 +94,16 @@
             <% } %>
             <td id="t1" align="center"><%=user_name %> </td>
 
-    
-    
-              <%   var sYear = qboard.createdAt.getFullYear(); %>
-              <%   var sMonth = qboard.createdAt.getMonth() + 1; %>
-              <%   var sDate = qboard.createdAt.getDate(); %>
-              <%   sMonth = sMonth > 9 ? sMonth : "0" + sMonth; %>
-              <%   sDate = sDate > 9 ? sDate : "0" + sDate; %>
-          
-            <td id="t1" align="center" style="white-space: nowrap; overflow: hidden;"><%= sYear%>.<%=sMonth%>.<%=sDate%></td>
+
+
+            <%   var sYear = qboard.createdAt.getFullYear(); %>
+            <%   var sMonth = qboard.createdAt.getMonth() + 1; %>
+            <%   var sDate = qboard.createdAt.getDate(); %>
+            <%   sMonth = sMonth > 9 ? sMonth : "0" + sMonth; %>
+            <%   sDate = sDate > 9 ? sDate : "0" + sDate; %>
+
+            <td id="t1" align="center" style="white-space: nowrap; overflow: hidden;"><%= sYear%>.<%=sMonth%>.<%=sDate%>
+            </td>
             <% count++ %>
           </tr>
           <% } %>
@@ -99,7 +112,7 @@
       </center>
 
       <br>
-      <button id="modal_button" style="float:right;" >글 작성</button>
+      <button id="modal_button" style="float:right;">글 작성</button>
 
       <!--글작성 모달창-->
       <div class="modal">
@@ -116,19 +129,19 @@
 
                 </center>
                 <div class="border_cont">
-                  <input name="title" placeholder="제목" type="text" class="inq_field"
+                  <input name="title" id="qB_title" placeholder="제목" type="text" class="inq_field"
                     style="font-size: 2ch;  border-top: 1px solid #dedede;border-bottom: 1px solid #dedede; padding-top: 10px; padding-bottom: 10px;" />
 
-                  <textarea name="content" id="" cols=5 rows="7" placeholder="내용을 입력해주세요."></textarea>
+                  <textarea name="content" id="qB_content" cols=5 rows="7" placeholder="내용을 입력해주세요."></textarea>
                 </div>
 
 
                 <center>
                   <div class="btn_area">
                     <input type="button" id="close_button" value="취소">
-                    <input type="submit" id="btn_submit"  value="등록" onclick="alert('질문이 등록되었습니다.');" style="cursor:pointer">
+                    <input type="submit" id="btn_submit" value="등록" >
                     <br>
-           
+
                   </div>
                 </center>
               </form>

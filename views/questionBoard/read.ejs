@@ -5,6 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='../../../public/stylesheets/questionBoard.css'/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> 
+	
+	<script>	
+	$(document).ready(function(){ 
+		$("#btn_reply").click(function(){
+				if($("#reply_content").val().length==0){ alert("내용을 입력하세요."); $("#reply_content").focus(); return false; }
+				
+			});		
+	});
+  </script>
+  
 </head>
 <body >
 
@@ -75,20 +86,20 @@
             <div class="ui_container">
               <div class="ui_border" >
                 <br><br><br><br>
-                <form action="/questionBoard/read/questionModify" method="POST"></form>
+                <form action="/questionBoard/read/questionModify" method="POST">
                 <center>
                   <h3>>>질문 수정</h3>
                 <div class="border_cont">
-                  
-                  <input type="text" value=<%=qboard.title%> class="inq_field" />
-                  <textarea name="" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
+                  <input type="text" value=<%=qboard.title%> name="pre_title" style="display: none;"/>
+                  <input type="text" value=<%=qboard.title%> class="inq_field" name="title" />
+                  <textarea name="content" id="" cols="5" rows="10"><%=qboard.content %> </textarea>
                 </div>
               </center>
                 <center>
                 <div class="btn_area">
                   
                   <input type="button" id="close_button" value="취소"  >
-                  <input type="button" id="btn_submit" value="등록" onclick="alert('질문이 수정되었습니다.');" style="cursor:pointer">
+                  <input type="submit" id="btn_submit" value="등록" onclick="alert('질문이 수정되었습니다.');">
                 </div>
                 </center>
               </form>
@@ -106,7 +117,7 @@
         <form action="/questionBoard/read/questionDelete" method="POST">
           <input style="display: none;" type="text" name="title" value="<%=qboard.title %>" />
           <input style="display: none;" type="text" name="u_id" value="<%=qboard.u_id %>" />
-          <input type="submit" value="삭제" id="btn_del" /><!--여기에 디비 처리 삭제-->
+          <input type="submit" value="삭제" id="btn_del" />
         </form>
 
       <br><br>
@@ -114,28 +125,47 @@
    
 <div style="width:80%;">
 
+  
+
 <table width="100%" >
+<% var u_id%>
+<% for (let qreply of qreplies) {%> 
+  <% for (let user of users) {%> 
+    <% if (user.user_id == qreply.u_id) {%> 
+      <% u_id = user.user_name %> 
+      <% if (qboard.u_id == qreply.u_id) {%> 
+        <% u_id = "글쓴이" %> 
+      <% } %> 
+    <% } %> 
+     
+    <% } %> 
+    <%   var rYear = qreply.createdAt.getFullYear(); %>
+  <%   var rMonth = qreply.createdAt.getMonth() + 1; %>
+  <%   var rDate = qreply.createdAt.getDate(); %>
+  <%   var rHour = qreply.createdAt.getHours(); %>
+  <%   var rMinute =qreply.createdAt.getMinutes(); %>
+  <%   rMonth = rMonth > 9 ? rMonth : "0" + rMonth; %>
+  <%   rDate = rDate > 9 ? rDate : "0" + rDate; %>
   <tr>
-    <td>ㄴ 작성자 2018111111</td>
-    <td id="t2" align="right">날짜 2020.12.01</td>
+    <td>ㄴ 작성자 : <%=u_id %>  </td>
+    <td id="t2" align="right"><%= rYear%>.<%=rMonth%>.<%=rDate%>. <%=rHour%>:<%=rMinute%></td>
   </tr>
   <tr>
-    <td id="t3" colspan="2" align="left" ><pre>해당 질문에 대한 답은 1입니다.
-      -------------------    </pre></td>
+    <td id="t3" colspan="2" align="left" ><pre><%=qreply.content%></pre></td>
   </tr>
- 
+<% } %> 
 </table>
 
-
-    
     <br><br>
-    <textarea id="reply_content" placeholder="답글을 입력해주세요." width="50%"></textarea>
-    <input type="button" value="답변달기" id="btn_reply" width="20%" />
-
+    <form action="/questionBoard/read/createReply" method="POST">
+    <input type="text" value=<%=qboard.subject%> name="q_subject" style="display : none;"/>
+    <input type="text" value=<%=qboard.id%> name="q_id" style="display : none;"/>
+    <textarea id="reply_content" placeholder="답글을 입력해주세요." width="50%" name="qreply_content"></textarea>
+    <input type="submit" value="답변달기" id="btn_reply" width="20%" />
+    </form>
     <br><br>
     <br><br>
 
-    
   </div>
 </div>
 </body>

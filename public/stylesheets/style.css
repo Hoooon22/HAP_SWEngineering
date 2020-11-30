@@ -28,6 +28,8 @@ header img{
 header .welcome{
   font-size: small;
   padding: 20px;
+  display: flex;
+  
 }
 
 
@@ -63,12 +65,27 @@ hr{
 }
 
 .nav-bar > .btn-wrap > button.enable{
-  background: #ffffff;
+  /* background-color: #f7f7f7; */
+  text-decoration-line: underline;
+  text-decoration-color: #f7f7f7;
   
 }
-
-.board{
+.calendar-btn{
   padding: 20px;
+  color: #777777;
+}
+.calendar-btn:hover{
+  padding: 20px;
+  color:black;
+}
+.board-btn{
+  padding: 20px;
+  color: #777777;
+
+}
+.board-btn:hover{
+  padding: 20px;
+  color:black;
 }
 /* container */
 
