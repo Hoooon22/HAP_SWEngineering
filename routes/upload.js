@@ -35,7 +35,7 @@ router.post('/create', upload.single("imgFile"), function(req, res, next) {
         size : file.size,
     }
 
-    res.json(result);
+    res.redirect("../material");
 });
 
 module.exports = router;
