@@ -64,9 +64,19 @@ router.get('/read/:subject/:title', async function(req, res, next) {
     }
   })
 
+  let qreply = await models.qreply.findAll({
+    where: {
+      qnum: qboard.id,
+    }
+  })
+
+  let user = await models.user.findAll({  })
+
   res.render("questionBoard/read", {
     subject: subject,
     qboard: qboard,
+    qreplies: qreply,
+    users: user,
   })
 });
 
@@ -96,6 +106,26 @@ router.post("/read/questionModify", async function(req, res, next){
     }})
 
     res.redirect("/questionBoard")
+})
+
+// 답글 추가
+router.post("/read/createReply", async function(req, res, next){
+    let session = req.session;
+    let body = req.body;
+
+    let qboard = await models.qboard.findOne({
+      where:{
+        id: body.q_id,
+      }
+    })
+  
+    let result = await models.qreply.create({
+      content: body.qreply_content,
+      qnum: body.q_id,
+      u_id: session.user_id,
+    })
+  
+  res.redirect("/questionBoard/read/"+qboard.subject+"/"+qboard.title);
 })
 
 
