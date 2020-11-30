@@ -112,15 +112,17 @@
                   <textarea name="content" id="" cols=5 rows="7" placeholder="내용을 입력해주세요."></textarea>
                 </div>
 
-                <form>
+                
                   <center>
                     <div class="btn_area">
                       <input type="button" id="close_button" value="취소">
-                      <input type="submit" id="btn_submit" value="등록">
+                      <input type="submit" id="btn_submit" onclick="btn_submit_click()" value="등록">
+                      <br>
+                      <input name="date" type="text" style="display :none;" id="date_value">
+            
                     </div>
                   </center>
                 </form>
-              </form>
             </div>
           </div>
         </div>
