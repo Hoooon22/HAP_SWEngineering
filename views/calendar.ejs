@@ -90,6 +90,29 @@
 
     </div>
     <!--End Modal-->
+    
+    <!-- The Modal -->
+    <div id="addTodoPop" class="modal">
+
+        <!-- Modal content -->
+        <form action='/calendar/modify' method="POST">
+            <div class="modal-content">
+                <input class="title" type="text" placeholder="Title" name="title">
+                <input class="due-date" type="date" name="date">
+                <select class="category" name="category"></select>
+                <textarea name="content" class="content" placeholder="Content" cols="30" rows="10"></textarea>
+                <div class="btn-wrap">
+                    <button type="button" class="cancel" onclick="closeAddTodoPop()">취소</button>
+                    <button type="submit" class="submit light-blue" onclick="handleAddTodoList(); alert('일정이 등록되었습니다.');" style="cursor:pointer">저장</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!--End Modal-->
+    
+
+    
     <script src="../public/javascripts/util.js"></script>
     <script src="../public/javascripts/user.js"></script>
     <script src="../public/javascripts/todo.js"></script>

@@ -12,6 +12,12 @@ router.post('/getTodoListFromDate', async function (req, res, next) {
   let date = req.body;
   let {year,month} = date;
 
+
+  console.log(12122121212121);
+  console.log("%" + year + "-" + month + "%");
+ 
+  console.log(12122121212121);
+
   await models.todolist.update(
     {    
       date_year: year,
