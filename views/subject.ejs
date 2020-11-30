@@ -133,6 +133,7 @@
         <% var num_value = []%>
         <% var status_value = []%>
         <% var count = 0 %>
+        <% var cnt = 0 %>
         <% for(let attend of attends) { %>
             <%subject_value[count] = attend.subject%>
             <%s_id_value[count] = attend.s_id%>
@@ -148,7 +149,7 @@
         <p style="display: none;" id="date_value"><%=date_value%></p>
         <p style="display: none;" id="num_value"><%=num_value%></p>
         <p style="display: none;" id="status_value"><%=status_value%></p>
-        <p style="display: none;" id="subject_students"><%=subject_students%></p>
+        <p style="display: none;" id="user_subject"><%=session.user_subject%></p>
 
 <script src="../public/javascripts/subject.js"></script>
 </body>
