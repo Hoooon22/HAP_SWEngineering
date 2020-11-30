@@ -148,14 +148,21 @@ router.get('/chat', function(req, res, next) {
 })
 
 // material
-router.get('/material', function(req, res, next) {
+router.get('/material', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
+
+  let subject = models.subject.findOne({
+    where:{
+      name: "소공",
+    }
+  })
   
   models.material.findAll({
     where: {subject : "소공"}
   }).then( result => {
     res.render("material", {
+      posts: subject,
       materials: result,
       session: session,
       user_id: user_id,
