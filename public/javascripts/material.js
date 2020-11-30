@@ -1,6 +1,16 @@
 window.onload=function(e){
     loadMaterial();
     dynamicBinding();
+    
+    user_subject = document.getElementById("user_subject").innerText;
+user_subject = user_subject.split(',');
+subjectList = user_subject;
+
+
+var sidebar = document.getElementsByClassName("sidebar_button")[0];
+var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+loadSideBar(subjectList);
+
 
     var uploadFile = document.getElementById("uploadImg");
     uploadFile.addEventListener("click",function(e) { // 사진 넣으면 사진 뜨기
@@ -218,4 +228,23 @@ function dynamicBinding(){
             popUp();
         })
     }
+}
+
+function loadSideBar(subjectList){
+    var newSubject;
+    var sidebar = document.getElementsByClassName("sidebar_button")[0];
+    var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
+
+    for(var i=0;subjectList.length>i;i++){
+        newSubject = document.createElement("button");
+        newSubject.setAttribute("class","sidebar_subject");
+        newSubject.innerHTML=subjectList[i];
+        var url = subjectList[i];
+
+        newSubject.addEventListener('click',function(e){
+            // 링크로 이동하기
+        });
+
+        sidebar_page.appendChild(newSubject);
+    }   
 }
