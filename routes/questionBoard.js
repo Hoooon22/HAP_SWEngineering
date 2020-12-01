@@ -7,17 +7,17 @@ var models = require('../models');
 
 /* GET questionBoard listing. */
 // 과목, qboard
-router.get('/', async function(req, res, next) {
+router.get('/:subject', async function(req, res, next) {
   let session = req.session
 
   let subject = await models.subject.findOne({
     where: {
-      name: "소공"
+      name: req.params.subject
     }
   })
   let qboard = await models.qboard.findAll({
     where: {
-      subject : "소공"
+      subject : req.params.subject
     }
   })
   let user = await models.user.findAll({  })
