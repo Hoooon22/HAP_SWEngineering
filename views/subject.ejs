@@ -63,6 +63,10 @@
                   <img src='../public/images/logo.png'/></a>
               </div>
             <div id = pageName><%=posts.name%></div>
+            <div class="welcome" width="190px">
+                <p id="user_id"><%=session.user_name%>님, 환영합니다!</p>
+                <button style="float: right;" onclick="location.href='logout' ">로그아웃</button>
+              </div>
     </div>
         
     <hr>
