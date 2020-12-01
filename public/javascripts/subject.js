@@ -1,15 +1,14 @@
 window.onload = function(e){
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
-
 var hwList = [];
 
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
 
-    if(userStatus!=0)
+    if(userStatus!='0')
         document.getElementsByClassName("register_button")[0].remove();
-
+    
 var action="";
 
 var pageName=document.getElementById("pageName"); // 과목명
@@ -25,13 +24,8 @@ var studentAttend = [];
 
 var date = new Date();
 var year = date.getFullYear();
-console.log(year);
-console.log(typeof(year));
 var month = date.getMonth() + 1;
-console.log(month);
 var day = date.getDate();
-console.log(day);
-
 
 attend_count = document.getElementById("attend_count").innerText;
 subject_value = document.getElementById("subject_value").innerText;
@@ -48,8 +42,6 @@ status_value = status_value.split(',');
 // subject_students = subject_students.split(',');
 
 attend_count = parseInt(attend_count)+1;
-
-console.log(attend_count);
 
 for (var i = 0 ;  i < attend_count ; i ++)
 {
@@ -148,6 +140,8 @@ else {
             userAttend.push(studentAttend[i]);
     }
 
+    console.log(userAttend);
+
     for (var i = 0 ; i < userAttend.length ; i++) { // 전체 출석 값에서 당일 기준 출석만 추출
         if(checkDate(studentAttend[i].num,year,month,day)) 
             rangedAttend.push(userAttend[i]);
@@ -155,7 +149,58 @@ else {
 
     attendList[0] = userAttend[userAttend.length-2]; // 범위 안의 출석 값 중 prev 선정
     attendList[1] = userAttend[userAttend.length-1]; // 범위 안의 출석 값 중 now  선정
-    // next 값 선정 ? : 데이터 넘어올 때 어떻게 정렬된 채로 넘어오는지
+    if(attendList[1].date=="15주차 2강")
+    document.getElementById("next").style.display="none";
+    
+    if(attendList[1].date[0]=='0'){ // 1 ~9 주차
+       if(attendList[1].date[1]=='9') { // 9주차 
+          if(attendList[1].date[5]=='2') // 2강 일때
+             for(var i = 0 ; i < userAttend.length ; i++){
+                 if(userAttend[i].date[0]=='1' && userAttend[i].date[1]=='0')
+                   if(userAttend[i].date[5]=='1')
+                    attendList[2]=userAttend[i];
+             }
+          else {
+            for(var i = 0 ; i < userAttend.length ; i++){
+                if(userAttend[i].date[1]=='9')
+                  if(userAttend[i].date[5]=='2')
+                   attendList[2]=userAttend[i];
+            }
+          }
+       }
+       else { // 1 ~ 8 주차
+          if(attendList[1].date[5]=='1'){
+            for(var i = 0 ; i < userAttend.length ; i++){
+                if(userAttend[i].date[1]==attendList[1].date[1])
+                  if(userAttend[i].date[5]=='2')
+                   attendList[2]=userAttend[i];
+            }
+          }
+          
+          else{
+            for(var i = 0 ; i < userAttend.length ; i++){
+                if(userAttend[i].date[1]==String(parseInt(userAttend[1].date[1])+1))
+                  if(userAttend[i].date[5]=='1')
+                   attendList[2]=userAttend[i];
+            }
+          }
+       }
+    }
+    else if(attendList[1].date[0]=='1'){ // 10 ~ 15주차 
+      if(attendList[1].date[5]=='1'){
+          for(var i = 0 ; i < userAttend.length ; i++){
+            if(userAttend[i].date[0]==attendList[1].date[0] && userAttend[i].date[1]==attendList.date[1])
+              if(userAttend[i].date[5]=='2')
+                 attendList[2]=userAttend[i];
+        }
+      }
+      else {
+        for(var i = 0 ; i < userAttend.length ; i++){
+            if(userAttend[i].date[0]==attendList[1].date[0] && userAttend[i].date[1]==String(parseInt(attendList[1].date[1])+1))
+              if(userAttend[i].date[5]=='2')
+                 attendList[2]=userAttend[i];
+        }
+      }
 }
 
 var studentList = [];
@@ -220,10 +265,10 @@ register_button.addEventListener("click",function(e){
     document.getElementById("modal").style.display="flex";
 });
     }
-
+        
         // loadHomework();
-        loadAttendance();
-        loadSideBar();
+        loadAttendance(attendList);
+ }
 }
 
 function toggle(){
@@ -246,8 +291,13 @@ function checkStatus(s){
         return "red"
 }
 
-function loadAttendance(){    
+function loadAttendance(attendList){   
+var prev = document.getElementById("prevBox");
+var now = document.getElementById("nowBox");
+var next = document.getElementById("nextBox"); 
+
         if(userStatus != '0') {
+            if(attendList[0]!=null) {
             var prevW = document.getElementById("prevWeek");
             var prevC = document.createElement("div");
             prevW.innerHTML = attendList[0].date;
@@ -256,7 +306,8 @@ function loadAttendance(){
             prevC.style.backgroundColor=checkStatus(attendList[0].status);
             prev.appendChild(prevC);
             prev.append(attendList[0].status);
-            
+            }
+
             var nowW = document.getElementById("nowWeek");
             var nowC = document.createElement("div");
             nowW.innerHTML = attendList[1].date;
@@ -268,6 +319,7 @@ function loadAttendance(){
             now.appendChild(nowC);
             now.append(attendList[1].status);
 
+            if(attendList[2]!=null) {
             var nextW = document.getElementById("nextWeek");
             var nextC = document.createElement("div");
             nextW.innerHTML = attendList[2].date;
@@ -276,12 +328,14 @@ function loadAttendance(){
             nextC.style.backgroundColor=checkStatus(attendList[2].status);
             next.appendChild(nextC);
             next.append(attendList[2].status);
+            }
         }
     
         else {
-            for(var i=0;i<3;i++){
+            for( var i = 0 ; i < 3 ; i++ ){
                 document.querySelectorAll(".box")[i].style.flexDirection="row";
             }
+
             prev.style.justifyContent="space-around";
             now.style.justifyContent = "space-around";
             next.style.justifyContent="space-around";
@@ -575,7 +629,10 @@ function registerHomework(){
 }
 
 function checkDate(num,year,month,day){
+    
+    console.log(num);
     var dateData = new Date(num);
+    
     var tYear = dateData.getFullYear();
     var tMonth = dateData.getMonth()+1;
     var tDay = dateData.getDate();
