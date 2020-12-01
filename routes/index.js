@@ -68,14 +68,14 @@ router.post("/login", async function(req,res,next){
   else{
       console.log("비밀번호 불일치");
   }
-  res.redirect("");
+  res.redirect("/");
 });
 
 router.get("/logout", function(req,res,next){
   req.session.destroy();
   res.clearCookie('sid');
 
-  res.redirect("")
+  res.redirect("/")
 })
 
 // subject
