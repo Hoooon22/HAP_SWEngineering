@@ -79,7 +79,6 @@
             </div>
             <br>
             <div id = 'attendanceToggle'>
-                <button class = attendanceButton>&#x2B05;</button>
                 <div class = 'date' id = prev>
                     <div class = week id = prevWeek>1주차 1강</div>
                     <button class="box" id = prevBox></button>
@@ -94,7 +93,6 @@
                     <div class = week id = nextWeek>2주차 1강</div>
                     <div class="box" id = nextBox></div>
                 </div>
-                <button class = attendanceButton>&#x27A1;</button>
             </div>
 
             <br>
@@ -122,7 +120,7 @@
     </div>
     
     <% var userStatus = 0 %> 
-        <% if (session.job == 'student') {%>
+        <% if (user_session.user_job == 'student') {%>
             <% userStatus = session.user_id }%>  
         <p style="display: none;" id="userStatus"><%=userStatus%></p>
         <p style="display: none;" id="subjectName_value"><%=posts.Name%></p>
