@@ -107,6 +107,9 @@ setPopupCategoryList = (categoryList) => {
     for (let i = 0; i < categoryList.length; i++) {
         html += `<option value=${categoryList[i].name}>${categoryList[i].name}</option>`;
     }
+
+    console.log(123435);
+    console.log(html);
     $('#addTodoPop .modal-content .category').html(html);
 }
 
@@ -142,7 +145,7 @@ closeAddTodoPop = () => {
 }
 
 deleteTodo = () => {
-    
+
     $('#modifyTodoPop').hide();
 }
 
