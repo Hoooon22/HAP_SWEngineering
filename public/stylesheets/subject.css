@@ -384,11 +384,11 @@ hr {
 }
 
 #attendanceToggle {
-  display: none;
+  display: flex;
   position: relative;
   right: 20%;
   flex-direction: row;
-  width: 50%;
+  width: 70%;
   height: 200px;
   border-radius: 10px;
   border-style: solid;

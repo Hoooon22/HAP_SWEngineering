@@ -118,7 +118,7 @@ function loadMaterial(){
         newBlock = document.createElement("button");
         newBlock.setAttribute("class","block");
         newImg = document.createElement("img");
-        newImg.setAttribute("src","");
+        newImg.setAttribute("src","../upload/material/"+materialList[i].name+".png");
         newImg.setAttribute("class","image");
         newBlock.appendChild(newImg);
         newBox.appendChild(newBlock);
