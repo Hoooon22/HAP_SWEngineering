@@ -51,9 +51,6 @@ if(userStatus!='0')
     
 var action="";
 
-var pageName=document.getElementById("pageName"); // 과목명
-pageName.innerText = "과목명"; // 과목명 동적으로 넣어주기
-
 // var subjectColor=document.getElementById("subjectColor"); // 과목 색상
 // subjectColor.style.background = "blue"; // 과목 색상 동적으로 넣어주기
 
