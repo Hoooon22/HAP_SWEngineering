@@ -35,25 +35,8 @@ router.post("/signup", async function(req,res,next){
   })
 })
 
-// login
-// 메인 페이지
-router.get('/', function(req, res, next) {
-  res.send('환영합니다~');
-
-  // models.todolist.create({
-  //   title: "222",
-  //   date_year: 2020,
-  //   date_month: 11,
-  //   date_day: 17,
-  //   category_id: 2,
-  //   category_name: "SW 공학",
-  //   category_color: "#27245c",
-  //   content: "과제2 소공",   
-  // })
-});
-
 // 로그인 GET
-router.get('/login', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   let session = req.session;
 
   res.render("login", {
@@ -85,24 +68,24 @@ router.post("/login", async function(req,res,next){
   else{
       console.log("비밀번호 불일치");
   }
-  res.redirect("login");
+  res.redirect("");
 });
 
 router.get("/logout", function(req,res,next){
   req.session.destroy();
   res.clearCookie('sid');
 
-  res.redirect("login")
+  res.redirect("")
 })
 
 // subject
-router.get('/subject', async function(req, res, next) {
+router.get('/subject/:name', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
 
   let attend = await models.studentattend.findAll({
     where: {
-        subject : "소공"
+        subject : req.params.name,
     },
     order: [
       ['date', 'ASC'],
@@ -116,7 +99,7 @@ router.get('/subject', async function(req, res, next) {
   })
 
   models.subject.findOne({
-    where: {name : "소공"}
+    where: {name : req.params.name}
   }).then( result => {
     res.render("subject", {
       session: session,
@@ -130,12 +113,12 @@ router.get('/subject', async function(req, res, next) {
 });
 
 //chat
-router.get('/chat', function(req, res, next) {
+router.get('/chat/:subject', function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
   
   models.subject.findOne({
-    where: {name : "소공"}
+    where: {name : req.params.subject}
   }).then( result => {
     res.render("chat", {
       posts: result,
@@ -146,7 +129,7 @@ router.get('/chat', function(req, res, next) {
 })
 
 // material
-router.get('/material', async function(req, res, next) {
+router.get('/material/:subject', async function(req, res, next) {
   let session = req.session
   let user_id = req.session.user_id
 
@@ -158,12 +141,12 @@ router.get('/material', async function(req, res, next) {
 
   let subject = models.subject.findOne({
     where:{
-      name: "소공",
+      name: req.params.subject,
     }
   })
   
   models.material.findAll({
-    where: {subject : "소공"}
+    where: {subject : req.params.subject}
   }).then( result => {
     res.render("material", {
       posts: subject,

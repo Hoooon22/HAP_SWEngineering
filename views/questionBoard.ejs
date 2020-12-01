@@ -29,7 +29,7 @@
   <div id=pageName><%=subject.name%></div>
   <div class="welcome" width="190px">
     <p id="user_id"><%=seesion.user_name%>님, 환영합니다!</p>
-    <button style="float: right;">로그아웃</button>
+    <button style="float: right;" onclick="location.href='logout' ">로그아웃</button>
   </div>
 
 </header>
@@ -50,48 +50,12 @@
 
   <div id="content">
 
-    <p><br><br></p>
+    <p><br></p>
     <div style="width:80%;">
       <h3>실시간 질문방</h3>
 
     
 
-
-<% if(session.user_job == "professor") {%> 
-  <label for="check" class="checkbox">
-    <p style="font-weight: 550; float:right">채팅방이 닫혀있습니다. 채팅방을 생성하시겠습니까?
-    <span class="switch">
-      <input type="checkbox" id="check" class="checkbox" />
-      <span class="switch-container">
-        <span class="on">YES</span>
-        <span class="mid"></span>
-        <span class="off">NO</span>
-      </span>
-    </span></p>
-  </label>
-<% } %> 
-
-
-
-
-
-
-
-
-  <!--var chat_open = document.getElementById('check'); //값을 불러오기 위한 코드-->
-  <!--var chat_open_Result = chat_open.getAttribute("checked") //체크 여부를 파악하기 위함-->
-
-  
-  <!--학생 아이디인 경우, 채팅방이 닫혀있을 경우-->
-  <center> 
-    <table width="100%">
-      <tr>
-        <th id="t1_2"  style=" font-weight: 550;">채팅방이 열려있지 않습니다.</th>
-      </tr>
-    </table>
-  </center>
- 
-     <!--만약 채팅방 열기 체크박스가 체크되어있다면 <tr>출력 (교수/학생 모두)-->
       <center>
         <table width="100%">
           <tr>

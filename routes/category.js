@@ -5,32 +5,29 @@ var models = require('../models');
 
 /* GET home page. */
 router.get('/getCategoryList', async function (req, res, next) {
-  let session = req.session;
-  
-  let subjects = await models.subject.findAll({  });
-
-  let todolists = await models.todolist.findAll({
-      where:{
-        user_id: session.user_id,
-      }
-    });
-
+    let result = await models.subject.findAll({});
+    
     var aJsonArray = new Array();
-    for (let i in subjects)
+    for (let i in result)
     {
-      for (let j in todolists)
-      {
-        if (subjects[j].name == todolists[i].category_name)
-        {         
-          aJsonArray.push(subjects[i].dataValues);
-          aJsonArray.subjects[i].push(todolists[j].dataValues);
-          break;
+      aJsonArray.push(Object.assign(result[i].dataValues,{todoList :[]}))
+    }
+    console.log(aJsonArray);
+    // TODO :: 쿼리를 통해 한번에 처리가능
+    result = await models.todolist.findAll({});
+    for (let i in result)
+    {
+      for(let j in aJsonArray){
+        if(aJsonArray[j].id === result[i].category_id) {
+          aJsonArray[j].todoList.push({
+            title : result[i].title,
+            date : result[i].date
+          })
         }
       }
     }
-    console.log("dfsfsdfsdfsdfsdfsdfsdfsdf")
-    console.log(aJsonArray)
-  
+
+
     // TODO :: DB 에서 year, month 통해 TodoList 조회
     res.json(aJsonArray)
 });
