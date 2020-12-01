@@ -9,6 +9,12 @@ var models = require('../models');
 // 과목, qboard
 router.get('/:subject', async function(req, res, next) {
   let session = req.session
+  
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id
+    }
+  })
 
   let subject = await models.subject.findOne({
     where: {
@@ -27,6 +33,7 @@ router.get('/:subject', async function(req, res, next) {
     subject: subject,
     qboards: qboard,
     users: user,
+    user_session: user_session,
   })
 });
 
@@ -39,7 +46,7 @@ router.post("/", async function(req, res, next){
     content: body.content,
     regdate: body.date,
     reply: 0,
-    subject: "소공",
+    subject: "소프트웨어공학개론",
     u_id: session.user_id,
 })
 .then( result => {
