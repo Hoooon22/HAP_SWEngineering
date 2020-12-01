@@ -25,7 +25,7 @@
   </div>
   <div id=pageName><%=subject.name%></div>
   <div class="welcome" width="190px">
-    <p id="user_id"><%=user_session.user_name>님, 환영합니다!</p>
+    <p id="user_id"><%=user_session.user_name%>님, 환영합니다!</p>
     <button style="float: right;" onclick="location.href='logout' ">로그아웃</button>
   </div>
 
@@ -128,11 +128,11 @@
         <form action="/questionBoard/read/questionDelete" method="POST">
       
     <script src="../../../public/javascripts/modal2.js"></script>
+    <input style="display: none;" type="text" name="title" value="<%=qboard.title %>" />
+    <input style="display: none;" type="text" name="u_id" value="<%=qboard.u_id %>" />
     <center>
     <input type="submit" value="삭제" id="btn_del" />
   </center>
-        <input style="display: none;" type="text" name="title" value="<%=qboard.title %>" />
-        <input style="display: none;" type="text" name="u_id" value="<%=qboard.u_id %>" />
         
   
 

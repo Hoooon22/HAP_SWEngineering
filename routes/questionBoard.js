@@ -21,7 +21,7 @@ router.get('/:subject', async function(req, res, next) {
       name: req.params.subject
     }
   })
-  let qboard = await models.qboard.findAll({
+  let qboards = await models.qboard.findAll({
     where: {
       subject : req.params.subject
     }
@@ -31,7 +31,7 @@ router.get('/:subject', async function(req, res, next) {
   res.render("questionBoard", {
     seesion: session,
     subject: subject,
-    qboards: qboard,
+    qboards: qboards,
     users: user,
     user_session: user_session,
   })
@@ -40,25 +40,33 @@ router.get('/:subject', async function(req, res, next) {
 router.post("/", async function(req, res, next){
   let session = req.session;
   let body = req.body;
+  
+  let subjects = await models.subject.findOne({
+    where: {
+      name : body.subject,
+    }
+  })
 
-  let result = models.qboard.create({
+  models.qboard.create({
     title: body.title,
     content: body.content,
     regdate: body.date,
     reply: 0,
     subject: body.subject,
     u_id: session.user_id,
-})
-.then( result => {
-  res.redirect("questionBoard");
-})
-.catch( err => {
-  console.log(err)
-})
+  })
+
+res.redirect("/questionBoard/"+"소프트웨어공학개론");
 })
 
 router.get('/read/:subject/:title', async function(req, res, next) {
   let session = req.session;
+
+  let user_session = await models.user.findOne({
+    where:{
+      user_id: session.user_id
+    }
+  })
 
   let subject = await models.subject.findOne({
     where: {
@@ -85,6 +93,7 @@ router.get('/read/:subject/:title', async function(req, res, next) {
     qboard: qboard,
     qreplies: qreply,
     users: user,
+    user_session: user_session,
   })
 });
 
@@ -93,13 +102,12 @@ router.post("/read/questionDelete", async function(req, res, next){
   let session = req.session;
   let body = req.body;
 
-  await models.qboard.destroy({
+  let qboards = await models.qboard.destroy({
     where:{
       title: body.title,
-      u_id: session.user_id, 
     }})
 
-    res.redirect("/questionBoard")
+    res.redirect("/questionBoard/"+qboards.subject)
 })
 
 // 질문 수정
