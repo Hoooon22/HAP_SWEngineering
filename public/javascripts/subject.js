@@ -6,6 +6,37 @@ window.onload = function(e){
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 var hwList = [];
 
+var subjectName = document.getElementById("subjectName").innerText;
+
+var material = document.getElementById("material").href +="/"+subjectName;
+var dataRoom = document.getElementById("dataRoom").href +="/"+subjectName;
+var questionBoard = document.getElementById("question").href += "/"+subjectName;
+
+var h1 = {
+    title:"10장 연습 문제",
+    fileName: "소프트웨어 공학 개론 연습문제_10장.docx",
+    deadline: "~2020/12/3 23:59",
+    detail: "10장 연습문제 짝수번을 풀고 제출해주세요."
+}
+
+var h2 = {
+    title:"테스트 케이스 작성",
+    fileName: "test_case.hwp",
+    deadline: "~2020/12/5 23:59",
+    detail: "진행 중인 프로젝트의 테스트 케이스를 작성하여 제출해주세요."
+}
+
+var h3 = {
+    title:"코딩",
+    fileName:"null",
+    deadline:"~2020/12/1 23:59",
+    detail: "프로젝트 코딩을 완료 하고 코딩을 제출하여 주세요."
+}
+
+hwList[0] = h3;
+hwList[1] = h1;
+hwList[2] = h2;
+
 var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
@@ -266,7 +297,7 @@ var sidebar = document.getElementsByClassName("sidebar_button")[0];
 var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
 
 sidebar.addEventListener('mouseover',function(e){
-    sidebar_page.style.display="block"; // 수정
+    sidebar_page.style.display="flex"; // 수정
     sidebar.style.display = "none";
 });
 
@@ -293,7 +324,7 @@ register_button.addEventListener("click",function(e){
 });
     }
         
-        // loadHomework(hwList);
+        loadHomework(hwList);
         loadAttendance(attendList);
  }
 
@@ -427,7 +458,6 @@ var next = document.getElementById("nextBox");
 
 function loadHomework(hwList){
     var n = hwList.length;
-    var n = 1;
     var botContent = document.getElementById("botContent");
     
     if(n > 0){
@@ -601,14 +631,11 @@ function loadSideBar(subjectList){
     var sidebar_page = document.getElementsByClassName("sidebar_page")[0]; 
 
     for(var i=0;subjectList.length>i;i++){
-        newSubject = document.createElement("button");
+        newSubject = document.createElement("a");
         newSubject.setAttribute("class","sidebar_subject");
         newSubject.innerHTML=subjectList[i];
-        var url = subjectList[i];
-
-        newSubject.addEventListener('click',function(e){
-            // 링크로 이동하기
-        });
+        var url = "/subject/"+subjectList[i];
+        newSubject.setAttribute("href",url);
 
         sidebar_page.appendChild(newSubject);
     }   
