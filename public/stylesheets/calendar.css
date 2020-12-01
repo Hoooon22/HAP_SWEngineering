@@ -210,7 +210,7 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
-#addTodoPop .modal-content .category, #editTodoPop .modal-content .category{
+#addTodoPop .modal-content .category{
     width: 100%;
     height: 50px;
     margin: 10px auto;
@@ -221,6 +221,16 @@
     box-shadow: 0 0 5px 0 #dedede;
 }
 
+#editTodoPop .modal-content .category{
+    width: 100%;
+    height: 50px;
+    margin: 10px auto;
+    padding: 0;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 5px 0 #dedede;
+}
 #addTodoPop .modal-content .content, #editTodoPop .modal-content .content{
     height: 200px;
     margin: 10px auto;

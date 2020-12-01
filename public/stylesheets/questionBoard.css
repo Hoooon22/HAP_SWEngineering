@@ -96,7 +96,6 @@ hr {
   width: 100%;
 }
 
-
 #content {
   width: 100%;
   display: flex;
@@ -107,6 +106,12 @@ hr {
   position: relative;
   height: 90vh;
 }
+
+form{
+  width:100%
+}
+
+
 
 #table {
   display: flex;
@@ -243,11 +248,11 @@ textarea {
 }
 
 #btn_del {
-  position: relative;
+
   border: 1px solid #dedede;
   background-color: rgba(0, 0, 0, 0);
   padding: 5px;
-  width: 80%;
+  width:7%;
   height: 30px;
 }
 
@@ -259,6 +264,8 @@ textarea {
   height: 30px;
 }
 #btn_backtolist {
+  position: relative;
+  float: right;
   border: 1px solid #dedede;
   background-color: rgba(0, 0, 0, 0);
   padding: 5px;
@@ -325,12 +332,21 @@ textarea {
 
 #modal_button2 {
   /*modify*/
-  position: relative;
+
   border: 1px solid #dedede;
   background-color: rgba(0, 0, 0, 0);
   padding: 5px;
-  width: 80%;
+  width: 7%;
   height: 30px;
 }
 
 
+.btn_area2 {
+  margin-top: 30px;
+  background-color: E2F1F4;
+  position: relative;
+  padding: 5px;
+  width: 7%;
+  height: 30px;
+
+}

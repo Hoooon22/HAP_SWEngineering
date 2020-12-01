@@ -106,15 +106,15 @@ router.post("/read/questionModify", function(req, res, next){
     }
   })
 
-  models.qboard.update(
-    {    
-      title: body.title,
-      content: body.content,
-    },
-    {where:{
-      title: qboards.p_title,
-      u_id: session.user_id,
-    }})
+  var query = "update qboards set title=:title, content=:content where id=:id, u_id=:u_id"
+  var values = {
+    title: body.title,
+    content: body.content,
+    id: body.id,
+    u_id: session.user_id,
+  }
+
+  models.sequelize.query(query, {replacements: values})
 
     res.redirect("/questionBoard/read/"+qboards.subject+"/"+qboards.title);
   })
