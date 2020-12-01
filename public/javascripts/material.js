@@ -114,7 +114,7 @@ function loadMaterial(){
         newBlock = document.createElement("button");
         newBlock.setAttribute("class","block");
         newImg = document.createElement("img");
-        newImg.setAttribute("src","../upload/material/"+materialList[i].name+".png");
+        newImg.setAttribute("src","../public/images/"+materialList[i].name+".png");
         newImg.setAttribute("class","image");
         newBlock.appendChild(newImg);
         newBox.appendChild(newBlock);
@@ -191,9 +191,10 @@ function dynamicBinding(){
                     num = String(materialList[j].num);
                     maxNum = String(materialList[j].maxNum);
                     break;
+
                 }
             }
-            
+            document.getElementById("modal_img").setAttribute("src","../public/images/"+name+".png");
             document.getElementsByClassName("student_modal_number")[0].innerHTML= num + " / " + maxNum;
             
             document.getElementsByClassName("modal_content")[0].style.display = "flex";
@@ -214,6 +215,7 @@ function dynamicBinding(){
                     break;
                 }
             }
+            document.getElementById("modal_img").setAttribute("src","../public/images/"+name+".png");
             document.getElementsByClassName("student_modal_number")[0].placeholder = "최대 수량: " + maxNum + "개";
 
             
