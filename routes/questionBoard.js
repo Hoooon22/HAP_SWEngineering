@@ -46,7 +46,7 @@ router.post("/", async function(req, res, next){
     content: body.content,
     regdate: body.date,
     reply: 0,
-    subject: "소프트웨어공학개론",
+    subject: body.subject,
     u_id: session.user_id,
 })
 .then( result => {
