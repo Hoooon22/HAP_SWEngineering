@@ -106,11 +106,11 @@ router.post("/read/questionModify", function(req, res, next){
     }
   })
 
-  var query = "update qboards set title=:title, content=:content where title=:p_title, u_id=:u_id"
+  var query = "update qboards set title=:title, content=:content where id=:id, u_id=:u_id"
   var values = {
     title: body.title,
     content: body.content,
-    p_title: body.pre_title,
+    id: body.id,
     u_id: session.user_id,
   }
 
