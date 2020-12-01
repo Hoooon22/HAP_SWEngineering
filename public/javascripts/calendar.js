@@ -91,7 +91,7 @@ setTodoListOnCalendar = async (todoList) => {
         if (!html) {
             html = ''
         }
-        html += `<button id="todo-btn" onclick="alert('일정이 등록되었습니다.');" style="cursor:pointer">`;
+        html += `<button id="todo-btn" style="cursor:pointer">`;
         html += `<div class="todo">`;
         html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
         html += `<div class="title">${todoList[i].title}</div>`;
@@ -117,31 +117,6 @@ getCategoryList = () => {
     })
 };
 
-////////////////////////////////////////////////////////////////
-floatTodoPop = async () => {
-    let ymd = getFormatDate(new Date(todoList.date_year, todoList.date_month, todoList.date_day));
-console.log(123);
-    $('#modifyTodoPop .modal-content .due-date')[0].value = ymd
-    var html = '';
-    html += `<div id="modifyTodoPop" class="modal">`
-    html += `<form action='/calendar' method="POST">`
-    html += `<div class="modal-content">`
-    html += `<input class="title" type="text" name="title">${todoList.title}`
-    html += `<input class="due-date" type="date" name="date">`
-    html += `<select class="category" name="category">${todoList.category}</select>`
-    html += `<textarea name="content" class="content" cols="30" rows="10">${todoList.content}</textarea>`
-    html += `<div class="btn-wrap">`
-    html += `<button type="button" class="cancel" onclick="deleteTodo()">삭제</button>`
-    html += `<button type="submit" class="submit light-blue" onclick="handleAddTodoList(); alert('일정이 등록되었습니다.');" style="cursor:pointer">저장</button>`
-    html += `</div>`
-    html += `</div>`
-    html += `</form>`
-    html += `</div>`
-    console.log(125432663);
-    await html(html).show();
-
-};
-/////////////////////////////////////////////////////////////////////
 
 floatAddTodoPop = async (day) => {
     let ymd = getFormatDate(new Date(date.year, date.month, day));
@@ -152,7 +127,8 @@ floatAddTodoPop = async (day) => {
 floatEditTodoPop = async (todo_idx) => {
     let todoInfo = this.todoList[todo_idx];
     let ymd = getFormatDate(new Date(todoInfo.date));
-    console.log(ymd);
+    console.log(12353426);
+    console.log(todoInfo.category_name);
     $('#editTodoPop .modal-content .due-date')[0].value = ymd
     $('#editTodoPop .modal-content .title')[0].value = todoInfo.title
     $('#editTodoPop .modal-content .category')[0].value = todoInfo.category_name
@@ -162,9 +138,11 @@ floatEditTodoPop = async (todo_idx) => {
 
 closeAddTodoPop = () => {
     $('#addTodoPop').hide();
+    $('#editTodoPop').hide();
 }
 
 deleteTodo = () => {
+    
     $('#modifyTodoPop').hide();
 }
 
