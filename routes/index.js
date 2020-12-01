@@ -28,7 +28,7 @@ router.post("/signup", async function(req,res,next){
       salt: salt
   })
   .then( result => {
-    res.redirect("login");
+    res.redirect("/");
   })
   .catch( err => {
     console.log(err)

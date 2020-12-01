@@ -108,10 +108,8 @@ hr {
 }
 
 form{
-  width:100%
+  width: 100%;
 }
-
-
 
 #table {
   display: flex;
@@ -341,12 +339,3 @@ textarea {
 }
 
 
-.btn_area2 {
-  margin-top: 30px;
-  background-color: E2F1F4;
-  position: relative;
-  padding: 5px;
-  width: 7%;
-  height: 30px;
-
-}
