@@ -1,3 +1,7 @@
+// var attendance = document.getElementById("attendanceToggle");
+
+// attendance.addEventListener("click",toggle);
+
 window.onload = function(e){
 var userStatus = document.getElementById("userStatus").innerText; // 교수인지(0), 학생인지(s_Id)
 var hwList = [];
@@ -6,8 +10,13 @@ var prev = document.getElementById("prevBox");
 var now = document.getElementById("nowBox");
 var next = document.getElementById("nextBox");
 
-    if(userStatus!='0')
-        document.getElementsByClassName("register_button")[0].remove();
+var boxList=[];
+boxList[0]=prev;
+boxList[1]=now;
+boxList[2]=next;
+
+if(userStatus!='0')
+    document.getElementsByClassName("register_button")[0].remove();
     
 var action="";
 
@@ -86,8 +95,6 @@ var weekList = [];
 
 if(userStatus == '0') {
     for(var i = 0 ; i < attend_count ; i++) { // 범위 안의 전체 학생 출석 값 추출
-        
-        
         if(checkDate(studentAttend[i].num , year , month , day))
             rangedAttend.push(studentAttend[i]);
     }
@@ -95,7 +102,7 @@ if(userStatus == '0') {
     for( var i = 0 ; i < rangedAttend.length ; i++){ // 범위 안의 주차 추가
 
         for(var j = 0 ; j <= weekList.length ; j++){
-            if(!weekList.includes(rangedAttend[i].date,0)){
+            if(!weekList.includes(rangedAttend[i].date)){
                 weekList.push(rangedAttend[i].date);
             }
         }
@@ -109,29 +116,54 @@ if(userStatus == '0') {
         };
     }
 
+    console.log(weekList);
+    console.log(rangedAttend);
+
     for(var i = 0 ; i < weekList.length ; i++) { // statusList 값 입력
         for(var j = 0 ; j < rangedAttend.length ; j++) {
             if(rangedAttend[j].date != weekList[i])
-                break;
+                continue;
             else {
                 if (rangedAttend[j].status == '출석')
                     statusList[i].attend++;
                 else if(rangedAttend[j].status == '지각')
                     statusList[i].late++;
-                else
+                else if(rangedAttend[j].status == '결석')
                     statusList[i].absent++;
             }
         }
     }
 
 
-    console.log(profAttend);
-
     profAttend[0].date = weekList[weekList.length-2];
     profAttend[0].status = String(statusList[statusList.length-2].attend)+"|"+String(statusList[statusList.length-2].late)+"|"+String(statusList[statusList.length-2].absent);
     profAttend[1].date = weekList[weekList.length-1];
     profAttend[1].status = String(statusList[statusList.length-1].attend)+"|"+String(statusList[statusList.length-1].late)+"|"+String(statusList[statusList.length-1].absent);
-    // next 선정
+    
+    if(profAttend[1].date!="15주차 2강"){
+        var num = 0;
+        for(var i = 0 ; i < date_value.length ; i++){
+            if(date_value[i]==weekList[weekList.length-1])
+                num = i;
+        }
+        var l = 0;
+        var a = 0;
+        var ab = 0;
+
+        for(var i = 0 ; i < rangedAttend.length ; i++){
+            if(rangedAttend[i].date==date_value[num]){
+                if (rangedAttend[i].status == '출석')
+                    a++;
+                else if(rangedAttend[i].status == '지각')
+                    l++;
+                else if(rangedAttend[i].status == '결석')
+                    ab++;
+            }
+        }
+        profAttend[2].date = date_value[num];
+        profAttend[2].status = String(a)+"|"+String(l)+"|"+String(ab);
+        console.log(profAttend[2]);
+    }
 }
 
 else {
@@ -140,15 +172,13 @@ else {
             userAttend.push(studentAttend[i]);
     }
 
-    console.log(userAttend);
-
     for (var i = 0 ; i < userAttend.length ; i++) { // 전체 출석 값에서 당일 기준 출석만 추출
-        if(checkDate(studentAttend[i].num,year,month,day)) 
+        if(checkDate(userAttend[i].num,year,month,day)) 
             rangedAttend.push(userAttend[i]);
     }
 
-    attendList[0] = userAttend[userAttend.length-2]; // 범위 안의 출석 값 중 prev 선정
-    attendList[1] = userAttend[userAttend.length-1]; // 범위 안의 출석 값 중 now  선정
+    attendList[0] = rangedAttend[rangedAttend.length-2]; // 범위 안의 출석 값 중 prev 선정
+    attendList[1] = rangedAttend[rangedAttend.length-1]; // 범위 안의 출석 값 중 now  선정
     if(attendList[1].date=="15주차 2강")
     document.getElementById("next").style.display="none";
     
@@ -189,7 +219,7 @@ else {
     else if(attendList[1].date[0]=='1'){ // 10 ~ 15주차 
       if(attendList[1].date[5]=='1'){
           for(var i = 0 ; i < userAttend.length ; i++){
-            if(userAttend[i].date[0]==attendList[1].date[0] && userAttend[i].date[1]==attendList.date[1])
+            if(userAttend[i].date[0]==attendList[1].date[0] && userAttend[i].date[1]==attendList[1].date[1])
               if(userAttend[i].date[5]=='2')
                  attendList[2]=userAttend[i];
         }
@@ -201,18 +231,19 @@ else {
                  attendList[2]=userAttend[i];
         }
       }
+    }
 }
 
 var studentList = [];
 
-var prev = document.getElementById("prevBox");
-var now = document.getElementById("nowBox");
-var next = document.getElementById("nextBox");
+// var prev = document.getElementById("prevBox");
+// var now = document.getElementById("nowBox");
+// var next = document.getElementById("nextBox");
 
-var boxList=[];
-boxList[0]=prev;
-boxList[1]=now;
-boxList[2]=next;
+// var boxList=[];
+// boxList[0]=prev;
+// boxList[1]=now;
+// boxList[2]=next;
 
 if(userStatus=='0'){
     for(var i=0;i<3;i++){
@@ -223,7 +254,7 @@ if(userStatus=='0'){
         document.getElementsByClassName("modal_register").style.display = "none";
     });
     }
-    // loadModalPage();
+    loadModalPage();
 
 //     var save = document.querySelector(".save");
 
@@ -252,10 +283,6 @@ for(var i=0;close.length>i;i++){
     })
 }
 
-
-var attendance = document.getElementById("attendance");
-var toggled = true
-attendance.addEventListener("click",toggle);
 if(userStatus=='0'){
 var register_button = document.getElementById("prof_new");
 register_button.addEventListener("click",function(e){
@@ -266,20 +293,20 @@ register_button.addEventListener("click",function(e){
 });
     }
         
-        // loadHomework();
+        // loadHomework(hwList);
         loadAttendance(attendList);
  }
-}
+
+
+var attendance = document.getElementById("attendance");
+attendance.addEventListener("click",toggle);
 
 function toggle(){
-    if(!toggled){
+    if(document.getElementById('attendanceToggle').style.display=="none")
         document.getElementById('attendanceToggle').style.display="flex"; 
-        toggled = true;
-    }
-    else{
+    
+    else
         document.getElementById('attendanceToggle').style.display= 'none';
-        toggled = false; 
-    }
 }
 
 function checkStatus(s){
@@ -398,7 +425,7 @@ var next = document.getElementById("nextBox");
     
 }
 
-function loadHomework(){
+function loadHomework(hwList){
     var n = hwList.length;
     var n = 1;
     var botContent = document.getElementById("botContent");
@@ -629,20 +656,20 @@ function registerHomework(){
 }
 
 function checkDate(num,year,month,day){
-    
-    console.log(num);
+
     var dateData = new Date(num);
     
     var tYear = dateData.getFullYear();
     var tMonth = dateData.getMonth()+1;
     var tDay = dateData.getDate();
 
-    if(tYear <= year) {
+    if(tYear <= year) { 
         if(tYear==year) {
             if(tMonth <= month) {
                 if(tMonth == month) {
-                    if(tDay <= day)
+                    if(tDay <= day){
                         return true;
+                    }
                 }
 
                 else
