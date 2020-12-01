@@ -91,7 +91,7 @@ setTodoListOnCalendar = async (todoList) => {
         if (!html) {
             html = ''
         }
-        html += `<button id="todo-btn" onclick="alert('일정이 등록되었습니다.');" style="cursor:pointer">`;
+        html += `<button id="todo-btn" style="cursor:pointer">`;
         html += `<div class="todo">`;
         html += `<div class="label" style="background:${todoList[i].category_color}"></div>`;
         html += `<div class="title">${todoList[i].title}</div>`;
@@ -127,7 +127,8 @@ floatAddTodoPop = async (day) => {
 floatEditTodoPop = async (todo_idx) => {
     let todoInfo = this.todoList[todo_idx];
     let ymd = getFormatDate(new Date(todoInfo.date));
-    console.log(ymd);
+    console.log(12353426);
+    console.log(todoInfo.category_name);
     $('#editTodoPop .modal-content .due-date')[0].value = ymd
     $('#editTodoPop .modal-content .title')[0].value = todoInfo.title
     $('#editTodoPop .modal-content .category')[0].value = todoInfo.category_name
@@ -137,9 +138,11 @@ floatEditTodoPop = async (todo_idx) => {
 
 closeAddTodoPop = () => {
     $('#addTodoPop').hide();
+    $('#editTodoPop').hide();
 }
 
 deleteTodo = () => {
+    
     $('#modifyTodoPop').hide();
 }
 
