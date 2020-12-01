@@ -94,9 +94,10 @@
                   <br><br>
                 <div class="border_cont">
                   <input type="text" value=<%=qboard.title%> name="pre_title" style="display:none;"  />
-                  <input type="text" value=<%=qboard.title%> class="inq_field" 
+                  <input type="text" value=<%=qboard.qnum%> name="qnum" style="display:none;"  />
+                  <input type="text" value=<%=qboard.title%> class="inq_field" name="title"
                   style="font-size: 2ch;  border-top: 1px solid #dedede;border-bottom: 1px solid #dedede; padding-top: 10px; padding-bottom: 10px;"  />
-                  <textarea name="" id="" cols="5" rows="7"><%=qboard.content %></textarea>
+                  <textarea name="content" id="" cols="5" rows="7"><%=qboard.content %></textarea>
                 </div>
               </center>
                 <center>
