@@ -9,12 +9,15 @@
 
 .category{
     margin: 20px;
-    width: 30%;
+    width: 29%;
     border: none;
     border-radius: 15px;
     box-shadow: 0 0 5px 0 #dddddd;
 }
-
+.subjecthome a img{
+    width: 30px;
+    height: auto;
+}
 .category > div{
     padding: 15px 20px;
 }
@@ -22,6 +25,8 @@
 .category > .name {
     border-radius: 15px 15px 0 0;
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .category > .todo-list {

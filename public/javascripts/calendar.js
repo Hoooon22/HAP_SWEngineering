@@ -97,7 +97,6 @@ setTodoListOnCalendar = async (todoList) => {
         html += `<div class="title">${todoList[i].title}</div>`;
         html += `</div>`;
         html += `</button>`;
-        console.log(html);
         await $(`.${day} + .todo-list`).html(html);
     }
 }
@@ -107,10 +106,8 @@ setPopupCategoryList = (categoryList) => {
     for (let i = 0; i < categoryList.length; i++) {
         html += `<option value=${categoryList[i].name}>${categoryList[i].name}</option>`;
     }
-
-    console.log(123435);
-    console.log(html);
     $('#addTodoPop .modal-content .category').html(html);
+
 }
 
 getCategoryList = () => {
@@ -130,8 +127,7 @@ floatAddTodoPop = async (day) => {
 floatEditTodoPop = async (todo_idx) => {
     let todoInfo = this.todoList[todo_idx];
     let ymd = getFormatDate(new Date(todoInfo.date));
-    console.log(12353426);
-    console.log(todoInfo.category_name);
+    
     $('#editTodoPop .modal-content .due-date')[0].value = ymd
     $('#editTodoPop .modal-content .title')[0].value = todoInfo.title
     $('#editTodoPop .modal-content .category')[0].value = todoInfo.category_name
@@ -162,7 +158,7 @@ handleAddTodoList = async () => {
         content : content,
     }
 
-    console.log(data);
+
 
     await addTodoList(data);
     await closeAddTodoPop();
@@ -182,7 +178,6 @@ addTodoList = (data)=>{
 }
 
 async function prevCalendar(date){
-    console.log(date);
     if(date.month ===1){
         date = {
             year: date.year-1,
@@ -209,7 +204,6 @@ async function prevCalendar(date){
 
 
 async function nextCalendar(date){ 
-    console.log(date);
     if(date.month === 12){
         date = {
             year: date.year+1,

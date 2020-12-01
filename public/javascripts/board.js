@@ -17,7 +17,13 @@ setTodoListOnBoard = (_categoryList) => {
     var html = '';
     for (let i =0; i<_categoryList.length;i++){
         html += `<div class="category">`;
-        html += `<div class="name" style="background:${_categoryList[i].color}">${_categoryList[i].name}</div>`;
+        html += `<div class="name" style="background:${_categoryList[i].color}">`;
+        html += `<div class="subjecthome">`;
+        html += `<a href="subject/:${_categoryList[i].name}">`;
+        html += `<img src="../public/images/home-outline.svg" />`;
+        html += `</a>`; 
+        html += `${_categoryList[i].name}</div>`;
+        html += `</div>`;
         html += `<div class="todo-list">`;
 
         console.log(_categoryList);
