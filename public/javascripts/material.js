@@ -47,25 +47,25 @@ sidebar_page.addEventListener('mouseleave',function(e){
 var materialList = [];
 
 var m1 = {
-    name: "m1",
+    name: "부교재",
     maxNum: 3,
     num: 3
 }
 
 var m2 = {
-    name: "m2",
+    name: "아두이노",
     maxNum: 5,
     num: 3
 }
 
 var m3 = {
-    name: "m3",
+    name: "모니터",
     maxNum: 2,
-    num: 0
+    num: 1
 }
 
 var m4 = {
-    name: "m4",
+    name: "라즈베리 파이",
     maxNum: 1,
     num: 1
 }
@@ -74,10 +74,6 @@ materialList[0]=m1;
 materialList[1]=m2;
 materialList[2]=m3;
 materialList[3]=m4;
-materialList[4]=m1;
-materialList[5]=m2;
-materialList[6]=m3;
-materialList[7]=m4;
 
 var userStatus = 0; // 교수인지(0), 학생인지(1)
 

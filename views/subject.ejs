@@ -32,7 +32,10 @@
                 <button class = close id = homework_close>&#x274C;</button>
             </div>
             <div id="modal_homework_content">
-
+            <form action="upload/create" method = "POST" enctype="multipart/form-data" style = "display: flex flex-direction: column">
+                <input type = "file" name = "homeworkFile">
+                <input type = submit value = "과제 제출">
+            </form>
             </div>
         </div>
 
@@ -62,7 +65,7 @@
                 <a href="../">
                   <img src='../public/images/logo.png'/></a>
               </div>
-            <div id = pageName><%=posts.name%></div>
+            <div id = subjectName><%=posts.name%></div>
             <div class="welcome" width="190px">
                 <p id="user_id"><%=session.user_name%>님, 환영합니다!</p>
                 <button style="float: right;" onclick="location.href='logout' ">로그아웃</button>
